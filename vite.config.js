@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-  base: '/mundial2026/',
+  base: './',
   root: '.',
   publicDir: 'assets',
   build: {
