@@ -14,9 +14,17 @@ class LandingApp {
   // Función para obtener la ruta base según el ambiente
   getBasePath() {
     const isGitHubPages = window.location.hostname.includes('github.io');
-    const isProduction = window.location.protocol === 'https:' && isGitHubPages;
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
     
-    if (isProduction) {
+    console.log('Detectando ambiente:', {
+      hostname: window.location.hostname,
+      isGitHubPages,
+      isLocal,
+      protocol: window.location.protocol,
+      href: window.location.href
+    });
+    
+    if (isGitHubPages) {
       return '/landing2026';
     }
     return '';
@@ -1177,21 +1185,34 @@ Fecha: ${new Date().toLocaleDateString('es-MX')}`;
     // this.sendToAnalytics(interactionData);
   }
 
+  // ================================
+  // Sistema de seguimiento de interacciones
+  // ================================
+  
   // Función para actualizar rutas de CSS dinámicamente
   updateCSSPaths() {
+    console.log('Actualizando rutas CSS, basePath:', this.basePath);
+    
+    const heroBg = this.getAssetPath('/bg/HeroBG.png');
+    const beneficiosBg = this.getAssetPath('/bg/BeneficiosBG.png');
+    const reservaBg = this.getAssetPath('/bg/ReservaBG.png');
+    
+    console.log('Rutas de imágenes:', { heroBg, beneficiosBg, reservaBg });
+    
     const style = document.createElement('style');
     style.textContent = `
       .hero {
-        background: url('${this.getAssetPath('/bg/HeroBG.png')}') center center / cover no-repeat !important;
+        background: url('${heroBg}') center center / cover no-repeat !important;
       }
       .beneficios {
-        background: url('${this.getAssetPath('/bg/BeneficiosBG.png')}') center center / cover no-repeat !important;
+        background: url('${beneficiosBg}') center center / cover no-repeat !important;
       }
       .cta-final, .reserva-calendly {
-        background: url('${this.getAssetPath('/bg/ReservaBG.png')}') center center / cover no-repeat !important;
+        background: url('${reservaBg}') center center / cover no-repeat !important;
       }
     `;
     document.head.appendChild(style);
+    console.log('CSS dinámico aplicado');
   }
 }
 
