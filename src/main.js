@@ -3,14 +3,6 @@
 // OpenStreetMap + Leaflet (100% Gratuito)
 // ================================
 
-// Importar imágenes para que Vite las procese
-import centroComercialPin from './assets/map-pins/CentroComercial.png';
-import edificioPin from './assets/map-pins/Edificio.png';
-import estadioPin from './assets/map-pins/Estadio.png';
-import aeropuertoPin from './assets/map-pins/Aeropuerto.png';
-import parquePin from './assets/map-pins/Parque.png';
-import hotelPin from './assets/map-pins/Hotel.png';
-
 class LandingApp {
   constructor() {
     this.map = null;
@@ -50,7 +42,7 @@ class LandingApp {
 
   init() {
     // Inicializar funciones básicas
-    this.updateCSSPaths(); // REACTIVADO CON VITE BASE_URL
+    this.updateCSSPaths(); // CSS dinámico corregido
     this.initCountdown();
     this.initContactForm();
     this.initNavigation();
@@ -121,7 +113,7 @@ class LandingApp {
         description: 'Centro comercial premium al aire libre con alta afluencia familiar y ambiente sofisticado.',
         category: 'Centro comercial',
         type: 'centro-comercial',
-        image: centroComercialPin,
+        image: this.getAssetPath('/map-pins/CentroComercial.png'),
         municipio: 'San Pedro Garza García',
         tags: 'premium, aire libre, centro comercial, alta afluencia, familiar, San Pedro Garza García',
         traffic: 'Alto',
@@ -135,7 +127,7 @@ class LandingApp {
         description: 'Centro comercial premium con excelente gastronomía y entretenimiento de primer nivel.',
         category: 'Centro comercial',
         type: 'centro-comercial',
-        image: centroComercialPin,
+        image: this.getAssetPath('/map-pins/CentroComercial.png'),
         municipio: 'San Pedro Garza García',
         tags: 'centro comercial, premium, gastronomía, entretenimiento, premier, San Pedro Garza García',
         traffic: 'Muy Alto',
@@ -149,7 +141,7 @@ class LandingApp {
         description: 'Centro comercial con arquitectura moderna, gastronomía y entretenimiento de alta calidad.',
         category: 'Centro comercial',
         type: 'centro-comercial',
-        image: centroComercialPin,
+        image: this.getAssetPath('/map-pins/CentroComercial.png'),
         municipio: 'San Pedro Garza García',
         tags: 'centro comercial, gastronomía, entretenimiento, arquitectura moderna, alta afluencia, San Pedro Garza García',
         traffic: 'Alto',
@@ -163,7 +155,7 @@ class LandingApp {
         description: 'Centro comercial moderno enfocado en experiencias, gastronomía y entretenimiento.',
         category: 'Centro comercial',
         type: 'centro-comercial',
-        image: centroComercialPin,
+        image: this.getAssetPath('/map-pins/CentroComercial.png'),
         municipio: 'San Pedro Garza García',
         tags: 'centro comercial, experiencias, gastronomía, entretenimiento, moderno, San Pedro Garza García',
         traffic: 'Alto',
@@ -177,7 +169,7 @@ class LandingApp {
         description: 'Centro comercial familiar con alta afluencia, entretenimiento y cercanía al estadio.',
         category: 'Centro comercial',
         type: 'centro-comercial',
-        image: centroComercialPin,
+        image: this.getAssetPath('/map-pins/CentroComercial.png'),
         municipio: 'San Pedro Garza García',
         tags: 'centro comercial, alta afluencia, familiar, entretenimiento, cerca del estadio, San Pedro Garza García',
         traffic: 'Alto',
@@ -191,7 +183,7 @@ class LandingApp {
         description: 'Centro comercial premium de uso mixto con gastronomía exclusiva y alta afluencia.',
         category: 'Centro comercial',
         type: 'centro-comercial',
-        image: centroComercialPin,
+        image: this.getAssetPath('/map-pins/CentroComercial.png'),
         municipio: 'San Pedro Garza García',
         tags: 'centro comercial, premium, uso mixto, gastronomía, alta afluencia, San Pedro Garza García',
         traffic: 'Muy Alto',
@@ -205,7 +197,7 @@ class LandingApp {
         description: 'Centro comercial moderno con gastronomía, alta afluencia y entretenimiento.',
         category: 'Centro comercial',
         type: 'centro-comercial',
-        image: centroComercialPin,
+        image: this.getAssetPath('/map-pins/CentroComercial.png'),
         municipio: 'San Pedro Garza García',
         tags: 'centro comercial, moderno, gastronomía, alta afluencia, entretenimiento, San Pedro Garza García',
         traffic: 'Alto',
@@ -219,7 +211,7 @@ class LandingApp {
         description: 'Centro comercial familiar con gastronomía, entretenimiento y muy alta afluencia.',
         category: 'Centro comercial',
         type: 'centro-comercial',
-        image: centroComercialPin,
+        image: this.getAssetPath('/map-pins/CentroComercial.png'),
         municipio: 'Monterrey',
         tags: 'centro comercial, familiar, gastronomía, entretenimiento, alta afluencia, Monterrey',
         traffic: 'Muy Alto',
@@ -233,7 +225,7 @@ class LandingApp {
         description: 'Centro comercial familiar con gastronomía, entretenimiento y fácil acceso.',
         category: 'Centro comercial',
         type: 'centro-comercial',
-        image: centroComercialPin,
+        image: this.getAssetPath('/map-pins/CentroComercial.png'),
         municipio: 'San Nicolás de los Garza',
         tags: 'centro comercial, familiar, gastronomía, entretenimiento, accesible, San Nicolás de los Garza',
         traffic: 'Alto',
@@ -247,7 +239,7 @@ class LandingApp {
         description: 'Centro comercial al aire libre, familiar, pet friendly con gastronomía.',
         category: 'Centro comercial',
         type: 'centro-comercial',
-        image: centroComercialPin,
+        image: this.getAssetPath('/map-pins/CentroComercial.png'),
         municipio: 'Monterrey',
         tags: 'centro comercial, aire libre, familiar, gastronomía, pet friendly, Monterrey',
         traffic: 'Medio-Alto',
@@ -261,7 +253,7 @@ class LandingApp {
         description: 'Centro comercial familiar con gastronomía, entretenimiento y alta afluencia.',
         category: 'Centro comercial',
         type: 'centro-comercial',
-        image: centroComercialPin,
+        image: this.getAssetPath('/map-pins/CentroComercial.png'),
         municipio: 'San Nicolás de los Garza',
         tags: 'centro comercial, familiar, gastronomía, entretenimiento, alta afluencia, San Nicolás de los Garza',
         traffic: 'Alto',
@@ -275,7 +267,7 @@ class LandingApp {
         description: 'Complejo de uso mixto moderno con gastronomía, tecnología y ubicación céntrica.',
         category: 'Centro comercial',
         type: 'centro-comercial',
-        image: centroComercialPin,
+        image: this.getAssetPath('/map-pins/CentroComercial.png'),
         municipio: 'Monterrey',
         tags: 'uso mixto, moderno, gastronomía, tecnología, céntrico, Monterrey',
         traffic: 'Alto',
@@ -289,7 +281,7 @@ class LandingApp {
         description: 'Centro comercial histórico con productos artesanales, gastronomía y ubicación céntrica.',
         category: 'Centro comercial',
         type: 'centro-comercial',
-        image: centroComercialPin,
+        image: this.getAssetPath('/map-pins/CentroComercial.png'),
         municipio: 'Monterrey',
         tags: 'centro comercial, histórico, artesanal, gastronomía, céntrico, Monterrey',
         traffic: 'Medio',
@@ -303,7 +295,7 @@ class LandingApp {
         description: 'Centro comercial moderno familiar con gastronomía y entretenimiento.',
         category: 'Centro comercial',
         type: 'centro-comercial',
-        image: centroComercialPin,
+        image: this.getAssetPath('/map-pins/CentroComercial.png'),
         municipio: 'Monterrey',
         tags: 'centro comercial, moderno, gastronomía, entretenimiento, familiar, Monterrey',
         traffic: 'Medio-Alto',
@@ -317,7 +309,7 @@ class LandingApp {
         description: 'Centro comercial moderno con gastronomía, entretenimiento y fácil acceso.',
         category: 'Centro comercial',
         type: 'centro-comercial',
-        image: centroComercialPin,
+        image: this.getAssetPath('/map-pins/CentroComercial.png'),
         municipio: 'Monterrey',
         tags: 'centro comercial, moderno, gastronomía, entretenimiento, accesible, Monterrey',
         traffic: 'Medio',
@@ -331,7 +323,7 @@ class LandingApp {
         description: 'Centro comercial al aire libre, pet friendly con gastronomía y entretenimiento.',
         category: 'Centro comercial',
         type: 'centro-comercial',
-        image: centroComercialPin,
+        image: this.getAssetPath('/map-pins/CentroComercial.png'),
         municipio: 'San Nicolás de los Garza',
         tags: 'centro comercial, aire libre, pet friendly, gastronomía, entretenimiento, San Nicolás de los Garza',
         traffic: 'Alto',
@@ -345,7 +337,7 @@ class LandingApp {
         description: 'Centro comercial de uso mixto con gastronomía, entretenimiento y ubicación céntrica.',
         category: 'Centro comercial',
         type: 'centro-comercial',
-        image: centroComercialPin,
+        image: this.getAssetPath('/map-pins/CentroComercial.png'),
         municipio: 'Monterrey',
         tags: 'centro comercial, uso mixto, gastronomía, entretenimiento, céntrico, Monterrey',
         traffic: 'Alto',
@@ -359,7 +351,7 @@ class LandingApp {
         description: 'Centro comercial familiar con gastronomía, entretenimiento y fácil acceso.',
         category: 'Centro comercial',
         type: 'centro-comercial',
-        image: centroComercialPin,
+        image: this.getAssetPath('/map-pins/CentroComercial.png'),
         municipio: 'Ciudad Benito Juárez',
         tags: 'centro comercial, familiar, gastronomía, entretenimiento, accesible, Ciudad Benito Juárez',
         traffic: 'Medio',
@@ -373,7 +365,7 @@ class LandingApp {
         description: 'Centro comercial al aire libre moderno con gastronomía y entretenimiento.',
         category: 'Centro comercial',
         type: 'centro-comercial',
-        image: centroComercialPin,
+        image: this.getAssetPath('/map-pins/CentroComercial.png'),
         municipio: 'Monterrey',
         tags: 'centro comercial, aire libre, gastronomía, entretenimiento, moderno, Monterrey',
         traffic: 'Medio-Alto',
@@ -387,7 +379,7 @@ class LandingApp {
         description: 'Centro comercial al aire libre familiar con gastronomía y entretenimiento.',
         category: 'Centro comercial',
         type: 'centro-comercial',
-        image: centroComercialPin,
+        image: this.getAssetPath('/map-pins/CentroComercial.png'),
         municipio: 'Guadalupe',
         tags: 'centro comercial, aire libre, familiar, gastronomía, entretenimiento, Guadalupe',
         traffic: 'Medio',
@@ -402,7 +394,7 @@ class LandingApp {
         description: 'Edificio de uso mixto residencial moderno con amenidades y ubicación céntrica.',
         category: 'Edificio',
         type: 'edificio',
-        image: edificioPin,
+        image: this.getAssetPath('/map-pins/Edificio.png'),
         municipio: 'Monterrey',
         tags: 'uso mixto, residencial, amenidades, céntrico, moderno, Monterrey',
         traffic: 'Medio',
@@ -416,7 +408,7 @@ class LandingApp {
         description: 'Edificio de uso mixto con oficinas, gastronomía y ubicación céntrica.',
         category: 'Edificio',
         type: 'edificio',
-        image: edificioPin,
+        image: this.getAssetPath('/map-pins/Edificio.png'),
         municipio: 'Monterrey',
         tags: 'uso mixto, residencial, oficinas, gastronomía, céntrico, Monterrey',
         traffic: 'Medio',
@@ -431,7 +423,7 @@ class LandingApp {
         description: 'Estadio moderno con alta afluencia, sede oficial de partidos del Mundial 2026.',
         category: 'Estadio',
         type: 'estadio',
-        image: estadioPin,
+        image: this.getAssetPath('/map-pins/Estadio.png'),
         municipio: 'Guadalupe',
         tags: 'estadio, deportivo, moderno, alta afluencia, cerca del estadio, Guadalupe',
         traffic: 'Mundial',
@@ -446,7 +438,7 @@ class LandingApp {
         description: 'Aeropuerto internacional moderno, punto de entrada principal para visitantes del Mundial.',
         category: 'Aeropuerto',
         type: 'aeropuerto',
-        image: aeropuertoPin,
+        image: this.getAssetPath('/map-pins/Aeropuerto.png'),
         municipio: 'Apodaca',
         tags: 'aeropuerto, internacional, moderno, alta afluencia, conectividad, Apodaca',
         traffic: 'Internacional',
@@ -461,7 +453,7 @@ class LandingApp {
         description: 'Evento oficial al aire libre con alta afluencia, gastronomía y entretenimiento.',
         category: 'Parque',
         type: 'parque',
-        image: parquePin,
+        image: this.getAssetPath('/map-pins/Parque.png'),
         municipio: 'Monterrey',
         tags: 'evento, aire libre, alta afluencia, gastronomía, entretenimiento, Monterrey',
         traffic: 'Mundial',
