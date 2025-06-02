@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🚀 Test Rápido - Copa Mundial 2026</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .test-item { margin: 20px 0; padding: 15px; border: 2px solid #ddd; border-radius: 8px; }
+        .success { border-color: #4CAF50; background: #f1f8e9; }
+        .error { border-color: #f44336; background: #ffebee; }
+        .loading { border-color: #2196F3; background: #e3f2fd; }
+        h1 { color: #333; text-align: center; }
+        .url { font-family: monospace; background: #f0f0f0; padding: 5px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Test Rápido GitHub Pages</h1>
+        <p><strong>URL:</strong> <span class="url">https://enriquepolin.github.io/landing2026/</span></p>
+        
+        <div id="environment" class="test-item loading">
+            <h3>🌐 Ambiente Detectado</h3>
+            <p id="env-info">Detectando...</p>
+        </div>
+        
+        <div id="hero-test" class="test-item loading">
+            <h3>🖼️ Hero Background</h3>
+            <p id="hero-status">Verificando...</p>
+            <div id="hero-preview" style="width: 100%; height: 100px; border: 1px solid #ddd; border-radius: 4px; margin-top: 10px;"></div>
+        </div>
+        
+        <div id="beneficios-test" class="test-item loading">
+            <h3>🎯 Beneficios Background</h3>
+            <p id="beneficios-status">Verificando...</p>
+            <div id="beneficios-preview" style="width: 100%; height: 100px; border: 1px solid #ddd; border-radius: 4px; margin-top: 10px;"></div>
+        </div>
+        
+        <div id="pin-test" class="test-item loading">
+            <h3>📍 Pines del Mapa</h3>
+            <p id="pin-status">Verificando...</p>
+            <div style="display: flex; gap: 10px; margin-top: 10px;">
+                <img id="pin1" style="width: 48px; height: 48px; border: 1px solid #ddd; border-radius: 4px;" />
+                <img id="pin2" style="width: 48px; height: 48px; border: 1px solid #ddd; border-radius: 4px;" />
+                <img id="pin3" style="width: 48px; height: 48px; border: 1px solid #ddd; border-radius: 4px;" />
+            </div>
+        </div>
+        
+        <div id="instructions" style="margin-top: 30px; padding: 15px; background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 8px;">
+            <h3>📋 Si todo está ✅ Verde:</h3>
+            <p>¡Perfecto! Tu landing page está lista para los clientes.</p>
+            <p><strong>URL Final:</strong> <a href="https://enriquepolin.github.io/landing2026/" target="_blank">https://enriquepolin.github.io/landing2026/</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Detectar ambiente
+        const isGitHub = window.location.hostname.includes('github.io');
+        const basePath = isGitHub ? '/landing2026' : '';
+        
+        document.getElementById('env-info').innerHTML = `
+            <strong>Hostname:</strong> ${window.location.hostname}<br>
+            <strong>GitHub Pages:</strong> ${isGitHub ? '✅ Sí' : '❌ No'}<br>
+            <strong>Base Path:</strong> ${basePath}
+        `;
+        document.getElementById('environment').className = 'test-item success';
+        
+        // Test Hero Background
+        const heroUrl = basePath + '/bg/HeroBG.png';
+        console.log('Testing Hero:', heroUrl);
+        
+        const heroImg = new Image();
+        heroImg.onload = () => {
+            document.getElementById('hero-status').innerHTML = `✅ <strong>Cargada:</strong> ${heroUrl}`;
+            document.getElementById('hero-test').className = 'test-item success';
+            document.getElementById('hero-preview').style.backgroundImage = `url('${heroUrl}')`;
+            document.getElementById('hero-preview').style.backgroundSize = 'cover';
+            document.getElementById('hero-preview').style.backgroundPosition = 'center';
+        };
+        heroImg.onerror = () => {
+            document.getElementById('hero-status').innerHTML = `❌ <strong>Error:</strong> ${heroUrl}`;
+            document.getElementById('hero-test').className = 'test-item error';
+        };
+        heroImg.src = heroUrl;
+        
+        // Test Beneficios Background
+        const beneficiosUrl = basePath + '/bg/BeneficiosBG.png';
+        console.log('Testing Beneficios:', beneficiosUrl);
+        
+        const beneficiosImg = new Image();
+        beneficiosImg.onload = () => {
+            document.getElementById('beneficios-status').innerHTML = `✅ <strong>Cargada:</strong> ${beneficiosUrl}`;
+            document.getElementById('beneficios-test').className = 'test-item success';
+            document.getElementById('beneficios-preview').style.backgroundImage = `url('${beneficiosUrl}')`;
+            document.getElementById('beneficios-preview').style.backgroundSize = 'cover';
+            document.getElementById('beneficios-preview').style.backgroundPosition = 'center';
+        };
+        beneficiosImg.onerror = () => {
+            document.getElementById('beneficios-status').innerHTML = `❌ <strong>Error:</strong> ${beneficiosUrl}`;
+            document.getElementById('beneficios-test').className = 'test-item error';
+        };
+        beneficiosImg.src = beneficiosUrl;
+        
+        // Test Pines
+        const pinUrls = [
+            basePath + '/map-pins/CentroComercial.png',
+            basePath + '/map-pins/Estadio.png',
+            basePath + '/map-pins/Aeropuerto.png'
+        ];
+        
+        let pinsLoaded = 0;
+        pinUrls.forEach((url, index) => {
+            const img = document.getElementById(`pin${index + 1}`);
+            img.onload = () => {
+                pinsLoaded++;
+                if (pinsLoaded === pinUrls.length) {
+                    document.getElementById('pin-status').innerHTML = '✅ <strong>Todos los pines cargados correctamente</strong>';
+                    document.getElementById('pin-test').className = 'test-item success';
+                }
+            };
+            img.onerror = () => {
+                document.getElementById('pin-status').innerHTML = `❌ <strong>Error en pin:</strong> ${url}`;
+                document.getElementById('pin-test').className = 'test-item error';
+            };
+            img.src = url;
+            console.log('Testing Pin:', url);
+        });
+        
+        console.log('🧪 Test iniciado - Revisa los resultados arriba');
+    </script>
+</body>
+</html> 
