@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test GitHub Pages - Copa Mundial 2026</title>
+</head>
+<body style="font-family: Arial, sans-serif; padding: 20px;">
+    <h1>🔧 Test GitHub Pages - Copa Mundial 2026</h1>
+    
+    <h2>📍 Información de Ambiente</h2>
+    <div id="environment-info"></div>
+    
+    <h2>🖼️ Test de Imágenes</h2>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 20px 0;">
+        <div>
+            <h3>Hero Background</h3>
+            <img id="hero-img" style="width: 100%; height: 150px; object-fit: cover; border: 2px solid #ccc; border-radius: 8px;" />
+            <p id="hero-status">Cargando...</p>
+        </div>
+        <div>
+            <h3>Beneficios Background</h3>
+            <img id="beneficios-img" style="width: 100%; height: 150px; object-fit: cover; border: 2px solid #ccc; border-radius: 8px;" />
+            <p id="beneficios-status">Cargando...</p>
+        </div>
+        <div>
+            <h3>Reserva Background</h3>
+            <img id="reserva-img" style="width: 100%; height: 150px; object-fit: cover; border: 2px solid #ccc; border-radius: 8px;" />
+            <p id="reserva-status">Cargando...</p>
+        </div>
+    </div>
+    
+    <h2>📍 Test de Pines del Mapa</h2>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 20px 0;">
+        <div>
+            <h4>Centro Comercial</h4>
+            <img id="pin-centro" style="width: 50px; height: 50px; border: 1px solid #ccc;" />
+            <p id="pin-centro-status">Cargando...</p>
+        </div>
+        <div>
+            <h4>Estadio</h4>
+            <img id="pin-estadio" style="width: 50px; height: 50px; border: 1px solid #ccc;" />
+            <p id="pin-estadio-status">Cargando...</p>
+        </div>
+        <div>
+            <h4>Aeropuerto</h4>
+            <img id="pin-aeropuerto" style="width: 50px; height: 50px; border: 1px solid #ccc;" />
+            <p id="pin-aeropuerto-status">Cargando...</p>
+        </div>
+    </div>
+
+    <script>
+        // Función para detectar ambiente
+        function getBasePath() {
+            const isGitHubPages = window.location.hostname.includes('github.io');
+            const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+            
+            console.log('Detectando ambiente:', {
+                hostname: window.location.hostname,
+                isGitHubPages,
+                isLocal,
+                protocol: window.location.protocol,
+                href: window.location.href
+            });
+            
+            if (isGitHubPages) {
+                return '/landing2026';
+            }
+            return '';
+        }
+
+        function getAssetPath(path) {
+            return getBasePath() + path;
+        }
+
+        // Mostrar información del ambiente
+        document.getElementById('environment-info').innerHTML = `
+            <p><strong>Hostname:</strong> ${window.location.hostname}</p>
+            <p><strong>Protocol:</strong> ${window.location.protocol}</p>
+            <p><strong>Pathname:</strong> ${window.location.pathname}</p>
+            <p><strong>Base Path:</strong> ${getBasePath()}</p>
+            <p><strong>Es GitHub Pages:</strong> ${window.location.hostname.includes('github.io') ? 'Sí' : 'No'}</p>
+        `;
+
+        // Test de imágenes de fondo
+        function testImage(id, path, statusId) {
+            const img = document.getElementById(id);
+            const status = document.getElementById(statusId);
+            const fullPath = getAssetPath(path);
+            
+            console.log(`Testing image: ${id} -> ${fullPath}`);
+            
+            img.src = fullPath;
+            img.onload = () => {
+                status.textContent = '✅ Cargada correctamente';
+                status.style.color = 'green';
+                img.style.borderColor = 'green';
+            };
+            img.onerror = () => {
+                status.textContent = '❌ Error al cargar';
+                status.style.color = 'red';
+                img.style.borderColor = 'red';
+                console.error(`Failed to load: ${fullPath}`);
+            };
+        }
+
+        // Ejecutar tests
+        testImage('hero-img', '/bg/HeroBG.png', 'hero-status');
+        testImage('beneficios-img', '/bg/BeneficiosBG.png', 'beneficios-status');
+        testImage('reserva-img', '/bg/ReservaBG.png', 'reserva-status');
+        testImage('pin-centro', '/map-pins/CentroComercial.png', 'pin-centro-status');
+        testImage('pin-estadio', '/map-pins/Estadio.png', 'pin-estadio-status');
+        testImage('pin-aeropuerto', '/map-pins/Aeropuerto.png', 'pin-aeropuerto-status');
+
+        console.log('🧪 Test de GitHub Pages iniciado');
+    </script>
+</body>
+</html> 
