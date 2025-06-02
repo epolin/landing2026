@@ -1,26 +1,18 @@
 {
-  "name": "landing-mundial-2026",
+  "name": "copa-mundial-2026-landing",
+  "private": true,
   "version": "1.0.0",
-  "description": "Landing page para espacios publicitarios Mundial 2026 Monterrey",
-  "main": "index.html",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "aos": "^2.3.4",
-    "gsap": "^3.12.2",
-    "lenis": "^1.0.29",
-    "lucide": "^0.295.0"
+    "preview": "vite preview",
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "devDependencies": {
-    "vite": "^5.0.0",
-    "autoprefixer": "^10.4.16",
-    "postcss": "^8.4.32",
-    "tailwindcss": "^3.3.6"
+    "vite": "^6.0.5"
   },
-  "keywords": ["mundial", "2026", "monterrey", "publicidad", "landing"],
-  "author": "Tu Nombre",
-  "license": "MIT"
+  "dependencies": {
+    "gh-pages": "^6.1.1"
+  }
 } 

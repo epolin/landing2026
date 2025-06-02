@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 
 export default defineConfig({
+  base: '/mundial2026/',
   root: '.',
   publicDir: 'assets',
   build: {
@@ -17,7 +18,7 @@ export default defineConfig({
     }
   },
   server: {
-    port: 3000,
+    port: 8001,
     open: true,
     host: true
   },
