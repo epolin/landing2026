@@ -34,8 +34,8 @@
         crossorigin=""/>
     
     <!-- CSS -->
-  <script type="module" crossorigin src="/landing2026/assets/index-B8sp5HsO.js"></script>
-  <link rel="stylesheet" crossorigin href="/landing2026/assets/index-D4DXnVeD.css">
+  <script type="module" crossorigin src="/landing2026/assets/index-BhxpZWWT.js"></script>
+  <link rel="stylesheet" crossorigin href="/landing2026/assets/index-BUrLwj2h.css">
 </head>
 <body>
     <!-- Navegación -->
@@ -49,8 +49,26 @@
                 <a href="#formatos" class="nav-link">Formatos</a>
                 <a href="#contacto" class="nav-link">Contacto</a>
             </div>
+            <!-- Hamburger Menu -->
+            <div class="hamburger" onclick="toggleMobileNav()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav-overlay" onclick="closeMobileNav()"></div>
+    <div class="mobile-nav">
+        <div class="mobile-nav-links">
+            <a href="#oportunidad" class="mobile-nav-link" onclick="closeMobileNav()">Oportunidad</a>
+            <a href="#beneficios" class="mobile-nav-link" onclick="closeMobileNav()">Beneficios</a>
+            <a href="#ubicaciones" class="mobile-nav-link" onclick="closeMobileNav()">Ubicaciones</a>
+            <a href="#formatos" class="mobile-nav-link" onclick="closeMobileNav()">Formatos</a>
+            <a href="#contacto" class="mobile-nav-link" onclick="closeMobileNav()">Contacto</a>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -244,24 +262,21 @@
                     <div class="beneficio-icon">🎯</div>
                     <h3 class="beneficio-title">Ubicaciones Premium</h3>
                     <p class="beneficio-description">
-                        Espacios publicitarios en las ubicaciones con mayor flujo de visitantes internacionales, 
-                        cerca de hoteles oficiales y rutas principales.
+                        Espacios estratégicamente ubicados en las zonas de mayor tráfico y visibilidad durante el Mundial.
                     </p>
                 </div>
                 <div class="beneficio-card">
                     <div class="beneficio-icon">🏨</div>
-                    <h3 class="beneficio-title">Cercanía a Hoteles Oficiales</h3>
+                    <h3 class="beneficio-title">Cercanía a Hoteles de Selecciones</h3>
                     <p class="beneficio-description">
-                        Tus anuncios estarán estratégicamente ubicados cerca de los hoteles donde se alojarán 
-                        las selecciones nacionales y delegaciones oficiales.
+                        Máxima exposición en las rutas principales donde se hospedan las delegaciones internacionales.
                     </p>
                 </div>
                 <div class="beneficio-card">
                     <div class="beneficio-icon">🚶‍♂️</div>
-                    <h3 class="beneficio-title">Alto Tráfico Garantizado</h3>
+                    <h3 class="beneficio-title">Alto Tráfico Peatonal y Vehicular</h3>
                     <p class="beneficio-description">
-                        Ubicaciones con el mayor tráfico peatonal y vehicular de la ciudad, 
-                        asegurando máxima visibilidad para tu inversión publicitaria.
+                        Ubicaciones con flujo masivo de fanáticos, turistas y medios internacionales las 24 horas.
                     </p>
                 </div>
             </div>
@@ -275,48 +290,29 @@
                                 <div class="beneficio-icon">🎯</div>
                                 <h3 class="beneficio-title">Ubicaciones Premium</h3>
                                 <p class="beneficio-description">
-                                    Espacios publicitarios en las ubicaciones con mayor flujo de visitantes internacionales, 
-                                    cerca de hoteles oficiales y rutas principales.
+                                    Espacios estratégicamente ubicados en las zonas de mayor tráfico y visibilidad durante el Mundial.
                                 </p>
                             </div>
                         </div>
                         <div class="mobile-carousel-item">
                             <div class="beneficio-card">
                                 <div class="beneficio-icon">🏨</div>
-                                <h3 class="beneficio-title">Cercanía a Hoteles Oficiales</h3>
+                                <h3 class="beneficio-title">Cercanía a Hoteles de Selecciones</h3>
                                 <p class="beneficio-description">
-                                    Tus anuncios estarán estratégicamente ubicados cerca de los hoteles donde se alojarán 
-                                    las selecciones nacionales y delegaciones oficiales.
+                                    Máxima exposición en las rutas principales donde se hospedan las delegaciones internacionales.
                                 </p>
                             </div>
                         </div>
                         <div class="mobile-carousel-item">
                             <div class="beneficio-card">
                                 <div class="beneficio-icon">🚶‍♂️</div>
-                                <h3 class="beneficio-title">Alto Tráfico Garantizado</h3>
+                                <h3 class="beneficio-title">Alto Tráfico Peatonal y Vehicular</h3>
                                 <p class="beneficio-description">
-                                    Ubicaciones con el mayor tráfico peatonal y vehicular de la ciudad, 
-                                    asegurando máxima visibilidad para tu inversión publicitaria.
+                                    Ubicaciones con flujo masivo de fanáticos, turistas y medios internacionales las 24 horas.
                                 </p>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            
-            <!-- Disponibilidad -->
-            <div class="availability-section">
-                <h3 class="availability-title">¡Espacios Limitados - Reserva Antes de que se Agoten!</h3>
-                <div class="availability-bar">
-                    <div class="availability-progress" style="width: 0%;"></div>
-                </div>
-                <div class="availability-labels">
-                    <span class="availability-reserved">72% Reservado</span>
-                    <span class="availability-available">28% Disponible</span>
-                </div>
-                <div class="availability-stats">
-                    <span class="availability-stat">📊 Solo quedan 112 espacios disponibles</span>
-                    <span class="availability-stat">⏰ 15% de descuento reservando antes del 31 de diciembre de 2024</span>
                 </div>
             </div>
         </div>
