@@ -32,7 +32,12 @@ class LandingApp {
 
   // Función helper para construir rutas de assets
   getAssetPath(path) {
-    return `${this.basePath}${path}`;
+    // Para GitHub Pages, siempre usar la ruta con landing2026
+    if (window.location.hostname.includes('github.io')) {
+      return '/landing2026' + path;
+    }
+    // Para local, ruta directa
+    return path;
   }
 
   init() {
@@ -1191,13 +1196,17 @@ Fecha: ${new Date().toLocaleDateString('es-MX')}`;
   
   // Función para actualizar rutas de CSS dinámicamente
   updateCSSPaths() {
-    console.log('Actualizando rutas CSS, basePath:', this.basePath);
+    const isGitHub = window.location.hostname.includes('github.io');
+    const basePath = isGitHub ? '/landing2026' : '';
     
-    const heroBg = this.getAssetPath('/bg/HeroBG.png');
-    const beneficiosBg = this.getAssetPath('/bg/BeneficiosBG.png');
-    const reservaBg = this.getAssetPath('/bg/ReservaBG.png');
+    console.log('🔧 Actualizando CSS para', isGitHub ? 'GitHub Pages' : 'Local');
+    console.log('📂 Base path:', basePath);
     
-    console.log('Rutas de imágenes:', { heroBg, beneficiosBg, reservaBg });
+    const heroBg = basePath + '/bg/HeroBG.png';
+    const beneficiosBg = basePath + '/bg/BeneficiosBG.png';
+    const reservaBg = basePath + '/bg/ReservaBG.png';
+    
+    console.log('🖼️ Rutas finales:', { heroBg, beneficiosBg, reservaBg });
     
     const style = document.createElement('style');
     style.textContent = `
@@ -1212,7 +1221,7 @@ Fecha: ${new Date().toLocaleDateString('es-MX')}`;
       }
     `;
     document.head.appendChild(style);
-    console.log('CSS dinámico aplicado');
+    console.log('✅ CSS dinámico aplicado correctamente');
   }
 }
 
