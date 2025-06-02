@@ -50,7 +50,7 @@ class LandingApp {
 
   init() {
     // Inicializar funciones básicas
-    // this.updateCSSPaths(); // COMENTADO TEMPORALMENTE
+    this.updateCSSPaths(); // REACTIVADO CON VITE BASE_URL
     this.initCountdown();
     this.initContactForm();
     this.initNavigation();
@@ -1202,17 +1202,15 @@ Fecha: ${new Date().toLocaleDateString('es-MX')}`;
   // Sistema de seguimiento de interacciones
   // ================================
   
-  // Función para actualizar rutas de CSS dinámicamente
+  // Función para actualizar rutas de CSS dinámicamente usando Vite BASE_URL
   updateCSSPaths() {
-    const isGitHub = window.location.hostname.includes('github.io');
-    const basePath = isGitHub ? '/landing2026' : '';
+    const baseURL = import.meta.env.BASE_URL;
     
-    console.log('🔧 Actualizando CSS para', isGitHub ? 'GitHub Pages' : 'Local');
-    console.log('📂 Base path:', basePath);
+    console.log('🔧 Actualizando CSS con Vite BASE_URL:', baseURL);
     
-    const heroBg = basePath + '/bg/HeroBG.png';
-    const beneficiosBg = basePath + '/bg/BeneficiosBG.png';
-    const reservaBg = basePath + '/bg/ReservaBG.png';
+    const heroBg = baseURL + 'bg/HeroBG.png';
+    const beneficiosBg = baseURL + 'bg/BeneficiosBG.png';
+    const reservaBg = baseURL + 'bg/ReservaBG.png';
     
     console.log('🖼️ Rutas finales:', { heroBg, beneficiosBg, reservaBg });
     
@@ -1229,7 +1227,7 @@ Fecha: ${new Date().toLocaleDateString('es-MX')}`;
       }
     `;
     document.head.appendChild(style);
-    console.log('✅ CSS dinámico aplicado correctamente');
+    console.log('✅ CSS dinámico aplicado correctamente con BASE_URL');
   }
 }
 
