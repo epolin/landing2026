@@ -107,15 +107,7 @@ Saludos,
 
 ---
 Enviado desde: Copa Mundial de Fútbol Monterrey 2026 - Landing Page
-Fecha: ${new Date().toLocaleDateString("es-MX")}`}openWhatsAppBooking(){const t=`https://wa.me/5218112345678?text=${encodeURIComponent(`¡Hola! Me interesa reservar espacios publicitarios para la Copa Mundial de Fútbol Monterrey 2026. 
-
-¿Podrían proporcionarme información sobre:
-- Ubicaciones disponibles
-- Tipos de formatos publicitarios
-- Precios y paquetes
-- Proceso de reserva
-
-¡Gracias!`)}`;window.open(t,"_blank")}prefillFormFromURL(){const e=new URLSearchParams(window.location.search);["nombre","empresa","email","telefono"].forEach(t=>{const a=e.get(t),i=document.getElementById(t);a&&i&&(i.value=decodeURIComponent(a))})}trackUserInteraction(e,o={}){const t={timestamp:new Date().toISOString(),action:e,details:o,page:"Copa Mundial 2026 Landing",userAgent:navigator.userAgent,url:window.location.href};console.log("Interacción registrada:",t)}updateCSSPaths(){const e="/landing2026/";console.log("🔧 Actualizando CSS con Vite BASE_URL:",e);const o=e+"bg/HeroBG.png",t=e+"bg/BeneficiosBG.png",a=e+"bg/ReservaBG.png";console.log("🖼️ Rutas finales:",{heroBg:o,beneficiosBg:t,reservaBg:a});const i=document.createElement("style");i.textContent=`
+Fecha: ${new Date().toLocaleDateString("es-MX")}`}openWhatsAppBooking(){window.open("https://api.whatsapp.com/send/?phone=528121101769&text=Me+interesan+espacios+publicitarios+para+el+Mundial+2026+%E2%9A%BD%EF%B8%8F&type=phone_number&app_absent=0","_blank")}prefillFormFromURL(){const e=new URLSearchParams(window.location.search);["nombre","empresa","email","telefono"].forEach(t=>{const a=e.get(t),i=document.getElementById(t);a&&i&&(i.value=decodeURIComponent(a))})}trackUserInteraction(e,o={}){const t={timestamp:new Date().toISOString(),action:e,details:o,page:"Copa Mundial 2026 Landing",userAgent:navigator.userAgent,url:window.location.href};console.log("Interacción registrada:",t)}updateCSSPaths(){const e="/landing2026/";console.log("🔧 Actualizando CSS con Vite BASE_URL:",e);const o=e+"bg/HeroBG.png",t=e+"bg/BeneficiosBG.png",a=e+"bg/ReservaBG.png";console.log("🖼️ Rutas finales:",{heroBg:o,beneficiosBg:t,reservaBg:a});const i=document.createElement("style");i.textContent=`
       .hero {
         background: url('${o}') center center / cover no-repeat !important;
       }
