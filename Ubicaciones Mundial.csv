@@ -1,0 +1,26 @@
+Nombre,Tipo,Municipio,Tags,Visible en tarjetas de ubicaciÛn,Visible como pin en mapa,Latitud,Longitud
+Arboleda,Centro comercial,San Pedro Garza García,"premium, aire libre, centro comercial, alta afluencia, familiar",Si,Si,25.649714,-100.356173
+"Punto Valle, The Town Center",Centro comercial,San Pedro Garza García,"premium, centro comercial, alta afluencia, gastronomía, entretenimiento",Si,Si,25.659046,-100.354432
+Chroma San Pedro,Centro comercial,San Pedro Garza García,"centro comercial, gastronomía, entretenimiento, arquitectura moderna, alta afluencia",Si,Si,25.652741,-100.352329
+Auriga San Pedro,Centro comercial,San Pedro Garza García,"centro comercial, experiencias, gastronomía, entretenimiento, moderno",Si,Si,25.648843,-100.339116
+Plaza Fiesta San Agustín,Centro comercial,San Pedro Garza García,"centro comercial, alta afluencia, familiar, entretenimiento, cerca del estadio",Si,Si,25.64893,-100.336166
+Metropolitan Center,Centro comercial,San Pedro Garza García,"centro comercial, premium, uso mixto, gastronomía, alta afluencia",Si,Si,25.650381,-100.333596
+Fashion Drive,Centro comercial,San Pedro Garza García,"centro comercial, moderno, gastronomía, alta afluencia, entretenimiento",Si,Si,25.651295,-100.335131
+Galerías Valle Oriente,Centro comercial,Monterrey,"centro comercial, familiar, gastronomía, entretenimiento, alta afluencia",Si,Si,25.638228,-100.313963
+Plaza Citadel,Centro comercial,San Nicolás de los Garza,"centro comercial, familiar, gastronomía, entretenimiento, accesible",Si,Si,25.726138,-100.215214
+Pueblo Serena,Centro comercial,Monterrey,"centro comercial, aire libre, familiar, gastronomía, pet friendly",Si,Si,25.576056,-100.24827
+Plaza Fiesta Anahuac,Centro comercial,San Nicolás de los Garza,"centro comercial, familiar, gastronomía, entretenimiento, alta afluencia",Si,Si,25.742955,-100.313308
+Ocampo Corner,Centro comercial,Monterrey,"uso mixto, moderno, gastronomía, tecnología, céntrico",Si,Si,25.666858,-100.320719
+Plaza México,Centro comercial,Monterrey,"centro comercial, histórico, artesanal, gastronomía, céntrico",Si,Si,25.667518,-100.313174
+Plaza Via 02,Centro comercial,Monterrey,"centro comercial, moderno, gastronomía, entretenimiento, familiar",Si,Si,25.696587,-100.380189
+Plaza Vía Puerta de Hierro,Centro comercial,Monterrey,"centro comercial, moderno, gastronomía, entretenimiento, accesible",Si,Si,25.744716,-100.421793
+Paseo La Fe,Centro comercial,San Nicolás de los Garza,"centro comercial, aire libre, pet friendly, gastronomía, entretenimiento",Si,Si,25.719691,-100.218991
+Paseo Tec,Centro comercial,Monterrey,"centro comercial, uso mixto, gastronomía, entretenimiento, céntrico",Si,Si,25.654433,-100.293758
+Paseo Juárez,Centro comercial,Ciudad Benito Ju·rez,"centro comercial, familiar, gastronomía, entretenimiento, accesible",Si,Si,25.650405,-100.112078
+Plaza Nuevo Sur,Centro comercial,Monterrey,"centro comercial, aire libre, gastronomía, entretenimiento, moderno",Si,Si,25.653529,-100.275301
+El Molinete,Centro comercial,Guadalupe,"centro comercial, aire libre, familiar, gastronomía, entretenimiento",Si,Si,25.662388,-100.149543
+Torre República,Edificio,Monterrey,"uso mixto, residencial, amenidades, céntrico, moderno",Si,Si,25.686054,-100.330094
+Cítica,Edificio,Monterrey,"uso mixto, residencial, oficinas, gastronomía, céntrico",Si,Si,25.669887,-100.334254
+Estadio Monterrey,Estadio,Guadalupe,"estadio, deportivo, moderno, alta afluencia, cerca del estadio",No,Si,25.669079,-100.24437
+Aeropuerto Internacional de Monterrey,Aeropuerto,Apodaca,"aeropuerto, internacional, moderno, alta afluencia, conectividad",No,Si,25.77462,-100.11158
+FIFA Fan Festival (Parque Fundidora),Parque,Monterrey,"evento, aire libre, alta afluencia, gastronomía, entretenimiento",No,Si,25.67715,-100.28232
