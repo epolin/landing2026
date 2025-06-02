@@ -206,7 +206,7 @@ body {
   position: relative;
   overflow: hidden;
   background: 
-    url('/assets/bg/HeroBG.png') center center / cover no-repeat;
+    url('./assets/bg/HeroBG.png') center center / cover no-repeat;
   padding-top: 80px;
 }
 
@@ -892,7 +892,7 @@ section {
   position: relative;
   overflow: hidden;
   background: 
-    url('/assets/bg/BeneficiosBG.png') center center / cover no-repeat;
+    url('./assets/bg/BeneficiosBG.png') center center / cover no-repeat;
 }
 
 /* Overlay sutil solo para reducir la intensidad de la imagen 12% */
@@ -1313,9 +1313,9 @@ section {
    ================================ */
 
 .clientes {
-  background: var(--gray-100);
-  position: relative;
-  overflow: hidden;
+  background: #ffffff;
+  color: var(--gray-800);
+  padding: 5rem 0;
 }
 
 /* Overlay sutil solo para reducir la intensidad de la imagen 12% */
@@ -2592,7 +2592,7 @@ section {
 
 .cta-final {
   background: 
-    url('/assets/bg/ReservaBG.png') center center / cover no-repeat;
+    url('./assets/bg/ReservaBG.png') center center / cover no-repeat;
   color: var(--gray-800);
   position: relative;
   overflow: hidden;
@@ -2895,5 +2895,33 @@ section {
   gap: 1rem;
   padding: 1.5rem;
   border-radius: 20px;
+}
+
+/* ================================
+   RESERVA SECTION CON IMAGEN DE FONDO
+   ================================ */
+
+.reserva-calendly {
+  position: relative;
+  overflow: hidden;
+  background: 
+    url('./assets/bg/ReservaBG.png') center center / cover no-repeat;
+}
+
+/* Overlay sutil solo para reducir la intensidad de la imagen 12% */
+.reserva-calendly::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.12);
+  z-index: 1;
+}
+
+.reserva-calendly .container {
+  position: relative;
+  z-index: 2;
 }
   
