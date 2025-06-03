@@ -361,7 +361,7 @@ body {
   position: relative;
   overflow: hidden;
   background: 
-    url('/bg/HeroBG.png') center center / cover no-repeat;
+    url('../assets/bg/HeroBG.png') center center / cover no-repeat;
   padding-top: 100px;
   text-align: center;
 }
@@ -955,7 +955,7 @@ section {
   position: relative;
   overflow: hidden;
   background: 
-    url('/bg/BeneficiosBG.png') center center / cover no-repeat;
+    url('../assets/bg/BeneficiosBG.png') center center / cover no-repeat;
 }
 
 /* Overlay sutil solo para reducir la intensidad de la imagen 12% */
@@ -2873,7 +2873,7 @@ section {
 
 .cta-final {
   background: 
-    url('/bg/ReservaBG.png') center center / cover no-repeat;
+    url('../assets/bg/ReservaBG.png') center center / cover no-repeat;
   color: var(--gray-800);
   position: relative;
   overflow: hidden;
@@ -3185,7 +3185,7 @@ section {
   position: relative;
   overflow: hidden;
   background: 
-    url('/bg/ReservaBG.png') center center / cover no-repeat;
+    url('../assets/bg/ReservaBG.png') center center / cover no-repeat;
 }
 
 /* Overlay sutil solo para reducir la intensidad de la imagen 12% */
