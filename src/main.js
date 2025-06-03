@@ -28,12 +28,13 @@ function getBasePath() {
 
 // Función helper para construir rutas de assets
 function getAssetPath(path) {
-  // Para GitHub Pages, siempre usar la ruta con landing2026
+  // Para GitHub Pages, construir ruta correcta
   if (window.location.hostname.includes('github.io')) {
+    // En GitHub Pages la URL base es https://epolin.github.io/landing2026/
     return '/landing2026' + path;
   }
-  // Para local, ruta directa
-  return path;
+  // Para local, usar ruta relativa sin el primer slash
+  return '.' + path;
 }
 
 // Función de inicialización principal
@@ -570,9 +571,12 @@ function addMundialLocationsToMap(mapInstance) {
   // Función para obtener el icono correcto según el tipo
   function getMarkerIcon(location) {
     // Crear icono con la estructura del documento estilos-pines-mapa.md
+    const imagePath = getAssetPath('/assets/map-pins/' + location.type.charAt(0).toUpperCase() + location.type.slice(1).replace('-', '') + '.png');
+    console.log('🔍 Construyendo ruta de imagen para', location.type, ':', imagePath);
+    
     const iconHtml = `
       <div class="circle-wrapper ${location.type}">
-        <img src="${getAssetPath('/assets/map-pins/' + location.type.charAt(0).toUpperCase() + location.type.slice(1).replace('-', '') + '.png')}" alt="${location.category}" />
+        <img src="${imagePath}" alt="${location.category}" />
       </div>
     `;
     
