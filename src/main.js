@@ -570,9 +570,14 @@ function addMundialLocationsToMap(mapInstance) {
 
   // Función para obtener el icono correcto según el tipo
   function getMarkerIcon(location) {
-    // Crear icono con la estructura del documento estilos-pines-mapa.md
-    const imagePath = getAssetPath('/assets/map-pins/' + location.type.charAt(0).toUpperCase() + location.type.slice(1).replace('-', '') + '.png');
-    console.log('🔍 Construyendo ruta de imagen para', location.type, ':', imagePath);
+    // Transformar tipo correctamente: centro-comercial -> CentroComercial
+    const fileName = location.type
+      .split('-')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join('') + '.png';
+    
+    const imagePath = getAssetPath('/assets/map-pins/' + fileName);
+    console.log('🔍 Construyendo ruta de imagen para', location.type, '→', fileName, ':', imagePath);
     
     const iconHtml = `
       <div class="circle-wrapper ${location.type}">
