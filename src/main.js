@@ -1133,18 +1133,7 @@ Fecha: ${new Date().toLocaleDateString('es-MX')}`;
   
   // Función para WhatsApp Business
   openWhatsAppBooking() {
-    const phoneNumber = '5218112345678'; // Cambia por tu número empresarial (con código de país)
-    const message = `¡Hola! Me interesa reservar espacios publicitarios para la Copa Mundial de Fútbol Monterrey 2026. 
-
-¿Podrían proporcionarme información sobre:
-- Ubicaciones disponibles
-- Tipos de formatos publicitarios
-- Precios y paquetes
-- Proceso de reserva
-
-¡Gracias!`;
-    
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = 'https://api.whatsapp.com/send/?phone=528121101769&text=Me+interesan+espacios+publicitarios+para+el+Mundial+2026+%E2%9A%BD%EF%B8%8F&type=phone_number&app_absent=0';
     window.open(whatsappUrl, '_blank');
   }
 
@@ -1282,6 +1271,37 @@ window.openWhatsAppBooking = function() {
 };
 
 // ================================
+// Funciones para menú hamburger mobile
+// ================================
+window.toggleMobileNav = function() {
+  const hamburger = document.querySelector('.hamburger');
+  const mobileNav = document.querySelector('.mobile-nav');
+  const overlay = document.querySelector('.mobile-nav-overlay');
+  
+  hamburger.classList.toggle('active');
+  mobileNav.classList.toggle('active');
+  overlay.classList.toggle('active');
+  
+  // Prevenir scroll del body cuando el menú está abierto
+  if (mobileNav.classList.contains('active')) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = 'auto';
+  }
+};
+
+window.closeMobileNav = function() {
+  const hamburger = document.querySelector('.hamburger');
+  const mobileNav = document.querySelector('.mobile-nav');
+  const overlay = document.querySelector('.mobile-nav-overlay');
+  
+  hamburger.classList.remove('active');
+  mobileNav.classList.remove('active');
+  overlay.classList.remove('active');
+  document.body.style.overflow = 'auto';
+};
+
+// ================================
 // Inicialización de la aplicación
 // ================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -1290,4 +1310,136 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Pre-llenar formulario si hay parámetros en URL
   appInstance.prefillFormFromURL();
-}); 
+  
+  // Inicializar navegación móvil
+  initMobileNavigation();
+});
+
+// ================================
+// Navegación móvil mejorada
+// ================================
+function initMobileNavigation() {
+  // Cerrar menú móvil al hacer clic en enlaces
+  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+  mobileNavLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const targetId = link.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+      
+      if (targetElement) {
+        e.preventDefault();
+        closeMobileNav();
+        
+        // Scroll suave con offset para navbar
+        setTimeout(() => {
+          const navHeight = document.querySelector('.nav').offsetHeight;
+          const targetPosition = targetElement.offsetTop - navHeight - 20;
+          
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }, 300);
+      }
+    });
+  });
+  
+  // Cerrar menú al hacer scroll
+  let scrollTimeout;
+  window.addEventListener('scroll', () => {
+    const mobileNav = document.querySelector('.mobile-nav');
+    if (mobileNav.classList.contains('active')) {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        closeMobileNav();
+      }, 150);
+    }
+  });
+  
+  // Cerrar menú con tecla ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeMobileNav();
+    }
+  });
+}
+
+// Función para alternar pantalla completa del mapa
+function toggleFullscreen() {
+    const mapContainer = document.querySelector('.interactive-map');
+    const fullscreenBtn = document.getElementById('fullscreenBtn');
+    const overlay = document.getElementById('fullscreenOverlay');
+    const icon = fullscreenBtn.querySelector('i');
+    
+    if (mapContainer.classList.contains('fullscreen-map')) {
+        closeFullscreen();
+    } else {
+        // Entrar en pantalla completa
+        mapContainer.classList.add('fullscreen-map');
+        overlay.classList.add('active');
+        icon.className = 'fas fa-compress';
+        
+        // Crear botón X si no existe
+        let closeBtn = mapContainer.querySelector('.fullscreen-close-btn');
+        if (!closeBtn) {
+            closeBtn = document.createElement('button');
+            closeBtn.className = 'fullscreen-close-btn';
+            closeBtn.innerHTML = '<i class="fas fa-times"></i>';
+            closeBtn.onclick = closeFullscreen;
+            mapContainer.appendChild(closeBtn);
+        }
+        
+        // Prevenir scroll del body
+        document.body.style.overflow = 'hidden';
+        
+        // Reajustar el mapa después de cambiar el tamaño
+        setTimeout(() => {
+            if (window.map) {
+                window.map.invalidateSize();
+            }
+        }, 100);
+    }
+}
+
+// Función para cerrar pantalla completa
+function closeFullscreen() {
+    const mapContainer = document.querySelector('.interactive-map');
+    const fullscreenBtn = document.getElementById('fullscreenBtn');
+    const overlay = document.getElementById('fullscreenOverlay');
+    const icon = fullscreenBtn.querySelector('i');
+    const closeBtn = mapContainer.querySelector('.fullscreen-close-btn');
+    
+    // Salir de pantalla completa
+    mapContainer.classList.remove('fullscreen-map');
+    overlay.classList.remove('active');
+    icon.className = 'fas fa-expand';
+    
+    // Remover botón X
+    if (closeBtn) {
+        closeBtn.remove();
+    }
+    
+    // Restaurar scroll del body
+    document.body.style.overflow = '';
+    
+    // Reajustar el mapa después de cambiar el tamaño
+    setTimeout(() => {
+        if (window.map) {
+            window.map.invalidateSize();
+        }
+    }, 100);
+}
+
+// Cerrar con tecla ESC
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        const mapContainer = document.querySelector('.interactive-map');
+        if (mapContainer && mapContainer.classList.contains('fullscreen-map')) {
+            closeFullscreen();
+        }
+    }
+});
+
+// Hacer funciones globales
+window.toggleFullscreen = toggleFullscreen;
+window.closeFullscreen = closeFullscreen; 

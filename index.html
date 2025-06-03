@@ -48,8 +48,26 @@
                 <a href="#formatos" class="nav-link">Formatos</a>
                 <a href="#contacto" class="nav-link">Contacto</a>
             </div>
+            <!-- Hamburger Menu -->
+            <div class="hamburger" onclick="toggleMobileNav()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav-overlay" onclick="closeMobileNav()"></div>
+    <div class="mobile-nav">
+        <div class="mobile-nav-links">
+            <a href="#oportunidad" class="mobile-nav-link" onclick="closeMobileNav()">Oportunidad</a>
+            <a href="#beneficios" class="mobile-nav-link" onclick="closeMobileNav()">Beneficios</a>
+            <a href="#ubicaciones" class="mobile-nav-link" onclick="closeMobileNav()">Ubicaciones</a>
+            <a href="#formatos" class="mobile-nav-link" onclick="closeMobileNav()">Formatos</a>
+            <a href="#contacto" class="mobile-nav-link" onclick="closeMobileNav()">Contacto</a>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -57,97 +75,65 @@
             <div class="hero-content">
                 <div class="hero-header">
                     <h1 class="hero-title">
-                        Tu Marca en el <span class="text-gradient">Corazón del Mundial 2026</span>
+                        Tu Marca en el <span class="text-gradient">Corazón del Mundial</span>
                     </h1>
-                    <p class="hero-subtitle">
-                        Espacios publicitarios en las ubicaciones más estratégicas de Monterrey. 
-                        Una oportunidad única que sucede solo cada <strong>28 años</strong>.
-                    </p>
                 </div>
                 
                 <div class="hero-grid">
-                    <!-- Sección 1: Mensaje de oportunidad rediseñado -->
+                    <!-- Mensaje de oportunidad -->
                     <div class="hero-section opportunity-section">
                         <div class="opportunity-message">
                             <div class="opportunity-badge">🔥 OPORTUNIDAD HISTÓRICA</div>
                             <div class="opportunity-content">
-                                <strong>Las marcas más importantes del mundo ya están asegurando sus espacios premium.</strong>
+                                <strong>Una oportunidad única cada 28 años.</strong>
+                                <span>Las marcas más importantes del mundo ya están asegurando sus espacios premium.</span>
                                 <span>Únete a la élite del marketing deportivo mundial</span>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Sección 2: Hero Image -->
-                    <div class="hero-section image-section">
-                        <div class="hero-visual">
-                            <div class="hero-image">
-                                <div style="width: 100%; height: 400px; background: linear-gradient(135deg, #4A1B7F 0%, #00D4AA 100%); border-radius: 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; text-align: center; position: relative; overflow: hidden;">
-                                    <div style="position: relative; z-index: 2;">
-                                        <div style="font-size: 4rem; margin-bottom: 1rem;">⚽</div>
-                                        <div style="font-weight: 700;">Copa Mundial de Fútbol</div>
-                                        <div style="font-size: 1.5rem; opacity: 0.9;">Monterrey 2026</div>
-                                    </div>
-                                    <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%); animation: rotate 30s linear infinite;"></div>
-                                </div>
-                                
-                                <div class="floating-elements">
-                                    <div class="floating-card card-1">
-                                        <span class="card-number">3M+</span>
-                                        <span class="card-label">Visitantes</span>
-                                    </div>
-                                    <div class="floating-card card-2">
-                                        <span class="card-number">48</span>
-                                        <span class="card-label">Países</span>
-                                    </div>
-                                    <div class="floating-card card-3">
-                                        <span class="card-number">5</span>
-                                        <span class="card-label">Semanas</span>
-                                    </div>
-                                </div>
+                    <!-- Contador -->
+                    <div class="countdown-container-new">
+                        <div class="countdown-title">FALTAN PARA EL MUNDIAL 2026</div>
+                        <div class="countdown-horizontal">
+                            <div class="countdown-item">
+                                <span class="countdown-number" id="days">000</span>
+                                <span class="countdown-label">Días</span>
+                            </div>
+                            <div class="countdown-separator">:</div>
+                            <div class="countdown-item">
+                                <span class="countdown-number" id="hours">00</span>
+                                <span class="countdown-label">Horas</span>
+                            </div>
+                            <div class="countdown-separator">:</div>
+                            <div class="countdown-item">
+                                <span class="countdown-number" id="minutes">00</span>
+                                <span class="countdown-label">Min</span>
+                            </div>
+                            <div class="countdown-separator">:</div>
+                            <div class="countdown-item">
+                                <span class="countdown-number" id="seconds">00</span>
+                                <span class="countdown-label">Seg</span>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Sección 3: Botones (abarca 2 columnas) -->
-                    <div class="hero-section buttons-section full-width">
+                    <!-- Botones -->
+                    <div class="hero-section buttons-section">
                         <div class="hero-buttons">
                             <a href="#contacto" class="btn-primary btn-large">
                                 <i class="fas fa-calendar-check"></i>
-                                <span>Agenda tu Reunión</span>
+                                <span>Agenda tu reunión</span>
                             </a>
                             <a href="#" class="btn-secondary btn-large" onclick="alert('Media Kit se descargará próximamente')">
                                 <i class="fas fa-download"></i>
                                 <span>Descarga Media Kit</span>
                             </a>
                         </div>
-                        
-                        <!-- Contador debajo de los botones -->
-                        <div class="countdown-container-new">
-                            <div class="countdown-title">COPA MUNDIAL 2026 INICIA EN</div>
-                            <div class="countdown-horizontal">
-                                <div class="countdown-item">
-                                    <span class="countdown-number" id="days">000</span>
-                                    <span class="countdown-label">Días</span>
-                                </div>
-                                <div class="countdown-separator">:</div>
-                                <div class="countdown-item">
-                                    <span class="countdown-number" id="hours">00</span>
-                                    <span class="countdown-label">Horas</span>
-                                </div>
-                                <div class="countdown-separator">:</div>
-                                <div class="countdown-item">
-                                    <span class="countdown-number" id="minutes">00</span>
-                                    <span class="countdown-label">Minutos</span>
-                                </div>
-                                <div class="countdown-separator">:</div>
-                                <div class="countdown-item">
-                                    <span class="countdown-number" id="seconds">00</span>
-                                    <span class="countdown-label">Segundos</span>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
+                
+                <!-- Beneficios adicionales -->
             </div>
         </div>
     </section>
@@ -163,7 +149,7 @@
                 </p>
             </div>
             
-            <div class="stats-grid">
+            <div class="stats-grid desktop-only">
                 <div class="stat-card">
                     <div class="stat-icon">🌍</div>
                     <span class="stat-number">3M+</span>
@@ -178,6 +164,35 @@
                     <div class="stat-icon">📅</div>
                     <span class="stat-number">5</span>
                     <div class="stat-label">Semanas de Evento</div>
+                </div>
+            </div>
+            
+            <!-- Versión móvil carrusel -->
+            <div class="mobile-carousel">
+                <div class="mobile-carousel-container">
+                    <div class="mobile-carousel-track">
+                        <div class="mobile-carousel-item">
+                            <div class="stat-card">
+                                <div class="stat-icon">🌍</div>
+                                <span class="stat-number">3M+</span>
+                                <div class="stat-label">Visitantes Internacionales</div>
+                            </div>
+                        </div>
+                        <div class="mobile-carousel-item">
+                            <div class="stat-card">
+                                <div class="stat-icon">🏟️</div>
+                                <span class="stat-number">48</span>
+                                <div class="stat-label">Países Participantes</div>
+                            </div>
+                        </div>
+                        <div class="mobile-carousel-item">
+                            <div class="stat-card">
+                                <div class="stat-icon">📅</div>
+                                <span class="stat-number">5</span>
+                                <div class="stat-label">Semanas de Evento</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             
@@ -209,30 +224,62 @@
                 </p>
             </div>
             
-            <div class="beneficios-grid">
+            <div class="beneficios-grid desktop-only">
                 <div class="beneficio-card">
                     <div class="beneficio-icon">🎯</div>
                     <h3 class="beneficio-title">Ubicaciones Premium</h3>
                     <p class="beneficio-description">
-                        Espacios publicitarios en las ubicaciones con mayor flujo de visitantes internacionales, 
-                        cerca de hoteles oficiales y rutas principales.
+                        Espacios estratégicamente ubicados en las zonas de mayor tráfico y visibilidad durante el Mundial.
                     </p>
                 </div>
                 <div class="beneficio-card">
                     <div class="beneficio-icon">🏨</div>
-                    <h3 class="beneficio-title">Cercanía a Hoteles Oficiales</h3>
+                    <h3 class="beneficio-title">Cercanía a Hoteles de Selecciones</h3>
                     <p class="beneficio-description">
-                        Tus anuncios estarán estratégicamente ubicados cerca de los hoteles donde se alojarán 
-                        las selecciones nacionales y delegaciones oficiales.
+                        Máxima exposición en las rutas principales donde se hospedan las delegaciones internacionales.
                     </p>
                 </div>
                 <div class="beneficio-card">
                     <div class="beneficio-icon">🚶‍♂️</div>
-                    <h3 class="beneficio-title">Alto Tráfico Garantizado</h3>
+                    <h3 class="beneficio-title">Alto Tráfico Peatonal y Vehicular</h3>
                     <p class="beneficio-description">
-                        Ubicaciones con el mayor tráfico peatonal y vehicular de la ciudad, 
-                        asegurando máxima visibilidad para tu inversión publicitaria.
+                        Ubicaciones con flujo masivo de fanáticos, turistas y medios internacionales las 24 horas.
                     </p>
+                </div>
+            </div>
+            
+            <!-- Versión móvil carrusel -->
+            <div class="mobile-carousel">
+                <div class="mobile-carousel-container">
+                    <div class="mobile-carousel-track">
+                        <div class="mobile-carousel-item">
+                            <div class="beneficio-card">
+                                <div class="beneficio-icon">🎯</div>
+                                <h3 class="beneficio-title">Ubicaciones Premium</h3>
+                                <p class="beneficio-description">
+                                    Espacios estratégicamente ubicados en las zonas de mayor tráfico y visibilidad durante el Mundial.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="mobile-carousel-item">
+                            <div class="beneficio-card">
+                                <div class="beneficio-icon">🏨</div>
+                                <h3 class="beneficio-title">Cercanía a Hoteles de Selecciones</h3>
+                                <p class="beneficio-description">
+                                    Máxima exposición en las rutas principales donde se hospedan las delegaciones internacionales.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="mobile-carousel-item">
+                            <div class="beneficio-card">
+                                <div class="beneficio-icon">🚶‍♂️</div>
+                                <h3 class="beneficio-title">Alto Tráfico Peatonal y Vehicular</h3>
+                                <p class="beneficio-description">
+                                    Ubicaciones con flujo masivo de fanáticos, turistas y medios internacionales las 24 horas.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -250,7 +297,7 @@
             </div>
             
             <!-- Estadísticas de cobertura -->
-            <div class="coverage-stats">
+            <div class="coverage-stats desktop-only">
                 <div class="coverage-item">
                     <span class="coverage-number">22</span>
                     <span class="coverage-label">Ubicaciones</span>
@@ -265,8 +312,39 @@
                 </div>
             </div>
             
+            <!-- Versión móvil carrusel -->
+            <div class="mobile-carousel">
+                <div class="mobile-carousel-container">
+                    <div class="mobile-carousel-track">
+                        <div class="mobile-carousel-item">
+                            <div class="coverage-item">
+                                <span class="coverage-number">22</span>
+                                <span class="coverage-label">Ubicaciones</span>
+                            </div>
+                        </div>
+                        <div class="mobile-carousel-item">
+                            <div class="coverage-item">
+                                <span class="coverage-number">400+</span>
+                                <span class="coverage-label">Espacios Disponibles</span>
+                            </div>
+                        </div>
+                        <div class="mobile-carousel-item">
+                            <div class="coverage-item">
+                                <span class="coverage-number">100%</span>
+                                <span class="coverage-label">Zonas Premium</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <div class="mapa-container">
                 <div class="interactive-map">
+                    <div class="map-controls">
+                        <button id="fullscreenBtn" class="fullscreen-btn" onclick="toggleFullscreen()">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
                     <div id="map"></div>
                 </div>
                 
@@ -599,7 +677,7 @@
                 </p>
             </div>
             
-            <div class="formatos-grid">
+            <div class="formatos-grid desktop-only">
                 <div class="formato-card">
                     <div class="formato-image">
                         <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #4A1B7F 0%, #0066CC 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
@@ -672,38 +750,221 @@
                     </ul>
                 </div>
             </div>
+            
+            <!-- Versión móvil carrusel -->
+            <div class="mobile-carousel">
+                <div class="mobile-carousel-container">
+                    <div class="mobile-carousel-track">
+                        <div class="mobile-carousel-item">
+                            <div class="formato-card">
+                                <div class="formato-image">
+                                    <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #4A1B7F 0%, #0066CC 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
+                                        📱 LED
+                                    </div>
+                                </div>
+                                <h4 class="formato-title">Pantallas LED</h4>
+                                <p class="formato-description">
+                                    Pantallas digitales de alta resolución en ubicaciones estratégicas con contenido dinámico 24/7.
+                                </p>
+                                <ul class="formato-features">
+                                    <li>Contenido dinámico</li>
+                                    <li>Alta visibilidad nocturna</li>
+                                    <li>Actualización remota</li>
+                                    <li>Impacto garantizado</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mobile-carousel-item">
+                            <div class="formato-card">
+                                <div class="formato-image">
+                                    <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #00D4AA 0%, #0066CC 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
+                                        🖼️ MUPI
+                                    </div>
+                                </div>
+                                <h4 class="formato-title">Mupis Premium</h4>
+                                <p class="formato-description">
+                                    Muebles urbanos para información pública en paradas de autobús y zonas de alta concentración.
+                                </p>
+                                <ul class="formato-features">
+                                    <li>Ubicaciones premium</li>
+                                    <li>Audiencia cautiva</li>
+                                    <li>Visibilidad extendida</li>
+                                    <li>Costo-efectivo</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mobile-carousel-item">
+                            <div class="formato-card">
+                                <div class="formato-image">
+                                    <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #FF5722 0%, #4A1B7F 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
+                                        🏢 TOWER
+                                    </div>
+                                </div>
+                                <h4 class="formato-title">Totems Gigantes</h4>
+                                <p class="formato-description">
+                                    Estructuras monumentales en puntos estratégicos con máximo impacto visual y presencia de marca.
+                                </p>
+                                <ul class="formato-features">
+                                    <li>Máximo impacto</li>
+                                    <li>Visibilidad a distancia</li>
+                                    <li>Presencia monumental</li>
+                                    <li>Ubicación estratégica</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mobile-carousel-item">
+                            <div class="formato-card">
+                                <div class="formato-image">
+                                    <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #FF5722 0%, #00D4AA 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
+                                        ⚡ ACTIVACIÓN
+                                    </div>
+                                </div>
+                                <h4 class="formato-title">Activaciones</h4>
+                                <p class="formato-description">
+                                    Experiencias interactivas y activaciones de marca para crear conexión directa con los visitantes.
+                                </p>
+                                <ul class="formato-features">
+                                    <li>Experiencia inmersiva</li>
+                                    <li>Conexión emocional</li>
+                                    <li>Contenido viral</li>
+                                    <li>Engagement alto</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Clientes -->
-    <section class="clientes">
+    <section id="clientes" class="clientes">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Marcas que Confían en Nosotros</h2>
+                <h2 class="section-title">Marcas líderes mundiales ya confirmaron su participación</h2>
                 <p class="section-subtitle">
-                    Empresas líderes que ya aseguraron su presencia en la Copa Mundial de Fútbol Monterrey 2026.
+                    Las empresas más prestigiosas del mundo ya están asegurando sus espacios premium para el Mundial 2026.
                 </p>
             </div>
             
-            <div class="clientes-grid">
-                <div class="cliente-logo">
-                    <div>Coca-Cola</div>
+            <div class="partners-grid desktop-only">
+                <div class="partner-card">
+                    <div class="partner-logo">LOGO</div>
+                    <div class="partner-name">Coca-Cola</div>
+                    <div class="partner-status">Participación confirmada</div>
                 </div>
-                <div class="cliente-logo">
-                    <div>Nike</div>
+                <div class="partner-card">
+                    <div class="partner-logo">LOGO</div>
+                    <div class="partner-name">Nike</div>
+                    <div class="partner-status">Participación confirmada</div>
                 </div>
-                <div class="cliente-logo">
-                    <div>Adidas</div>
+                <div class="partner-card">
+                    <div class="partner-logo">LOGO</div>
+                    <div class="partner-name">Mastercard</div>
+                    <div class="partner-status">Participación confirmada</div>
                 </div>
-                <div class="cliente-logo">
-                    <div>Mastercard</div>
+                <div class="partner-card">
+                    <div class="partner-logo">LOGO</div>
+                    <div class="partner-name">Samsung</div>
+                    <div class="partner-status">En negociación</div>
                 </div>
-                <div class="cliente-logo">
-                    <div>Samsung</div>
+                <div class="partner-card">
+                    <div class="partner-logo">LOGO</div>
+                    <div class="partner-name">Mercedes-Benz</div>
+                    <div class="partner-status">Participación confirmada</div>
                 </div>
-                <div class="cliente-logo">
-                    <div>Budweiser</div>
+                <div class="partner-card">
+                    <div class="partner-logo">LOGO</div>
+                    <div class="partner-name">Heineken</div>
+                    <div class="partner-status">En negociación</div>
                 </div>
+                <div class="partner-card">
+                    <div class="partner-logo">LOGO</div>
+                    <div class="partner-name">McDonald's</div>
+                    <div class="partner-status">Participación confirmada</div>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-logo">LOGO</div>
+                    <div class="partner-name">Visa</div>
+                    <div class="partner-status">En negociación</div>
+                </div>
+            </div>
+            
+            <!-- Versión móvil carrusel -->
+            <div class="mobile-carousel">
+                <div class="mobile-carousel-container">
+                    <div class="mobile-carousel-track">
+                        <div class="mobile-carousel-item">
+                            <div class="partner-card">
+                                <div class="partner-logo">LOGO</div>
+                                <div class="partner-name">Coca-Cola</div>
+                                <div class="partner-status">Participación confirmada</div>
+                            </div>
+                        </div>
+                        <div class="mobile-carousel-item">
+                            <div class="partner-card">
+                                <div class="partner-logo">LOGO</div>
+                                <div class="partner-name">Nike</div>
+                                <div class="partner-status">Participación confirmada</div>
+                            </div>
+                        </div>
+                        <div class="mobile-carousel-item">
+                            <div class="partner-card">
+                                <div class="partner-logo">LOGO</div>
+                                <div class="partner-name">Mastercard</div>
+                                <div class="partner-status">Participación confirmada</div>
+                            </div>
+                        </div>
+                        <div class="mobile-carousel-item">
+                            <div class="partner-card">
+                                <div class="partner-logo">LOGO</div>
+                                <div class="partner-name">Samsung</div>
+                                <div class="partner-status">En negociación</div>
+                            </div>
+                        </div>
+                        <div class="mobile-carousel-item">
+                            <div class="partner-card">
+                                <div class="partner-logo">LOGO</div>
+                                <div class="partner-name">Mercedes-Benz</div>
+                                <div class="partner-status">Participación confirmada</div>
+                            </div>
+                        </div>
+                        <div class="mobile-carousel-item">
+                            <div class="partner-card">
+                                <div class="partner-logo">LOGO</div>
+                                <div class="partner-name">Heineken</div>
+                                <div class="partner-status">En negociación</div>
+                            </div>
+                        </div>
+                        <div class="mobile-carousel-item">
+                            <div class="partner-card">
+                                <div class="partner-logo">LOGO</div>
+                                <div class="partner-name">McDonald's</div>
+                                <div class="partner-status">Participación confirmada</div>
+                            </div>
+                        </div>
+                        <div class="mobile-carousel-item">
+                            <div class="partner-card">
+                                <div class="partner-logo">LOGO</div>
+                                <div class="partner-name">Visa</div>
+                                <div class="partner-status">En negociación</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CTA para unirse -->
+            <div class="partners-cta">
+                <h3>¿Tu marca también quiere estar aquí?</h3>
+                <p>Únete a las marcas más prestigiosas del mundo en el Mundial 2026</p>
+                <a href="#contacto" class="btn-primary">
+                    <i class="fas fa-star"></i>
+                    <span>Solicitar Información</span>
+                </a>
             </div>
         </div>
     </section>
@@ -740,106 +1001,77 @@
                 </p>
             </div>
             
-            <div class="contacto-content">
+            <div class="contacto-content-new">
                 <!-- Formulario -->
-                <div class="contact-form">
-                    <h3 class="contact-title">Envíanos un Mensaje</h3>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label class="form-label" for="nombre">Nombre Completo *</label>
-                            <input type="text" id="nombre" class="form-input" placeholder="Tu nombre" required>
+                <div class="contact-form-section">
+                    <h3 class="contact-form-title">Envíanos un mensaje</h3>
+                    <form id="contactForm" class="contact-form-grid">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="nombre">Nombre completo</label>
+                                <input type="text" id="nombre" class="form-input" placeholder="Please fill out this field." required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="email">Correo electrónico</label>
+                                <input type="email" id="email" class="form-input" placeholder="tu@email.com" required>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label class="form-label" for="empresa">Empresa</label>
-                            <input type="text" id="empresa" class="form-input" placeholder="Nombre de tu empresa">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="empresa">Empresa</label>
+                                <input type="text" id="empresa" class="form-input" placeholder="Nombre de tu empresa">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="telefono">Teléfono</label>
+                                <input type="tel" id="telefono" class="form-input" placeholder="+52 81 1234 5678">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label class="form-label" for="email">Email *</label>
-                            <input type="email" id="email" class="form-input" placeholder="tu@email.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="telefono">Teléfono</label>
-                            <input type="tel" id="telefono" class="form-input" placeholder="+52 81 1234 5678">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="presupuesto">Presupuesto Estimado</label>
-                            <select id="presupuesto" class="form-input">
-                                <option value="">Selecciona un rango</option>
-                                <option value="50k-100k">$50k - $100k USD</option>
-                                <option value="100k-500k">$100k - $500k USD</option>
-                                <option value="500k-1m">$500k - $1M USD</option>
-                                <option value="1m+">$1M+ USD</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
+                        <div class="form-group full-width">
                             <label class="form-label" for="mensaje">Mensaje</label>
-                            <textarea id="mensaje" class="form-textarea" placeholder="Cuéntanos sobre tus objetivos para el Mundial 2026..."></textarea>
+                            <textarea id="mensaje" class="form-textarea" placeholder="Cuéntanos sobre tu marca y objetivos para el Mundial 2026..."></textarea>
                         </div>
                         <button type="submit" class="btn-primary form-submit">
                             <i class="fas fa-paper-plane"></i>
-                            <span>Enviar Mensaje</span>
+                            <span>Enviar mensaje</span>
                         </button>
                     </form>
                 </div>
                 
-                <!-- Calendly Integration Section -->
-                <div class="calendly-section">
-                    <!-- Opción 1: Widget de Calendly (recomendado) -->
-                    <div class="calendly-widget" id="calendly-widget">
-                        <!-- El widget de Calendly se insertará aquí dinámicamente -->
-                        <div class="calendly-placeholder">
-                            <div style="width: 100%; height: 300px; background: linear-gradient(135deg, #4A1B7F 0%, #00D4AA 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; text-align: center; flex-direction: column; gap: 1rem;">
-                                <div style="font-size: 2rem;">📅</div>
-                                <div style="font-weight: 600; margin-bottom: 0.5rem;">Calendly Integration</div>
-                                <div style="font-size: 0.9rem; opacity: 0.8; max-width: 280px; line-height: 1.4;">
-                                    Agenda tu reunión directamente con nuestro equipo especializado en Copa Mundial 2026
-                                </div>
-                                <button onclick="loadCalendly()" class="btn-primary" style="margin-top: 1rem; padding: 0.75rem 1.5rem; font-size: 0.9rem;">
-                                    Abrir Calendario
-                                </button>
+                <!-- Información y Calendario -->
+                <div class="contact-info-section">
+                    <!-- Información de contacto -->
+                    <div class="contact-info-card">
+                        <h3>Información de contacto</h3>
+                        <div class="contact-items">
+                            <div class="contact-item">
+                                <i class="fas fa-envelope contact-icon"></i>
+                                <span>mundial2026@publicidad.mx</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone contact-icon"></i>
+                                <span>+52 81 1234 5678</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt contact-icon"></i>
+                                <span>Monterrey, Nuevo León, México</span>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Opción 2: Botón directo a Gmail empresarial -->
-                    <div class="gmail-booking-section" style="margin-top: 2rem;">
-                        <h4 style="margin-bottom: 1rem; color: var(--gray-800);">¿Prefieres contacto directo?</h4>
-                        <div class="direct-contact-options">
-                            <button onclick="sendEmailBooking()" class="btn-secondary" style="margin-right: 1rem;">
-                                <i class="fas fa-envelope"></i>
-                                <span>Enviar Email de Reserva</span>
+                    <!-- Calendario -->
+                    <div class="calendar-card">
+                        <h3>Agenda una reunión</h3>
+                        <div class="calendar-widget">
+                            <div class="calendar-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <div class="calendar-info">
+                                <h4>Calendario de reuniones Calendly</h4>
+                                <p>Agenda tu reunión directamente con nuestro equipo especializado en Copa Mundial 2026</p>
+                            </div>
+                            <button onclick="loadCalendly()" class="btn-secondary calendar-btn">
+                                Abrir Calendario
                             </button>
-                            <button onclick="openWhatsAppBooking()" class="btn-secondary">
-                                <i class="fab fa-whatsapp"></i>
-                                <span>Contactar por WhatsApp</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Información de contacto -->
-                <div class="contact-direct">
-                    <h3 class="contact-title">Agenda una Reunión</h3>
-                    <p class="calendly-subtitle">
-                        Programa una videollamada con nuestro equipo para discutir tu estrategia publicitaria para el Mundial 2026.
-                    </p>
-                    
-                    <div class="contact-items">
-                        <div class="contact-item">
-                            <div class="contact-icon">📧</div>
-                            <span>info@mundialmty2026.com</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-phone contact-icon"></i>
-                            <span>+52 81 1234 5678</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt contact-icon"></i>
-                            <span>Monterrey, Nuevo León, México</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-clock contact-icon"></i>
-                            <span>Lun - Vie: 9:00 AM - 6:00 PM CST</span>
                         </div>
                     </div>
                 </div>
@@ -897,6 +1129,9 @@
             </div>
         </div>
     </footer>
+
+    <!-- Overlay para mapa en pantalla completa -->
+    <div id="fullscreenOverlay" class="fullscreen-overlay" onclick="closeFullscreen()"></div>
 
     <!-- Leaflet JavaScript para OpenStreetMap -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
