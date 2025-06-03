@@ -572,7 +572,7 @@ function addMundialLocationsToMap(mapInstance) {
     // Crear icono con la estructura del documento estilos-pines-mapa.md
     const iconHtml = `
       <div class="circle-wrapper ${location.type}">
-        <img src="${getAssetPath('/dist/map-pins/' + location.type.charAt(0).toUpperCase() + location.type.slice(1).replace('-', '') + '.png')}" alt="${location.category}" />
+        <img src="${getAssetPath('/assets/map-pins/' + location.type.charAt(0).toUpperCase() + location.type.slice(1).replace('-', '') + '.png')}" alt="${location.category}" />
       </div>
     `;
     
