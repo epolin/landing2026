@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Copa Mundial de Fútbol Monterrey 2026 - Espacios Publicitarios</title>
-    
-    <!-- Meta Tags SEO -->
-    <meta name="description" content="Asegura tu espacio publicitario en las mejores ubicaciones de Monterrey durante la Copa Mundial de Fútbol 2026. Oportunidad única cada 28 años para alcanzar 3+ millones de visitantes internacionales.">
+    <title>Copa Mundial de Fútbol 2026 | Sede Monterrey - V MEDIA GROUP</title>
+    <meta name="description" content="Espacios publicitarios estratégicos para la Copa Mundial de Fútbol 2026 en la sede de Monterrey. Una oportunidad única para posicionar tu marca en el evento más importante del mundo.">
     <meta name="keywords" content="Copa Mundial de Fútbol 2026, Monterrey, espacios publicitarios, Mundial 2026, publicidad premium, marketing deportivo">
     <meta name="author" content="Copa Mundial de Fútbol Monterrey 2026">
     
@@ -20,13 +18,13 @@
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     
-    <!-- Fonts -->
+    <!-- Google Fonts: Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Icons: Remix Icon -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
     
     <!-- Leaflet CSS para OpenStreetMap -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -37,460 +35,203 @@
     <link rel="stylesheet" href="./src/style.css">
 </head>
 <body>
-    <!-- Navegación -->
-    <nav class="nav">
-        <div class="nav-container">
-            <div class="nav-logo">Copa Mundial de Fútbol Monterrey 2026</div>
-            <div class="nav-links">
-                <a href="#hero" class="nav-link">Inicio</a>
-                <a href="#quienes-somos" class="nav-link">¿Quiénes somos?</a>
-                <a href="#beneficios" class="nav-link">Beneficios</a>
-                <a href="#oportunidad" class="nav-link">Oportunidad</a>
-                <a href="#contacto" class="nav-link">Contacto</a>
+    <!-- ==================== HEADER & NAVBAR ==================== -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#" class="nav__logo">
+                <img src="/public/logos/VMedia/logo v media blanco.png" alt="V Media Group" class="nav__logo-img">
+                Copa Mundial 2026
+            </a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#quienes-somos" class="nav__link">Quiénes Somos</a></li>
+                    <li class="nav__item"><a href="#oportunidad" class="nav__link">Oportunidad</a></li>
+                    <li class="nav__item"><a href="#beneficios" class="nav__link">Beneficios</a></li>
+                    <li class="nav__item"><a href="#ubicaciones" class="nav__link">Ubicaciones</a></li>
+                    <li class="nav__item"><a href="#formatos" class="nav__link">Formatos</a></li>
+                    <li class="nav__item"><a href="#contacto" class="nav__link">Contacto</a></li>
+                </ul>
+                <div class="nav__close" id="nav-close"><i class="ri-close-line"></i></div>
             </div>
-            <!-- Hamburger Menu -->
-            <div class="hamburger" onclick="toggleMobileNav()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
+            <div class="nav__toggle" id="nav-toggle"><i class="ri-menu-line"></i></div>
     </nav>
+    </header>
 
-    <!-- Mobile Navigation -->
-    <div class="mobile-nav-overlay" onclick="closeMobileNav()"></div>
-    <div class="mobile-nav">
-        <div class="mobile-nav-links">
-            <a href="#hero" class="mobile-nav-link" onclick="closeMobileNav()">Inicio</a>
-            <a href="#quienes-somos" class="mobile-nav-link" onclick="closeMobileNav()">¿Quiénes somos?</a>
-            <a href="#beneficios" class="mobile-nav-link" onclick="closeMobileNav()">Beneficios</a>
-            <a href="#oportunidad" class="mobile-nav-link" onclick="closeMobileNav()">Oportunidad</a>
-            <a href="#contacto" class="mobile-nav-link" onclick="closeMobileNav()">Contacto</a>
+                <!-- ==================== HERO MODERNO ==================== -->
+        <section class="hero">
+            <div class="hero__overlay"></div>
+            <div class="hero__container container">
+                <div class="hero__content">
+                    <div class="hero__highlight-box animate-on-scroll">¡Oportunidad única!</div>
+                    <h1 class="hero__title animate-on-scroll">TU MARCA<BR> DONDE SE VIVE<BR> EL MUNDIAL</h1>
+                    <h2 class="hero__subtitle animate-on-scroll">El evento deportivo más grande del planeta.</h2>
+                    <p class="hero__text animate-on-scroll">Conecta con millones de personas al anunciarte en nuestros espacios publicitarios durante el Mundial 2026.</p>
+                    <div class="hero__buttons animate-on-scroll">
+                        <a href="#contacto" class="button">Recibir más información</a>
+                        <a href="#" class="button button--ghost" id="download-btn" download>Descarga nuestra presentación</a>
         </div>
     </div>
-
-    <!-- Hero Section -->
-    <section id="hero" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-header">
-                    <h1 class="hero-title">
-                        Tu Marca en el <span class="text-gradient">Corazón del Mundial</span>
-                    </h1>
+                <div class="hero__countdown-section">
+                    <div class="countdown animate-on-scroll" id="countdown">
+                        <h3 class="countdown__title">Días restantes para la patada inicial</h3>
+                        <div class="countdown__timer">
+                            <div class="countdown__item"><span id="days">000</span><p>Días</p></div>
+                            <div class="countdown__item"><span id="hours">00</span><p>Horas</p></div>
+                            <div class="countdown__item"><span id="minutes">00</span><p>Minutos</p></div>
+                            <div class="countdown__item"><span id="seconds">00</span><p>Segundos</p></div>
                 </div>
-                
-                <div class="hero-grid">
-                    <!-- Mensaje de oportunidad -->
-                    <div class="hero-section opportunity-section">
-                        <div class="opportunity-message">
-                            <div class="opportunity-badge">🔥 El evento deportivo más grande del mundo.</div>
-                            <div class="opportunity-content">
-                                <strong>Conecta con millones de personas al anunciarte en nuestros espacios publicitarios durante el Mundial 2026.</strong>
+                        <p class="countdown__date">Junio - Julio 2026</p>
                             </div>
-                            <div class="opportunity-additional">
-                                <span>¡Oportunidad única!</span>
-                                <span>La mayoría de las marcas ya están planeando su estrategia de comunicación para el mundial 2026, no te quedes atrás.</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Contador -->
-                    <div class="countdown-container-new">
-                        <div class="countdown-title">Días restantes patada inicial Mundial 2026</div>
-                        <div class="countdown-horizontal">
-                            <div class="countdown-item">
-                                <span class="countdown-number" id="days">000</span>
-                                <span class="countdown-label">Días</span>
-                            </div>
-                            <div class="countdown-separator">:</div>
-                            <div class="countdown-item">
-                                <span class="countdown-number" id="hours">00</span>
-                                <span class="countdown-label">Horas</span>
-                            </div>
-                            <div class="countdown-separator">:</div>
-                            <div class="countdown-item">
-                                <span class="countdown-number" id="minutes">00</span>
-                                <span class="countdown-label">Min</span>
-                            </div>
-                            <div class="countdown-separator">:</div>
-                            <div class="countdown-item">
-                                <span class="countdown-number" id="seconds">00</span>
-                                <span class="countdown-label">Seg</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Botones -->
-                    <div class="hero-section buttons-section">
-                        <div class="hero-buttons">
-                            <a href="#contacto" class="btn-primary btn-large">
-                                <i class="fas fa-calendar-check"></i>
-                                <span>Recibe más información</span>
-                            </a>
-                            <a href="#" class="btn-secondary btn-large" onclick="alert('Media Kit se descargará próximamente')">
-                                <i class="fas fa-download"></i>
-                                <span>Descarga nuestra presentación</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Beneficios adicionales -->
+                    <p class="hero__text-secondary animate-on-scroll">La mayoría de las marcas ya están planeando su estrategia de comunicación para el mundial 2026 <strong>¡No te quedes atrás!</strong></p>
             </div>
         </div>
     </section>
 
-    <!-- ¿Quiénes somos? -->
-    <section id="quienes-somos" class="quienes-somos">
+        <!-- ==================== QUIÉNES SOMOS ==================== -->
+        <section class="section" id="quienes-somos">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">V MEDIA GROUP</h2>
-                <p class="section-subtitle">
-                    Somos especialistas en medios publicitarios con más de 17 años de experiencia conectando marcas con audiencias y con espacios publicitarios privilegiados, en una de las solo 3 sedes mundialistas de México.
-                </p>
+            <div class="section__header animate-on-scroll">
+                <h2 class="section__title">Somos <span class="section__title__highlighted">V MEDIA GROUP</span></h2>
             </div>
-            
-            <div class="clients-intro">
-                <h3 class="clients-intro-title">Algunas empresas que confían en nuestro trabajo</h3>
+                <div class="about__container">
+                    <!-- ORDEN CORREGIDO Y TEXTO CENTRADO -->
+                    <div class="about__text animate-on-scroll">
+                        <p><strong>Empresa especialista en medios publicitarios</strong> con más de 17 años de experiencia conectando marcas con audiencias y con gran portafolio de espacios publicitarios privilegiados, en una de las solo 3 sedes mundialistas de México.</p>
+                        <p class="about__tagline">Somos el socio estratégico para el éxito de tu marca en el Mundial 2026.</p>
             </div>
-            
-            <!-- Banner rotativo de logos -->
-            <div class="clients-slider">
-                <div class="clients-track">
-                    <div class="client-logo-item">
-                        <img src="./assets/logos/heineken.png" alt="Heineken" class="client-logo" onerror="this.src='./assets/logos/placeholder.svg'">
+                    <div class="about__sponsors animate-on-scroll">
+                        <h3>Algunas empresas que confían en nuestro trabajo</h3>
+                                    <div class="logos">
+                <div class="logos__container">
+                    <div class="logos__slide">
+                        <!-- Logos completos de clientes con mask-image y tooltips -->
+                        <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/Heineken.png); mask-image: url(/public/logos/Heineken.png);" title="Heineken"></div>
+                        <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/7-Eleven.png); mask-image: url(/public/logos/7-Eleven.png);" title="7-Eleven"></div>
+                        <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/Apple.png); mask-image: url(/public/logos/Apple.png);" title="Apple"></div>
+                        <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/BBVA.png); mask-image: url(/public/logos/BBVA.png);" title="BBVA"></div>
+                        <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/Carls Jr.png); mask-image: url(/public/logos/Carls Jr.png);" title="Carl's Jr."></div>
+                        <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/Cemex.png); mask-image: url(/public/logos/Cemex.png);" title="Cemex"></div>
+                        <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/CinépoliS.png); mask-image: url(/public/logos/CinépoliS.png);" title="Cinépolis"></div>
+                        <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/KIA.png); mask-image: url(/public/logos/KIA.png);" title="KIA"></div>
+                        <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/LVMH.png); mask-image: url(/public/logos/LVMH.png);" title="LVMH"></div>
+                        <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/Mercado Libre.png); mask-image: url(/public/logos/Mercado Libre.png);" title="Mercado Libre"></div>
+                        <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/Mobil.png); mask-image: url(/public/logos/Mobil.png);" title="Mobil"></div>
+                        <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/Nissan.png); mask-image: url(/public/logos/Nissan.png);" title="Nissan"></div>
+                        <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/P&G.png); mask-image: url(/public/logos/P&G.png);" title="Procter & Gamble"></div>
+                        <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/Rayados.png); mask-image: url(/public/logos/Rayados.png);" title="CF Monterrey Rayados"></div>
                     </div>
-                    <div class="client-logo-item">
-                        <img src="./assets/logos/bmw.png" alt="BMW" class="client-logo" onerror="this.src='./assets/logos/placeholder.svg'">
-                    </div>
-                    <div class="client-logo-item">
-                        <img src="./assets/logos/the-home-depot.png" alt="The Home Depot" class="client-logo" onerror="this.src='./assets/logos/placeholder.svg'">
-                    </div>
-                    <div class="client-logo-item">
-                        <img src="./assets/logos/7-eleven.png" alt="7 Eleven" class="client-logo" onerror="this.src='./assets/logos/placeholder.svg'">
-                    </div>
-                    <div class="client-logo-item">
-                        <img src="./assets/logos/apple.png" alt="Apple" class="client-logo" onerror="this.src='./assets/logos/placeholder.svg'">
-                    </div>
-                    <div class="client-logo-item">
-                        <img src="./assets/logos/bbva.png" alt="BBVA" class="client-logo" onerror="this.src='./assets/logos/placeholder.svg'">
-                    </div>
-                    <div class="client-logo-item">
-                        <img src="./assets/logos/carls-jr.png" alt="Carls Jr" class="client-logo" onerror="this.src='./assets/logos/placeholder.svg'">
-                    </div>
-                    <div class="client-logo-item">
-                        <img src="./assets/logos/cemex.png" alt="Cemex" class="client-logo" onerror="this.src='./assets/logos/placeholder.svg'">
-                    </div>
-                    <div class="client-logo-item">
-                        <img src="./assets/logos/cinepolis.png" alt="Cinépolis" class="client-logo" onerror="this.src='./assets/logos/placeholder.svg'">
-                    </div>
-                    <div class="client-logo-item">
-                        <img src="./assets/logos/dominos.png" alt="Dominos" class="client-logo" onerror="this.src='./assets/logos/placeholder.svg'">
-                    </div>
-                    <div class="client-logo-item">
-                        <img src="./assets/logos/fox-sports.png" alt="Fox Sports" class="client-logo" onerror="this.src='./assets/logos/placeholder.svg'">
-                    </div>
-                    <div class="client-logo-item">
-                        <img src="./assets/logos/heb.png" alt="HEB" class="client-logo" onerror="this.src='./assets/logos/placeholder.svg'">
-                    </div>
-                    <div class="client-logo-item">
-                        <img src="./assets/logos/ikea.png" alt="IKEA" class="client-logo" onerror="this.src='./assets/logos/placeholder.svg'">
-                    </div>
-                    <div class="client-logo-item">
-                        <img src="./assets/logos/kia.png" alt="KIA" class="client-logo" onerror="this.src='./assets/logos/placeholder.svg'">
-                    </div>
-                    <div class="client-logo-item">
-                        <img src="./assets/logos/lala.png" alt="LALA" class="client-logo" onerror="this.src='./assets/logos/placeholder.svg'">
-                    </div>
-                    <div class="client-logo-item">
-                        <img src="./assets/logos/lvmh.png" alt="LVMH" class="client-logo" onerror="this.src='./assets/logos/placeholder.svg'">
-                    </div>
-                    <div class="client-logo-item">
-                        <img src="./assets/logos/mercadolibre.png" alt="MercadoLibre" class="client-logo" onerror="this.src='./assets/logos/placeholder.svg'">
-                    </div>
-                    <div class="client-logo-item">
-                        <img src="./assets/logos/mobil.png" alt="Mobil" class="client-logo" onerror="this.src='./assets/logos/placeholder.svg'">
-                    </div>
-                    <div class="client-logo-item">
-                        <img src="./assets/logos/nissan.png" alt="Nissan" class="client-logo" onerror="this.src='./assets/logos/placeholder.svg'">
-                    </div>
-                    <div class="client-logo-item">
-                        <img src="./assets/logos/pg.png" alt="P&G" class="client-logo" onerror="this.src='./assets/logos/placeholder.svg'">
-                    </div>
-                    <!-- Duplicamos para efecto infinito -->
-                    <div class="client-logo-item">
-                        <img src="./assets/logos/heineken.png" alt="Heineken" class="client-logo" onerror="this.src='./assets/logos/placeholder.svg'">
-                    </div>
-                    <div class="client-logo-item">
-                        <img src="./assets/logos/bmw.png" alt="BMW" class="client-logo" onerror="this.src='./assets/logos/placeholder.svg'">
-                    </div>
-                    <div class="client-logo-item">
-                        <img src="./assets/logos/the-home-depot.png" alt="The Home Depot" class="client-logo" onerror="this.src='./assets/logos/placeholder.svg'">
-                    </div>
-                    <div class="client-logo-item">
-                        <img src="./assets/logos/7-eleven.png" alt="7 Eleven" class="client-logo" onerror="this.src='./assets/logos/placeholder.svg'">
-                    </div>
-                    <div class="client-logo-item">
-                        <img src="./assets/logos/apple.png" alt="Apple" class="client-logo" onerror="this.src='./assets/logos/placeholder.svg'">
+                    <div class="logos__slide">
+                        <!-- Duplicado de los logos para animación infinita sin cortes -->
+                        <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/Heineken.png); mask-image: url(/public/logos/Heineken.png);" title="Heineken"></div>
+                        <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/7-Eleven.png); mask-image: url(/public/logos/7-Eleven.png);" title="7-Eleven"></div>
+                        <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/Apple.png); mask-image: url(/public/logos/Apple.png);" title="Apple"></div>
+                        <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/BBVA.png); mask-image: url(/public/logos/BBVA.png);" title="BBVA"></div>
+                        <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/Carls Jr.png); mask-image: url(/public/logos/Carls Jr.png);" title="Carl's Jr."></div>
+                        <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/Cemex.png); mask-image: url(/public/logos/Cemex.png);" title="Cemex"></div>
+                        <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/CinépoliS.png); mask-image: url(/public/logos/CinépoliS.png);" title="Cinépolis"></div>
+                        <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/KIA.png); mask-image: url(/public/logos/KIA.png);" title="KIA"></div>
+                        <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/LVMH.png); mask-image: url(/public/logos/LVMH.png);" title="LVMH"></div>
+                        <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/Mercado Libre.png); mask-image: url(/public/logos/Mercado Libre.png);" title="Mercado Libre"></div>
+                        <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/Mobil.png); mask-image: url(/public/logos/Mobil.png);" title="Mobil"></div>
+                        <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/Nissan.png); mask-image: url(/public/logos/Nissan.png);" title="Nissan"></div>
+                        <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/P&G.png); mask-image: url(/public/logos/P&G.png);" title="Procter & Gamble"></div>
+                        <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/Rayados.png); mask-image: url(/public/logos/Rayados.png);" title="CF Monterrey Rayados"></div>
                     </div>
                 </div>
             </div>
-            
-            <!-- Patrocinio Rayados -->
-            <div class="sponsor-section">
-                <div class="sponsor-content">
-                    <p class="sponsor-text">Además somos patrocinadores oficiales del Club de Fútbol Monterrey (Rayados)</p>
-                    <div class="sponsor-logo">
-                        <img src="./assets/logos/rayados.png" alt="Rayados" class="rayados-logo" onerror="this.src='./assets/logos/placeholder.svg'">
+                        <div class="about__rayados">
+                            <p>Además somos orgullosos patrocinadores oficiales del Club de Fútbol Monterrey</p>
+                            <!-- REEMPLAZA este 'src' con el escudo de Rayados -->
+                            <img src="/public/logos/Rayados.png" alt="Escudo Club de Fútbol Monterrey Rayados">
                     </div>
-                </div>
+                    </div>
             </div>
         </div>
     </section>
 
-    <!-- Oportunidad Única -->
-    <section id="oportunidad" class="oportunidad">
+        <!-- ==================== OPORTUNIDAD ==================== -->
+        <section class="section section--dark" id="oportunidad">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Una oportunidad irrepetible</h2>
-                <p class="section-subtitle">
-                    Es más que una oportunidad publicitaria, es una plataforma de impacto global
-                </p>
+                <div class="section__header animate-on-scroll">
+                    <h2 class="section__title">Una Oportunidad Irrepetible</h2>
+                    <p class="section__subtitle">Es más que una oportunidad publicitaria, es una plataforma de impacto global.</p>
             </div>
-            
-            <div class="stats-grid desktop-only">
-                <div class="stat-card">
-                    <div class="stat-icon">🏆</div>
-                    <span class="stat-number">—</span>
-                    <div class="stat-label">El mundial más grande en la historia</div>
+                <div class="opportunity__grid grid">
+                    <div class="card animate-on-scroll"><i class="ri-global-line"></i><h3>El mundial más grande en la historia</h3></div>
+                    <div class="card animate-on-scroll"><i class="ri-group-line"></i><h3>2M+ de visitantes esperados</h3></div>
+                    <div class="card animate-on-scroll"><i class="ri-calendar-event-line"></i><h3>5+ semanas continuas de evento</h3></div>
+                    <div class="card animate-on-scroll"><i class="ri-trophy-line"></i><h3>Los mejores espacios en 1 de las 3 sedes de México</h3></div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-icon">👥</div>
-                    <span class="stat-number">3M+</span>
-                    <div class="stat-label">de visitantes esperados</div>
+                <div class="opportunity__facts grid">
+                    <p class="animate-on-scroll">40 años de espera. México se convertirá en el país anfitrión con más mundiales en toda la historia.</p>
+                    <p class="animate-on-scroll">Después de 12 años, el mundial regresa al continente americano.</p>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-icon">📅</div>
-                    <span class="stat-number">5+</span>
-                    <div class="stat-label">semanas continuas de evento</div>
-                </div>
-            </div>
-            
-            <!-- Versión móvil carrusel -->
-            <div class="mobile-carousel">
-                <div class="mobile-carousel-container">
-                    <div class="mobile-carousel-track">
-                        <div class="mobile-carousel-item">
-                            <div class="stat-card">
-                                <div class="stat-icon">🏆</div>
-                                <span class="stat-number">—</span>
-                                <div class="stat-label">El mundial más grande en la historia</div>
-                            </div>
-                        </div>
-                        <div class="mobile-carousel-item">
-                            <div class="stat-card">
-                                <div class="stat-icon">👥</div>
-                                <span class="stat-number">3M+</span>
-                                <div class="stat-label">de visitantes esperados</div>
-                            </div>
-                        </div>
-                        <div class="mobile-carousel-item">
-                            <div class="stat-card">
-                                <div class="stat-icon">📅</div>
-                                <span class="stat-number">5+</span>
-                                <div class="stat-label">semanas continuas de evento</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Datos clave adicionales -->
-            <div class="additional-info">
-                <h4 class="additional-info-title">Datos clave adicionales:</h4>
-                <div class="additional-info-items">
-                    <div class="additional-info-item">
-                        <span class="info-icon">ℹ️</span>
-                        <span class="info-text">El mundial regresa a México después de 40 años desde su última vez. México se convertirá en el país anfitrión con más mundiales en toda la historia.</span>
-                    </div>
-                    <div class="additional-info-item">
-                        <span class="info-icon">ℹ️</span>
-                        <span class="info-text">Después de 12 años regresa el mundial al continente americano.</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Disponibilidad -->
-            <div class="availability-section">
-                <h3 class="availability-title">¡Espacios Limitados - Reserva Antes de que se Agoten!</h3>
-                <div class="availability-bar">
-                    <div class="availability-progress" style="width: 0%;"></div>
-                </div>
-                <div class="availability-labels">
-                    <span class="availability-reserved">72% Reservado</span>
-                    <span class="availability-available">28% Disponible</span>
-                </div>
-                <div class="availability-stats">
-                    <span class="availability-stat">📊 Solo quedan 112 espacios disponibles</span>
-                </div>
+                <div class="progress-banner animate-on-scroll">
+                    <h3>¡Espacios Limitados - Reserva Antes de que se Agoten!</h3>
+                    <div class="progress-bar"><div class="progress-bar__fill" style="width: 61%;">61% Reservado</div></div>
+                    <p class="progress-banner__promo">Las reservas anticipadas reciben beneficios hasta el 31 de Diciembre de 2025.</p>
             </div>
         </div>
     </section>
 
-    <!-- Beneficios -->
-    <section id="beneficios" class="beneficios">
+        <!-- ==================== BENEFICIOS ==================== -->
+        <section class="section" id="beneficios">
         <div class="container">
-            <div class="section-header">
-                <h2 class="beneficios-title">Beneficios para tu Marca</h2>
-                <p class="beneficios-subtitle">
-                    No dejes pasar la oportunidad de posiciona tu marca en el evento más importante de la región en su historia.
-                </p>
+                <div class="section__header animate-on-scroll">
+                    <h2 class="section__title">Beneficios para tu Marca</h2>
             </div>
-            
-            <div class="beneficios-grid desktop-only">
-                <div class="beneficio-card">
-                    <div class="beneficio-icon">👥</div>
-                    <h3 class="beneficio-title">Visibilidad masiva</h3>
-                    <p class="beneficio-description">
-                        Exposición ante millones de asistentes y espectadores antes, durante y después de cada partido.
-                    </p>
+                <div class="benefits__grid grid">
+                    <div class="benefit-card animate-on-scroll">
+                        <i class="ri-eye-line"></i><h3>Visibilidad Masiva</h3>
+                        <p>Alcanza a millones de espectadores locales e internacionales en un ambiente de máxima receptividad.</p>
                 </div>
-                <div class="beneficio-card">
-                    <div class="beneficio-icon">📈</div>
-                    <h3 class="beneficio-title">Pico más alto de exposición</h3>
-                    <p class="beneficio-description">
-                        Aprovecha los momentos de mayor atención mediática y capitaliza cada minuto de transmisión.
-                    </p>
+                    <div class="benefit-card animate-on-scroll">
+                        <i class="ri-line-chart-line"></i><h3>Pico más Alto de Exposición</h3>
+                        <p>Aprovecha el momento de mayor audiencia y atención mediática en la historia de la región.</p>
                 </div>
-                <div class="beneficio-card">
-                    <div class="beneficio-icon">📍</div>
-                    <h3 class="beneficio-title">Presencia en las ubicaciones más destacadas de la sede mundialista</h3>
-                    <p class="beneficio-description">
-                        Anuncios ubicados en puntos estratégicos que garantizan visibilidad preferencial.
-                    </p>
+                    <div class="benefit-card animate-on-scroll">
+                        <i class="ri-pin-distance-line"></i><h3>Presencia en Ubicaciones Destacadas</h3>
+                        <p>Tu marca estará en los puntos clave de flujo de aficionados en la sede.</p>
                 </div>
-                <div class="beneficio-card">
-                    <div class="beneficio-icon">⚽</div>
-                    <h3 class="beneficio-title">Conexión de forma única con millones de fans</h3>
-                    <p class="beneficio-description">
-                        Interactúa directamente con aficionados mediante activaciones y pantallas interactivas.
-                    </p>
+                    <div class="benefit-card animate-on-scroll">
+                        <i class="ri-hearts-line"></i><h3>Conexión Única con Fans</h3>
+                        <p>Asocia tu marca con la pasión, la emoción y los valores positivos del evento deportivo más querido del mundo.</p>
                 </div>
             </div>
-            
-            <!-- Versión móvil carrusel -->
-            <div class="mobile-carousel">
-                <div class="mobile-carousel-container">
-                    <div class="mobile-carousel-track">
-                        <div class="mobile-carousel-item">
-                            <div class="beneficio-card">
-                                <div class="beneficio-icon">👥</div>
-                                <h3 class="beneficio-title">Visibilidad masiva</h3>
-                                <p class="beneficio-description">
-                                    Exposición ante millones de asistentes y espectadores antes, durante y después de cada partido.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="mobile-carousel-item">
-                            <div class="beneficio-card">
-                                <div class="beneficio-icon">📈</div>
-                                <h3 class="beneficio-title">Pico más alto de exposición</h3>
-                                <p class="beneficio-description">
-                                    Aprovecha los momentos de mayor atención mediática y capitaliza cada minuto de transmisión.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="mobile-carousel-item">
-                            <div class="beneficio-card">
-                                <div class="beneficio-icon">📍</div>
-                                <h3 class="beneficio-title">Presencia en las ubicaciones más destacadas de la sede mundialista</h3>
-                                <p class="beneficio-description">
-                                    Anuncios ubicados en puntos estratégicos que garantizan visibilidad preferencial.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="mobile-carousel-item">
-                            <div class="beneficio-card">
-                                <div class="beneficio-icon">⚽</div>
-                                <h3 class="beneficio-title">Conexión de forma única con millones de fans</h3>
-                                <p class="beneficio-description">
-                                    Interactúa directamente con aficionados mediante activaciones y pantallas interactivas.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                <p class="section__closing-text animate-on-scroll">No dejes pasar la oportunidad de posicionar tu marca en el evento más importante de la región en su historia.</p>
         </div>
     </section>
 
-    <!-- Mapa Interactivo -->
-    <section id="ubicaciones" class="mapa-section">
+        <!-- ==================== UBICACIONES ==================== -->
+        <section class="section section--dark" id="ubicaciones">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">22 Ubicaciones Estratégicas</h2>
-                <p class="section-subtitle">
-                    Más de 400 espacios publicitarios en las 22 principales ubicaciones de Monterrey 
-                    y las zonas más transitadas durante la Copa Mundial de Fútbol 2026.
-                </p>
+                 <div class="section__header animate-on-scroll">
+                    <h2 class="section__title">Ubicaciones Estratégicas</h2>
+                    <p class="section__subtitle">Nuestros espacios publicitarios están ubicados estratégicamente a lo largo de toda la sede mundialista de Monterrey.</p>
+            </div>
+                <div class="locations__data animate-on-scroll">
+                    <div class="locations__stat"><span>22</span><p>Ubicaciones Estratégicas</p></div>
+                    <div class="locations__stat"><span>400+</span><p>Espacios Disponibles</p></div>
             </div>
             
-            <!-- Estadísticas de cobertura -->
-            <div class="coverage-stats desktop-only">
-                <div class="coverage-item">
-                    <span class="coverage-number">22</span>
-                    <span class="coverage-label">Ubicaciones</span>
-                </div>
-                <div class="coverage-item">
-                    <span class="coverage-number">400+</span>
-                    <span class="coverage-label">Espacios Disponibles</span>
-                </div>
-                <div class="coverage-item">
-                    <span class="coverage-number">100%</span>
-                    <span class="coverage-label">Zonas Premium</span>
-                </div>
-            </div>
-            
-            <!-- Versión móvil carrusel -->
-            <div class="mobile-carousel">
-                <div class="mobile-carousel-container">
-                    <div class="mobile-carousel-track">
-                        <div class="mobile-carousel-item">
-                            <div class="coverage-item">
-                                <span class="coverage-number">22</span>
-                                <span class="coverage-label">Ubicaciones</span>
-                            </div>
-                        </div>
-                        <div class="mobile-carousel-item">
-                            <div class="coverage-item">
-                                <span class="coverage-number">400+</span>
-                                <span class="coverage-label">Espacios Disponibles</span>
-                            </div>
-                        </div>
-                        <div class="mobile-carousel-item">
-                            <div class="coverage-item">
-                                <span class="coverage-number">100%</span>
-                                <span class="coverage-label">Zonas Premium</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
+                <!-- MAPA CONTAINER EXPANDIDO CON LISTA INTEGRADA -->
+                <div class="locations__container animate-on-scroll">
+                    <!-- MANTENER FUNCIONALIDAD DEL MAPA INTERACTIVO -->
             <div class="mapa-container">
                 <div class="interactive-map">
                     <div class="map-controls">
-                        <button id="fullscreenBtn" class="fullscreen-btn" onclick="openFullscreenMap()">
-                            <i class="fas fa-expand"></i>
+                                <button id="fullscreenBtn" class="fullscreen-btn" onclick="openFullscreenMap()" title="Ver mapa a pantalla completa">
+                                    <i class="ri-fullscreen-line"></i>
                         </button>
                     </div>
                     <div id="map"></div>
                 </div>
                 
+                        <!-- LISTA DE UBICACIONES INTEGRADA -->
                 <div class="ubicaciones-list">
                     <div class="ubicaciones-intro">
                         <h3>Ubicaciones Destacadas</h3>
-                        <p>22 ubicaciones premium con mayor flujo de visitantes internacionales</p>
+                        <p>22 ubicaciones con gran flujo de visitantes</p>
                     </div>
                     
                     <div class="ubicacion-item" data-location="arboleda">
@@ -761,10 +502,10 @@
                 <!-- Ubicaciones Especiales integradas -->
                 <div class="special-cards-grid-integrated">
                     <div class="special-card" data-location="aeropuerto">
-                        <div class="special-icon">✈️</div>
+                        <div class="special-icon"><img style="width: 50px; height: 50px;" src="/public/map-pins/Aeropuerto.png" alt="Aeropuerto"></div>
                         <div class="special-content">
                             <div class="special-header">
-                                <h4 class="special-name">Aeropuerto Internacional</h4>
+                                <h3 class="special-name">Aeropuerto Internacional</h3>
                             </div>
                             <p class="special-description">Punto de entrada principal para visitantes internacionales</p>
                             <div class="special-stats">
@@ -775,10 +516,10 @@
                     </div>
                     
                     <div class="special-card" data-location="estadio">
-                        <div class="special-icon">⚽</div>
+                        <div class="special-icon"><img style="width: 50px; height: 50px;" src="/public/map-pins/Estadio.png" alt="Estadio Monterrey"></div>
                         <div class="special-content">
                             <div class="special-header">
-                                <h4 class="special-name">Estadio Monterrey</h4>
+                                <h3 class="special-name">Estadio Monterrey</h3>
                             </div>
                             <p class="special-description">Sede oficial de partidos del Mundial 2026</p>
                             <div class="special-stats">
@@ -789,10 +530,10 @@
                     </div>
                     
                     <div class="special-card" data-location="fanfestival">
-                        <div class="special-icon">🎉</div>
+                        <div class="special-icon"><img style="width: 50px; height: 50px;" src="/public/map-pins/Parque.png" alt="Fan Festival"></div>
                         <div class="special-content">
                             <div class="special-header">
-                                <h4 class="special-name">Fan Festival</h4>
+                                <h3 class="special-name">Fan Festival</h3>
                             </div>
                             <p class="special-description">Evento oficial con entretenimiento y gastronomía</p>
                             <div class="special-stats">
@@ -801,178 +542,74 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                    
+                    <div class="special-card" data-location="hotel">
+                        <div class="special-icon"><img style="width: 50px; height: 50px;" src="/public/map-pins/Hotel.png" alt="Hotel Anfitrión"></div>
+                        <div class="special-content">
+                            <div class="special-header">
+                                <h3 class="special-name">Hotel Anfitrión</h3>
             </div>
-        </div>
+                            <p class="special-description">Hotel oficial de las selecciones nacionales</p>
+                            <div class="special-stats">
+                                <span class="stat">📍 San Pedro Garza García</span>
+                                <span class="stat">🏨 Premium</span>
+                        </div>
+                    </div>
+                </div>
+                
+                    <div class="locations__map-info"><i class="ri-information-line"></i> Incluye Aeropuerto, Estadio, Fan Fest y Hotel Sede (The Westin).</div>
+                        </div>
+                    </div>
     </section>
 
-    <!-- Formatos Disponibles -->
-    <section id="formatos" class="formatos">
+        <!-- ==================== FORMATOS ==================== -->
+        <section class="section" id="formatos">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Formatos Publicitarios</h2>
-                <p class="section-subtitle">
-                    Diversos formatos para diferentes presupuestos y objetivos de marketing, todos en ubicaciones premium.
-                </p>
-            </div>
-            
-            <div class="formatos-grid desktop-only">
-                <div class="formato-card">
-                    <div class="formato-image">
-                        <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #4A1B7F 0%, #0066CC 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
-                            📱 LED
+                 <div class="section__header animate-on-scroll">
+                    <h2 class="section__title">Nuestros Formatos Publicitarios</h2>
+                    <p class="section__subtitle">Diversos formatos para diferentes presupuestos y objetivos de marketing, todos en ubicaciones privilegiadas.</p>
                         </div>
-                    </div>
-                    <h4 class="formato-title">Pantallas LED</h4>
-                    <p class="formato-description">
-                        Pantallas digitales de alta resolución en ubicaciones estratégicas con contenido dinámico 24/7.
-                    </p>
-                    <ul class="formato-features">
-                        <li>Contenido dinámico</li>
-                        <li>Alta visibilidad nocturna</li>
-                        <li>Actualización remota</li>
-                        <li>Impacto garantizado</li>
+                <div class="formats__container grid">
+                    <div class="format-card animate-on-scroll">
+                        <img src="/public/formatos/Pantalla LED.png" class="format-card__img" alt="Formatos Digitales">
+                        <div class="format-card__content">
+                            <h3>Digitales</h3>
+                            <ul>
+                                <li><i class="ri-arrow-right-s-fill"></i> Pantallas digitales</li>
+                                <li><i class="ri-arrow-right-s-fill"></i> Directorios digitales</li>
+                                <li><i class="ri-arrow-right-s-fill"></i> Mupis digitales</li>
+                                <li><i class="ri-arrow-right-s-fill"></i> Totems digitales</li>
+                                <li><i class="ri-arrow-right-s-fill"></i> Holograma 3D</li>
+                                <li>Y más…</li>
                     </ul>
                 </div>
-                
-                <div class="formato-card">
-                    <div class="formato-image">
-                        <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #00D4AA 0%, #0066CC 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
-                            🖼️ MUPI
                         </div>
-                    </div>
-                    <h4 class="formato-title">Mupis Premium</h4>
-                    <p class="formato-description">
-                        Muebles urbanos para información pública en paradas de autobús y zonas de alta concentración.
-                    </p>
-                    <ul class="formato-features">
-                        <li>Ubicaciones premium</li>
-                        <li>Audiencia cautiva</li>
-                        <li>Visibilidad extendida</li>
-                        <li>Costo-efectivo</li>
-                    </ul>
-                </div>
-                
-                <div class="formato-card">
-                    <div class="formato-image">
-                        <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #FF5722 0%, #4A1B7F 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
-                            🏢 TOWER
-                        </div>
-                    </div>
-                    <h4 class="formato-title">Totems Gigantes</h4>
-                    <p class="formato-description">
-                        Estructuras monumentales en puntos estratégicos con máximo impacto visual y presencia de marca.
-                    </p>
-                    <ul class="formato-features">
-                        <li>Máximo impacto</li>
-                        <li>Visibilidad a distancia</li>
-                        <li>Presencia monumental</li>
-                        <li>Ubicación estratégica</li>
-                    </ul>
-                </div>
-                
-                <div class="formato-card">
-                    <div class="formato-image">
-                        <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #FF5722 0%, #00D4AA 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
-                            ⚡ ACTIVACIÓN
-                        </div>
-                    </div>
-                    <h4 class="formato-title">Activaciones</h4>
-                    <p class="formato-description">
-                        Experiencias interactivas y activaciones de marca para crear conexión directa con los visitantes.
-                    </p>
-                    <ul class="formato-features">
-                        <li>Experiencia inmersiva</li>
-                        <li>Conexión emocional</li>
-                        <li>Contenido viral</li>
-                        <li>Engagement alto</li>
+                    <div class="format-card animate-on-scroll">
+                        <img src="/public/formatos/Físicos.png" class="format-card__img" alt="Formatos Físicos">
+                        <div class="format-card__content">
+                            <h3>Físicos</h3>
+                            <ul>
+                                <li><i class="ri-arrow-right-s-fill"></i> Muros</li>
+                                <li><i class="ri-arrow-right-s-fill"></i> Cajas de Luz</li>
+                                <li><i class="ri-arrow-right-s-fill"></i> Floor Graphic</li>
+                                <li><i class="ri-arrow-right-s-fill"></i> Pendones</li>
+                                <li><i class="ri-arrow-right-s-fill"></i> Mupis</li>
+                                <li>Y más…</li>
                     </ul>
                 </div>
             </div>
-            
-            <!-- Versión móvil carrusel -->
-            <div class="mobile-carousel">
-                <div class="mobile-carousel-container">
-                    <div class="mobile-carousel-track">
-                        <div class="mobile-carousel-item">
-                            <div class="formato-card">
-                                <div class="formato-image">
-                                    <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #4A1B7F 0%, #0066CC 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
-                                        📱 LED
-                                    </div>
-                                </div>
-                                <h4 class="formato-title">Pantallas LED</h4>
-                                <p class="formato-description">
-                                    Pantallas digitales de alta resolución en ubicaciones estratégicas con contenido dinámico 24/7.
-                                </p>
-                                <ul class="formato-features">
-                                    <li>Contenido dinámico</li>
-                                    <li>Alta visibilidad nocturna</li>
-                                    <li>Actualización remota</li>
-                                    <li>Impacto garantizado</li>
+                    <div class="format-card animate-on-scroll">
+                        <img src="/public/formatos/Activaciones físicas.png" class="format-card__img" alt="Activaciones de Marca">
+                        <div class="format-card__content">
+                            <h3>Activaciones de marca</h3>
+                            <ul>
+                                <li><i class="ri-arrow-right-s-fill"></i> Experiencias personalizadas</li>
+                                <li><i class="ri-arrow-right-s-fill"></i> Photo Opportunity</li>
+                                <li><i class="ri-arrow-right-s-fill"></i> Stands promocionales</li>
+                                <li><i class="ri-arrow-right-s-fill"></i> Meet & Greet</li>
+                                <li><i class="ri-arrow-right-s-fill"></i> Transmisiones en vivo de evento</li>
+                                <li>Y más…</li>
                                 </ul>
-                            </div>
-                        </div>
-                        
-                        <div class="mobile-carousel-item">
-                            <div class="formato-card">
-                                <div class="formato-image">
-                                    <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #00D4AA 0%, #0066CC 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
-                                        🖼️ MUPI
-                                    </div>
-                                </div>
-                                <h4 class="formato-title">Mupis Premium</h4>
-                                <p class="formato-description">
-                                    Muebles urbanos para información pública en paradas de autobús y zonas de alta concentración.
-                                </p>
-                                <ul class="formato-features">
-                                    <li>Ubicaciones premium</li>
-                                    <li>Audiencia cautiva</li>
-                                    <li>Visibilidad extendida</li>
-                                    <li>Costo-efectivo</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <div class="mobile-carousel-item">
-                            <div class="formato-card">
-                                <div class="formato-image">
-                                    <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #FF5722 0%, #4A1B7F 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
-                                        🏢 TOWER
-                                    </div>
-                                </div>
-                                <h4 class="formato-title">Totems Gigantes</h4>
-                                <p class="formato-description">
-                                    Estructuras monumentales en puntos estratégicos con máximo impacto visual y presencia de marca.
-                                </p>
-                                <ul class="formato-features">
-                                    <li>Máximo impacto</li>
-                                    <li>Visibilidad a distancia</li>
-                                    <li>Presencia monumental</li>
-                                    <li>Ubicación estratégica</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <div class="mobile-carousel-item">
-                            <div class="formato-card">
-                                <div class="formato-image">
-                                    <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #FF5722 0%, #00D4AA 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
-                                        ⚡ ACTIVACIÓN
-                                    </div>
-                                </div>
-                                <h4 class="formato-title">Activaciones</h4>
-                                <p class="formato-description">
-                                    Experiencias interactivas y activaciones de marca para crear conexión directa con los visitantes.
-                                </p>
-                                <ul class="formato-features">
-                                    <li>Experiencia inmersiva</li>
-                                    <li>Conexión emocional</li>
-                                    <li>Contenido viral</li>
-                                    <li>Engagement alto</li>
-                                </ul>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -981,177 +618,99 @@
 
 
 
-    <!-- CTA Final -->
-    <section class="cta-final">
+        <!-- ==================== CONTACTO ==================== -->
+        <section class="section section--dark" id="contacto">
         <div class="container">
-            <div class="cta-content">
-                <h2 class="cta-title">¡No Pierdas Esta Oportunidad Histórica!</h2>
-                <p class="cta-subtitle">
-                    Los espacios se están agotando rápidamente. Asegura tu presencia en el evento más importante del mundo.
-                </p>
-                <div class="cta-buttons">
-                    <a href="#contacto" class="btn-primary btn-large">
-                        <i class="fas fa-rocket"></i>
-                        <span>Reserva Ahora</span>
-                    </a>
-                    <a href="#contacto" class="btn-secondary btn-large">
-                        <i class="fas fa-phone"></i>
-                        <span>Solicita Información</span>
-                    </a>
+                <div class="section__header animate-on-scroll">
+                    <h2 class="section__title">¿Tu marca está lista para destacar en el Mundial 2026?</h2>
+                    <p class="section__subtitle">Contáctanos hoy mismo y asegura los mejores espacios publicitarios para la Copa Mundial de Fútbol 2026.</p>
                 </div>
+                <div class="contact__container grid">
+                    <div class="contact__form-container animate-on-scroll">
+                        <h3 id="enviar-mensaje">Envíanos un mensaje</h3>
+                        <!-- Para hacer funcional el form, usa un servicio como Formspree.io -->
+                        <form action="#" id="contactForm" class="contact__form">
+                            <div class="contact__input-group">
+                                <input type="text" name="nombre" placeholder="Nombre" required>
+                                <input type="text" name="apellido" placeholder="Apellido" required>
             </div>
-        </div>
-    </section>
-
-    <!-- Contacto -->
-    <section id="contacto" class="contacto">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">¿TU MARCA FORMARÁ PARTE DE LA HISTORIA?</h2>
-                <h3 class="section-subtitle-secondary">¿Tu marca está lista para destacar en el Mundial 2026?</h3>
-                <p class="section-subtitle">
-                    Contáctanos hoy mismo y asegura los mejores espacios publicitarios para la Copa Mundial de Fútbol Monterrey 2026.
-                </p>
-            </div>
-            
-            <div class="contacto-content-new">
-                <!-- Formulario -->
-                <div class="contact-form-section">
-                    <h3 class="contact-form-title">Envíanos un mensaje</h3>
-                    <form id="contactForm" class="contact-form-grid">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label" for="nombre">Nombre</label>
-                                <input type="text" id="nombre" class="form-input" placeholder="Nombre" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="apellido">Apellido</label>
-                                <input type="text" id="apellido" class="form-input" placeholder="Apellido" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label" for="empresa">Empresa</label>
-                                <input type="text" id="empresa" class="form-input" placeholder="Nombre de tu empresa">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="telefono">Teléfono</label>
-                                <input type="tel" id="telefono" class="form-input" placeholder="Teléfono">
-                            </div>
-                        </div>
-                        <div class="form-group full-width">
-                            <label class="form-label" for="mensaje">Mensaje</label>
-                            <textarea id="mensaje" class="form-textarea" placeholder="Cuéntanos sobre tus objetivos para el mundial 2026 o consulta con nosotros cualquier duda."></textarea>
-                        </div>
-                        <button type="submit" class="btn-primary form-submit">
-                            <i class="fas fa-paper-plane"></i>
-                            <span>Enviar mensaje</span>
-                        </button>
+                            <input type="text" name="empresa" placeholder="Empresa" required>
+                            <input type="email" name="email" placeholder="Correo Electrónico" required>
+                            <input type="tel" name="telefono" placeholder="Teléfono">
+                            <textarea name="mensaje" placeholder="Cuéntanos sobre tus objetivos para el mundial 2026 o consulta con nosotros cualquier duda." required></textarea>
+                            <button type="submit" class="button">Enviar Mensaje</button>
                     </form>
                 </div>
-                
-                <!-- Información y Calendario -->
-                <div class="contact-info-section">
-                    <!-- Información de contacto -->
-                    <div class="contact-info-card">
+                    <div class="contact__info-container animate-on-scroll">
+                        <div id="info-directa">
                         <h3>Información de contacto</h3>
-                        <div class="contact-items">
-                            <div class="contact-item">
-                                <i class="fas fa-envelope contact-icon"></i>
-                                <span>hola@vmediag.com</span>
+                            <ul class="contact__info-list">
+                                <li><i class="ri-mail-line"></i> hola@vmediag.com</li>
+                                <li><i class="ri-phone-line"></i> +52 81 2110 1769</li>
+                                <li><i class="ri-map-pin-line"></i> San Pedro Garza García, Nuevo León, México</li>
+                            </ul>
                             </div>
-                            <div class="contact-item">
-                                <i class="fas fa-phone contact-icon"></i>
-                                <span>+52 81 2110 1769</span>
+                        <div id="agendar-reunion">
+                            <h3>Agenda una reunión con nuestro equipo</h3>
+                            <!-- INSTRUCCIÓN: Pega aquí el código de inserción de Calendly. -->
+                            <div style="background-color:#2a2a2a; border-radius: .5rem; padding: 2rem; text-align: center;">
+                                <p style="margin-bottom: 1rem;">La integración de Calendly aparecerá aquí.</p>
+                                <a href="#" class="button button--ghost">Ver Disponibilidad</a>
                             </div>
-                            <div class="contact-item">
-                                <i class="fas fa-map-marker-alt contact-icon"></i>
-                                <span>San Pedro Garza García, Nuevo León, México</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Calendario -->
-                    <div class="calendar-card">
-                        <h3>Agenda una reunión</h3>
-                        <div class="calendar-widget">
-                            <div class="calendar-icon">
-                                <i class="fas fa-calendar-alt"></i>
-                            </div>
-                            <div class="calendar-info">
-                                <h4>Calendario de reuniones Calendly</h4>
-                                <p>Agenda tu reunión directamente con nuestro equipo especializado en Copa Mundial 2026</p>
-                            </div>
-                            <button onclick="loadCalendly()" class="btn-secondary calendar-btn">
-                                Abrir Calendario
-                            </button>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    </main>
 
-    <!-- Footer -->
+    <!-- ==================== FOOTER ==================== -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-logo">Copa Mundial de Fútbol Monterrey 2026</div>
-                    <p class="footer-description">
-                        Espacios publicitarios estratégicos para la Copa Mundial de Fútbol 2026 en sede mundialista Monterrey. 
-                        Una oportunidad única para posicionar tu marca en el evento más importante del mundo.
-                    </p>
+        <div class="footer__container container grid">
+            <div class="footer__section">
+                <h3 class="footer__title">Copa Mundial de Fútbol 2026 | Sede Monterrey</h3>
+                <p class="footer__description">Espacios publicitarios estratégicos en sede mundialista. Una oportunidad única para posicionar tu marca en el evento más importante del mundo.</p>
                 </div>
-                
-                <div class="footer-section">
-                    <h4 class="footer-title">Servicios</h4>
-                    <div class="footer-links">
-                        <a href="#" class="footer-link">Pantallas LED</a>
-                        <a href="#" class="footer-link">Mupis Premium</a>
-                        <a href="#" class="footer-link">Totems Gigantes</a>
-                        <a href="#" class="footer-link">Activaciones</a>
+            <div class="footer__section">
+                <h3 class="footer__title">Información</h3>
+                <ul class="footer__list">
+                    <li><a href="#quienes-somos" class="footer__link">Quiénes Somos</a></li>
+                    <li><a href="#oportunidad" class="footer__link">Oportunidad Única</a></li>
+                    <li><a href="#beneficios" class="footer__link">Beneficios</a></li>
+                    <li><a href="#ubicaciones" class="footer__link">Ubicaciones</a></li>
+                    <li><a href="#formatos" class="footer__link">Formatos</a></li>
+                    <li><a href="#contacto" class="footer__link">Contacto</a></li>
+                </ul>
+                    </div>
+            <div class="footer__section">
+                <h3 class="footer__title">¡Actúa ahora!</h3>
+                <ul class="footer__list">
+                    <li><a href="#agendar-reunion" class="footer__link">Agendar una reunión</a></li>
+                    <li><a href="#enviar-mensaje" class="footer__link">Enviar un mensaje</a></li>
+                    <li><a href="#info-directa" class="footer__link">Contacto</a></li>
+                    <li><a href="#" id="download-footer-btn" class="footer__link" download>Descarga nuestra presentación</a></li>
+                </ul>
+                </div>
+            <div class="footer__section">
+                <h3 class="footer__title">Síguenos</h3>
+                <div class="footer__socials">
+                    <a href="https://www.instagram.com/vmediag" target="_blank" rel="noopener noreferrer" class="footer__social-link"><i class="ri-instagram-line"></i></a>
+                    <a href="https://www.tiktok.com/@vmediag" target="_blank" rel="noopener noreferrer" class="footer__social-link"><i class="ri-tiktok-line"></i></a>
+                    <a href="https://www.facebook.com/vmediag" target="_blank" rel="noopener noreferrer" class="footer__social-link"><i class="ri-facebook-box-line"></i></a>
+                    <a href="https://mx.linkedin.com/company/vmediag" target="_blank" rel="noopener noreferrer" class="footer__social-link"><i class="ri-linkedin-box-line"></i></a>
                     </div>
                 </div>
-                
-                <div class="footer-section">
-                    <h4 class="footer-title">Información</h4>
-                    <div class="footer-links">
-                        <a href="#hero" class="footer-link">Inicio</a>
-                        <a href="#quienes-somos" class="footer-link">¿Quiénes somos?</a>
-                        <a href="#beneficios" class="footer-link">Beneficios para tu marca</a>
-                        <a href="#oportunidad" class="footer-link">Una oportunidad irrepetible</a>
-                        <a href="#contacto" class="footer-link">¿Tu marca formará parte de la historia?</a>
                     </div>
+        <div class="footer__bottom container">
+            <div class="footer__policies">
+                <a href="#" target="_blank">Aviso de Privacidad</a><span>|</span><a href="#" target="_blank">Términos y Condiciones</a>
                 </div>
-                
-                <div class="footer-section">
-                    <h4 class="footer-title">¡Actúa ahora!</h4>
-                    <div class="footer-links">
-                        <a href="#contacto" class="footer-link">Agendar una reunión</a>
-                        <a href="#contacto" class="footer-link">Enviar un mensaje</a>
-                        <a href="#contacto" class="footer-link">Contacto</a>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h4 class="footer-title">Síguenos</h4>
-                    <div class="social-links">
-                        <a href="https://www.instagram.com/vmediag" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.tiktok.com/@vmediag" class="social-link"><i class="fab fa-tiktok"></i></a>
-                        <a href="https://www.facebook.com/vmediag" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://mx.linkedin.com/company/vmediag" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p class="footer-copyright">
-                    © 2025 Copa Mundial de Fútbol Monterrey 2026. Todos los derechos reservados.
-                </p>
-            </div>
+            <p class="footer__copyright">&copy; 2025 V MEDIA GROUP. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <!-- Botón para volver arriba -->
+    <a href="#" class="scroll-up" id="scroll-up"><i class="ri-arrow-up-line"></i></a>
 
     <!-- Overlay para mapa en pantalla completa -->
     <div id="fullscreenOverlay" class="fullscreen-overlay" onclick="closeFullscreen()"></div>
@@ -1163,6 +722,83 @@
     
     <!-- JavaScript -->
     <script src="./src/main.js"></script>
+
+    <script>
+        /* ==================== MENÚ MÓVIL ==================== */
+        const navMenu = document.getElementById('nav-menu'),
+              navToggle = document.getElementById('nav-toggle'),
+              navClose = document.getElementById('nav-close');
+        if(navToggle) navToggle.addEventListener('click', () => navMenu.classList.add('show-menu'));
+        if(navClose) navClose.addEventListener('click', () => navMenu.classList.remove('show-menu'));
+        const navLinks = document.querySelectorAll('.nav__link');
+        navLinks.forEach(n => n.addEventListener('click', () => {
+            if (navMenu.classList.contains('show-menu')) {
+                navMenu.classList.remove('show-menu');
+            }
+        }));
+
+        /* ==================== HEADER CON SOMBRA AL SCROLL ==================== */
+        function scrollHeader(){
+            const header = document.getElementById('header');
+            this.scrollY >= 50 ? header.classList.add('scroll-header') : header.classList.remove('scroll-header');
+        }
+        window.addEventListener('scroll', scrollHeader);
+
+        /* ==================== CUENTA REGRESIVA ==================== */
+        const countdown = () => {
+            const targetDate = new Date('June 11, 2026 00:00:00').getTime();
+            const now = new Date().getTime();
+            const gap = targetDate - now;
+
+            const format = (num) => (num < 10 ? '0' + num : num);
+            if (gap > 0) {
+                const textDay = Math.floor(gap / (1000 * 60 * 60 * 24));
+                const textHour = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const textMinute = Math.floor((gap % (1000 * 60 * 60)) / (1000 * 60));
+                const textSecond = Math.floor((gap % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = format(textDay);
+                document.getElementById('hours').innerText = format(textHour);
+                document.getElementById('minutes').innerText = format(textMinute);
+                document.getElementById('seconds').innerText = format(textSecond);
+            }
+        };
+        setInterval(countdown, 1000);
+        countdown();
+
+        /* ==================== ANIMACIÓN AL SCROLL ==================== */
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.animate-on-scroll').forEach((el) => observer.observe(el));
+
+        /* ==================== BOTÓN VOLVER ARRIBA ==================== */
+        function scrollUp(){
+            const scrollUpBtn = document.getElementById('scroll-up');
+            this.scrollY >= 400 ? scrollUpBtn.classList.add('show-scroll') : scrollUpBtn.classList.remove('show-scroll');
+        }
+        window.addEventListener('scroll', scrollUp);
+        
+        // Event listener para el click del botón scroll-up
+        document.getElementById('scroll-up').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        /* ==================== DESCARGAR PRESENTACIÓN ==================== */
+        // Debes reemplazar 'path/to/your/presentation.pdf' con la ruta real de tu archivo
+        const presentationPath = 'path/to/your/presentation.pdf';
+        document.getElementById('download-btn').href = presentationPath;
+        document.getElementById('download-footer-btn').href = presentationPath;
+
+        /* ==================== LOGO CAROUSEL SIMPLIFICADO ==================== */
+        // El carrusel de logos ya tiene duplicación manual para animación infinita
+    </script>
 </body>
 </html> 
 

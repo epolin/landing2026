@@ -28,13 +28,25 @@ function getBasePath() {
 
 // Función helper para construir rutas de assets
 function getAssetPath(path) {
-  // Para GitHub Pages, construir ruta correcta
-  if (window.location.hostname.includes('github.io')) {
-    // En GitHub Pages la URL base es https://epolin.github.io/landing2026/
+  const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+  
+  console.log('🔗 Construyendo ruta:', {
+    path,
+    isLocal,
+    hostname: window.location.hostname,
+    origin: window.location.origin
+  });
+  
+  if (isLocal) {
+    // En desarrollo local con Vite, las rutas públicas no necesitan prefijo
+    return path.startsWith('/') ? path : '/' + path;
+  } else if (window.location.hostname.includes('github.io')) {
+    // Para GitHub Pages
     return '/landing2026' + path;
-  }
-  // Para local, usar ruta relativa sin el primer slash
+  } else {
+    // Para otros servidores de producción
   return '.' + path;
+  }
 }
 
 // Función de inicialización principal
@@ -64,40 +76,60 @@ function initApp() {
 // Contador regresivo al Mundial 2026 - FECHA OFICIAL
 // ================================
 function initCountdown() {
+  console.log('🕐 Inicializando countdown mejorado...');
+  
   // Fecha oficial del inicio del Mundial 2026: 11 de junio de 2026
   const targetDate = new Date('2026-06-11T20:00:00Z').getTime();
+  
+  // Cache de valores previos para evitar actualizaciones innecesarias
+  let previousValues = { days: null, hours: null, minutes: null, seconds: null };
   
   const updateCountdown = () => {
     const now = new Date().getTime();
     const distance = targetDate - now;
 
     if (distance > 0) {
+      // Cálculo correcto sin decimales
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
       const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      // Actualizar elementos del DOM
+      // Solo actualizar si los valores han cambiado
+      if (previousValues.days !== days) {
       updateCountdownElement('days', days);
+        previousValues.days = days;
+      }
+      if (previousValues.hours !== hours) {
       updateCountdownElement('hours', hours);
+        previousValues.hours = hours;
+      }
+      if (previousValues.minutes !== minutes) {
       updateCountdownElement('minutes', minutes);
+        previousValues.minutes = minutes;
+      }
+      if (previousValues.seconds !== seconds) {
       updateCountdownElement('seconds', seconds);
+        previousValues.seconds = seconds;
+      }
     } else {
       // El evento ya comenzó
-      updateCountdownElement('days', 0);
-      updateCountdownElement('hours', 0);
-      updateCountdownElement('minutes', 0);
-      updateCountdownElement('seconds', 0);
+      ['days', 'hours', 'minutes', 'seconds'].forEach(key => {
+        if (previousValues[key] !== 0) {
+          updateCountdownElement(key, 0);
+          previousValues[key] = 0;
+        }
+      });
       
       // Cambiar el título del countdown
-      const countdownTitle = document.querySelector('.countdown-title');
-      if (countdownTitle) {
+      const countdownTitle = document.querySelector('.countdown__title');
+      if (countdownTitle && !countdownTitle.textContent.includes('COMENZÓ')) {
         countdownTitle.textContent = '¡EL MUNDIAL 2026 YA COMENZÓ!';
       }
     }
   };
 
-  // Actualizar cada segundo
+  // Actualizar inmediatamente y cada segundo
   updateCountdown();
   setInterval(updateCountdown, 1000);
 }
@@ -109,17 +141,16 @@ function updateCountdownElement(id, value) {
       value.toString().padStart(3, '0') : 
       value.toString().padStart(2, '0');
     
-    // Solo animar si el valor realmente cambió
+    // Solo actualizar si el valor realmente cambió
     if (element.textContent !== formattedValue) {
-      element.textContent = formattedValue;
-      
-      // Animación suave solo cuando cambia
-      element.style.transform = 'scale(1.1)';
-      element.style.transition = 'transform 0.3s ease';
+      // Efecto de flip 3D moderno
+      element.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+      element.style.transform = 'perspective(400px) rotateX(90deg)';
       
       setTimeout(() => {
-        element.style.transform = 'scale(1)';
-      }, 300);
+        element.textContent = formattedValue;
+        element.style.transform = 'perspective(400px) rotateX(0deg)';
+      }, 150);
     }
   }
 }
@@ -168,36 +199,42 @@ function initAvailabilityAnimation() {
 }
 
 // ================================
-// OpenStreetMap + Leaflet Integration
+// OpenStreetMap + Leaflet Integration - VERSIÓN ROBUSTA
 // ================================
 function initOpenStreetMap() {
   console.log('🗺️ Iniciando OpenStreetMap...');
   
-  // Esperar a que Leaflet esté disponible
+  // Variables globales para el mapa
+  let map;
+  let markers = {};
+
+  const initMap = () => {
   if (typeof L === 'undefined') {
     console.error('❌ Leaflet no está disponible');
     showMapPlaceholder();
-    return;
-  }
-
-  try {
-    const mapElement = document.getElementById('map');
-    if (!mapElement) {
-      console.error('❌ Elemento del mapa no encontrado');
       return;
     }
 
     console.log('✅ Leaflet disponible, creando mapa...');
 
-    // Crear el mapa centrado en Monterrey
+    try {
+      // RECREAR MAPA COMPLETAMENTE - COORDENADAS EXACTAS
     map = L.map('map', {
       center: [25.6866, -100.3161], // Monterrey, México
-      zoom: 12,
+        zoom: 10,
+        minZoom: 8,
+        maxZoom: 18,
       zoomControl: true,
-      attributionControl: false // Desactivar attribution
-    });
+        attributionControl: false,
+        preferCanvas: false,
+        worldCopyJump: false,
+        // FORZAR SISTEMA DE COORDENADAS SIN TRANSFORMACIONES
+        crs: L.CRS.EPSG3857,
+        // Evitar cualquier transformación adicional
+        transform3DLimit: 0
+      });
 
-    console.log('✅ Mapa creado, agregando tiles...');
+      console.log('✅ Mapa creado con sistema de coordenadas EXACTO');
 
     // Agregar capa de tiles de OpenStreetMap
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -208,11 +245,23 @@ function initOpenStreetMap() {
 
     console.log('✅ Tiles agregados, agregando ubicaciones...');
 
-    // Ubicaciones Copa Mundial 2026 Monterrey
-    addMundialLocations();
-    
-    // Configurar interactividad con la lista de ubicaciones
-    setupLocationInteractivity();
+      // Esperar a que el mapa se renderice completamente
+      setTimeout(() => {
+        // Agregar ubicaciones con coordenadas EXACTAS
+        addUbicacionesConCoordenadasExactas();
+        
+        // Configurar interactividad SINCRONIZADA
+        setupLocationInteractivitySincronizada();
+        
+        // Ajustar vista para todas las ubicaciones
+        setTimeout(() => {
+          if (Object.keys(markers).length > 0) {
+            const group = new L.featureGroup(Object.values(markers));
+            map.fitBounds(group.getBounds().pad(0.05));
+            console.log('🗺️ Mapa ajustado para mostrar todas las ubicaciones');
+          }
+        }, 300);
+      }, 200);
 
     console.log('✅ Mapa OpenStreetMap inicializado correctamente');
 
@@ -220,754 +269,189 @@ function initOpenStreetMap() {
     console.error('❌ Error inicializando OpenStreetMap:', error);
     showMapPlaceholder();
   }
-}
+  };
 
-function addMundialLocations() {
-  addMundialLocationsToMap(map);
-}
+  // FUNCIÓN CON COORDENADAS EXACTAS Y IDS SINCRONIZADOS
+  function addUbicacionesConCoordenadasExactas() {
+    console.log('📍 Agregando ubicaciones con coordenadas EXACTAS...');
+    
+    // COORDENADAS EXACTAS - IDS SINCRONIZADOS CON HTML
+    const ubicaciones = [
+      // CENTROS COMERCIALES
+      { id: 'arboleda', name: 'Arboleda', lat: 25.649714, lng: -100.356173, type: 'centro-comercial', municipio: 'San Pedro Garza García' },
+      { id: 'puntovalle', name: 'Punto Valle, The Town Center', lat: 25.659046, lng: -100.354432, type: 'centro-comercial', municipio: 'San Pedro Garza García' },
+      { id: 'chroma', name: 'Chroma San Pedro', lat: 25.652741, lng: -100.352329, type: 'centro-comercial', municipio: 'San Pedro Garza García' },
+      { id: 'auriga', name: 'Auriga San Pedro', lat: 25.648843, lng: -100.339116, type: 'centro-comercial', municipio: 'San Pedro Garza García' },
+      { id: 'fiesta', name: 'Plaza Fiesta San Agustín', lat: 25.64893, lng: -100.336166, type: 'centro-comercial', municipio: 'San Pedro Garza García' },
+      { id: 'metropolitan', name: 'Metropolitan Center', lat: 25.650381, lng: -100.333596, type: 'centro-comercial', municipio: 'San Pedro Garza García' },
+      { id: 'fashion', name: 'Fashion Drive', lat: 25.651295, lng: -100.335131, type: 'centro-comercial', municipio: 'San Pedro Garza García' },
+      { id: 'galerias', name: 'Galerías Valle Oriente', lat: 25.638228, lng: -100.313963, type: 'centro-comercial', municipio: 'Monterrey' },
+      { id: 'citadel', name: 'Plaza Citadel', lat: 25.726138, lng: -100.215214, type: 'centro-comercial', municipio: 'San Nicolás de los Garza' },
+      { id: 'serena', name: 'Pueblo Serena', lat: 25.576056, lng: -100.24827, type: 'centro-comercial', municipio: 'Monterrey' },
+      { id: 'anahuac', name: 'Plaza Fiesta Anahuac', lat: 25.742955, lng: -100.313308, type: 'centro-comercial', municipio: 'San Nicolás de los Garza' },
+      { id: 'ocampo', name: 'Ocampo Corner', lat: 25.666858, lng: -100.320719, type: 'centro-comercial', municipio: 'Monterrey' },
+      { id: 'mexico', name: 'Plaza México', lat: 25.667518, lng: -100.313174, type: 'centro-comercial', municipio: 'Monterrey' },
+      { id: 'via02', name: 'Plaza Via 02', lat: 25.696587, lng: -100.380189, type: 'centro-comercial', municipio: 'Monterrey' },
+      { id: 'hierro', name: 'Plaza Vía Puerta de Hierro', lat: 25.744716, lng: -100.421793, type: 'centro-comercial', municipio: 'Monterrey' },
+      { id: 'lafe', name: 'Paseo La Fe', lat: 25.719691, lng: -100.218991, type: 'centro-comercial', municipio: 'San Nicolás de los Garza' },
+      { id: 'tec', name: 'Paseo Tec', lat: 25.654433, lng: -100.293758, type: 'centro-comercial', municipio: 'Monterrey' },
+      { id: 'juarez', name: 'Paseo Juárez', lat: 25.650405, lng: -100.112078, type: 'centro-comercial', municipio: 'Juárez' },
+      { id: 'nuevosur', name: 'Plaza Nuevo Sur', lat: 25.653529, lng: -100.275301, type: 'centro-comercial', municipio: 'Monterrey' },
+      { id: 'molinete', name: 'El Molinete', lat: 25.662388, lng: -100.149543, type: 'centro-comercial', municipio: 'Monterrey' },
+      
+      // EDIFICIOS
+      { id: 'republica', name: 'Torre República', lat: 25.686054, lng: -100.330094, type: 'edificio', municipio: 'Monterrey' },
+      { id: 'citica', name: 'Cótica', lat: 25.669887, lng: -100.334254, type: 'edificio', municipio: 'Monterrey' },
+      
+      // UBICACIONES ESPECIALES - IDS SINCRONIZADOS CON HTML
+      { id: 'estadio', name: 'Estadio Monterrey', lat: 25.669079, lng: -100.24437, type: 'estadio', municipio: 'Guadalupe' },
+      { id: 'aeropuerto', name: 'Aeropuerto Internacional de Monterrey', lat: 25.77462, lng: -100.11158, type: 'aeropuerto', municipio: 'Apodaca' },
+      { id: 'fanfestival', name: 'Fan Festival (Parque Fundidora)', lat: 25.67715, lng: -100.28232, type: 'parque', municipio: 'Monterrey' },
+      { id: 'hotel', name: 'The Westin Monterrey Valle', lat: 25.659491, lng: -100.355848, type: 'hotel', municipio: 'San Pedro Garza García' }
+    ];
 
-// Función helper para agregar ubicaciones a cualquier mapa
-function addMundialLocationsToMap(mapInstance) {
-  // Todas las ubicaciones del CSV Copa Mundial 2026 Monterrey
-  const locations = [
-    // Centros Comerciales - San Pedro Garza García
-    {
-      id: 'arboleda',
-      name: 'Arboleda',
-      position: [25.649714, -100.356173],
-      description: 'Centro comercial premium al aire libre con alta afluencia familiar y ambiente sofisticado.',
-      category: 'Centro comercial',
-      type: 'centro-comercial',
-      municipio: 'San Pedro Garza García',
-      tags: ['premium', 'aire libre', 'alta afluencia', 'familiar'],
-      traffic: 'Alto',
-      showInCards: true,
-      showInMap: true
-    },
-    {
-      id: 'puntovalle',
-      name: 'Punto Valle, The Town Center',
-      position: [25.659046, -100.354432],
-      description: 'Centro comercial premium con excelente gastronomía y entretenimiento de primer nivel.',
-      category: 'Centro comercial',
-      type: 'centro-comercial',
-      municipio: 'San Pedro Garza García',
-      tags: ['premium', 'gastronomía', 'entretenimiento'],
-      traffic: 'Muy Alto',
-      showInCards: true,
-      showInMap: true
-    },
-    {
-      id: 'chroma',
-      name: 'Chroma San Pedro',
-      position: [25.652741, -100.352329],
-      description: 'Centro comercial con arquitectura moderna, gastronomía y entretenimiento de alta calidad.',
-      category: 'Centro comercial',
-      type: 'centro-comercial',
-      municipio: 'San Pedro Garza García',
-      tags: ['arquitectura moderna', 'gastronomía', 'entretenimiento'],
-      traffic: 'Alto',
-      showInCards: true,
-      showInMap: true
-    },
-    {
-      id: 'auriga',
-      name: 'Auriga San Pedro',
-      position: [25.648843, -100.339116],
-      description: 'Centro comercial moderno enfocado en experiencias, gastronomía y entretenimiento.',
-      category: 'Centro comercial',
-      type: 'centro-comercial',
-      municipio: 'San Pedro Garza García',
-      tags: ['experiencias', 'gastronomía', 'entretenimiento', 'moderno'],
-      traffic: 'Alto',
-      showInCards: true,
-      showInMap: true
-    },
-    {
-      id: 'fiesta',
-      name: 'Plaza Fiesta San Agustín',
-      position: [25.64893, -100.336166],
-      description: 'Centro comercial familiar con alta afluencia, entretenimiento y cercanía al estadio.',
-      category: 'Centro comercial',
-      type: 'centro-comercial',
-      municipio: 'San Pedro Garza García',
-      tags: ['familiar', 'alta afluencia', 'entretenimiento', 'cerca del estadio'],
-      traffic: 'Alto',
-      showInCards: true,
-      showInMap: true
-    },
-    {
-      id: 'metropolitan',
-      name: 'Metropolitan Center',
-      position: [25.650381, -100.333596],
-      description: 'Centro comercial premium de uso mixto con gastronomía exclusiva y alta afluencia.',
-      category: 'Centro comercial',
-      type: 'centro-comercial',
-      municipio: 'San Pedro Garza García',
-      tags: ['premium', 'uso mixto', 'gastronomía', 'alta afluencia'],
-      traffic: 'Muy Alto',
-      showInCards: true,
-      showInMap: true
-    },
-    {
-      id: 'fashion',
-      name: 'Fashion Drive',
-      position: [25.651295, -100.335131],
-      description: 'Centro comercial moderno con gastronomía de calidad, alta afluencia y entretenimiento.',
-      category: 'Centro comercial',
-      type: 'centro-comercial',
-      municipio: 'San Pedro Garza García',
-      tags: ['moderno', 'gastronomía', 'alta afluencia', 'entretenimiento'],
-      traffic: 'Alto',
-      showInCards: true,
-      showInMap: true
-    },
-    
-    // Centros Comerciales - Monterrey
-    {
-      id: 'galerias',
-      name: 'Galerías Valle Oriente',
-      position: [25.638228, -100.313963],
-      description: 'Centro comercial familiar con gastronomía, entretenimiento y alta afluencia en zona céntrica.',
-      category: 'Centro comercial',
-      type: 'centro-comercial',
-      municipio: 'Monterrey',
-      tags: ['familiar', 'gastronomía', 'entretenimiento', 'alta afluencia'],
-      traffic: 'Muy Alto',
-      showInCards: true,
-      showInMap: true
-    },
-    {
-      id: 'serena',
-      name: 'Pueblo Serena',
-      position: [25.576056, -100.24827],
-      description: 'Centro comercial al aire libre, familiar, con gastronomía variada y pet friendly.',
-      category: 'Centro comercial',
-      type: 'centro-comercial',
-      municipio: 'Monterrey',
-      tags: ['aire libre', 'familiar', 'gastronomía', 'pet friendly'],
-      traffic: 'Alto',
-      showInCards: true,
-      showInMap: true
-    },
-    {
-      id: 'ocampo',
-      name: 'Ocampo Corner',
-      position: [25.666858, -100.320719],
-      description: 'Desarrollo de uso mixto moderno con gastronomía, tecnología y ubicación céntrica.',
-      category: 'Centro comercial',
-      type: 'centro-comercial',
-      municipio: 'Monterrey',
-      tags: ['uso mixto', 'moderno', 'gastronomía', 'tecnología', 'céntrico'],
-      traffic: 'Alto',
-      showInCards: true,
-      showInMap: true
-    },
-    {
-      id: 'mexico',
-      name: 'Plaza México',
-      position: [25.667518, -100.313174],
-      description: 'Centro comercial histórico con artesanías, gastronomía local y ubicación céntrica.',
-      category: 'Centro comercial',
-      type: 'centro-comercial',
-      municipio: 'Monterrey',
-      tags: ['histórico', 'artesanal', 'gastronomía', 'céntrico'],
-      traffic: 'Medio',
-      showInCards: true,
-      showInMap: true
-    },
-    {
-      id: 'via02',
-      name: 'Plaza Via 02',
-      position: [25.696587, -100.380189],
-      description: 'Centro comercial moderno con gastronomía, entretenimiento y ambiente familiar.',
-      category: 'Centro comercial',
-      type: 'centro-comercial',
-      municipio: 'Monterrey',
-      tags: ['moderno', 'gastronomía', 'entretenimiento', 'familiar'],
-      traffic: 'Alto',
-      showInCards: true,
-      showInMap: true
-    },
-    {
-      id: 'hierro',
-      name: 'Plaza Vía Puerta de Hierro',
-      position: [25.744716, -100.421793],
-      description: 'Centro comercial moderno con gastronomía, entretenimiento y fácil accesibilidad.',
-      category: 'Centro comercial',
-      type: 'centro-comercial',
-      municipio: 'Monterrey',
-      tags: ['moderno', 'gastronomía', 'entretenimiento', 'accesible'],
-      traffic: 'Alto',
-      showInCards: true,
-      showInMap: true
-    },
-    {
-      id: 'tec',
-      name: 'Paseo Tec',
-      position: [25.654433, -100.293758],
-      description: 'Centro comercial de uso mixto con gastronomía, entretenimiento y ubicación céntrica.',
-      category: 'Centro comercial',
-      type: 'centro-comercial',
-      municipio: 'Monterrey',
-      tags: ['uso mixto', 'gastronomía', 'entretenimiento', 'céntrico'],
-      traffic: 'Alto',
-      showInCards: true,
-      showInMap: true
-    },
-    {
-      id: 'nuevosur',
-      name: 'Plaza Nuevo Sur',
-      position: [25.653529, -100.275301],
-      description: 'Centro comercial al aire libre con gastronomía, entretenimiento y diseño moderno.',
-      category: 'Centro comercial',
-      type: 'centro-comercial',
-      municipio: 'Monterrey',
-      tags: ['aire libre', 'gastronomía', 'entretenimiento', 'moderno'],
-      traffic: 'Alto',
-      showInCards: true,
-      showInMap: true
-    },
-    
-    // Centros Comerciales - San Nicolás de los Garza
-    {
-      id: 'citadel',
-      name: 'Plaza Citadel',
-      position: [25.726138, -100.215214],
-      description: 'Centro comercial familiar con gastronomía, entretenimiento y fácil accesibilidad.',
-      category: 'Centro comercial',
-      type: 'centro-comercial',
-      municipio: 'San Nicolás de los Garza',
-      tags: ['familiar', 'gastronomía', 'entretenimiento', 'accesible'],
-      traffic: 'Alto',
-      showInCards: true,
-      showInMap: true
-    },
-    {
-      id: 'anahuac',
-      name: 'Plaza Fiesta Anahuac',
-      position: [25.742955, -100.313308],
-      description: 'Centro comercial familiar con gastronomía, entretenimiento y alta afluencia diaria.',
-      category: 'Centro comercial',
-      type: 'centro-comercial',
-      municipio: 'San Nicolás de los Garza',
-      tags: ['familiar', 'gastronomía', 'entretenimiento', 'alta afluencia'],
-      traffic: 'Alto',
-      showInCards: true,
-      showInMap: true
-    },
-    {
-      id: 'lafe',
-      name: 'Paseo La Fe',
-      position: [25.719691, -100.218991],
-      description: 'Centro comercial al aire libre, pet friendly, con gastronomía y entretenimiento.',
-      category: 'Centro comercial',
-      type: 'centro-comercial',
-      municipio: 'San Nicolás de los Garza',
-      tags: ['aire libre', 'pet friendly', 'gastronomía', 'entretenimiento'],
-      traffic: 'Alto',
-      showInCards: true,
-      showInMap: true
-    },
-    
-    // Otros municipios
-    {
-      id: 'juarez',
-      name: 'Paseo Juárez',
-      position: [25.650405, -100.112078],
-      description: 'Centro comercial familiar con gastronomía, entretenimiento y buena accesibilidad.',
-      category: 'Centro comercial',
-      type: 'centro-comercial',
-      municipio: 'Ciudad Benito Juárez',
-      tags: ['familiar', 'gastronomía', 'entretenimiento', 'accesible'],
-      traffic: 'Medio',
-      showInCards: true,
-      showInMap: true
-    },
-    {
-      id: 'molinete',
-      name: 'El Molinete',
-      position: [25.662388, -100.149543],
-      description: 'Centro comercial al aire libre, familiar, con gastronomía y entretenimiento variado.',
-      category: 'Centro comercial',
-      type: 'centro-comercial',
-      municipio: 'Guadalupe',
-      tags: ['aire libre', 'familiar', 'gastronomía', 'entretenimiento'],
-      traffic: 'Alto',
-      showInCards: true,
-      showInMap: true
-    },
-    
-    // Edificios de uso mixto
-    {
-      id: 'republica',
-      name: 'Torre República',
-      position: [25.686054, -100.330094],
-      description: 'Desarrollo de uso mixto con residencial, amenidades y ubicación céntrica moderna.',
-      category: 'Edificio',
-      type: 'edificio',
-      municipio: 'Monterrey',
-      tags: ['uso mixto', 'residencial', 'amenidades', 'céntrico', 'moderno'],
-      traffic: 'Alto',
-      showInCards: true,
-      showInMap: true
-    },
-    {
-      id: 'citica',
-      name: 'Crítica',
-      position: [25.669887, -100.334254],
-      description: 'Desarrollo de uso mixto con residencial, oficinas, gastronomía y ubicación céntrica.',
-      category: 'Edificio',
-      type: 'edificio',
-      municipio: 'Monterrey',
-      tags: ['uso mixto', 'residencial', 'oficinas', 'gastronomía', 'céntrico'],
-      traffic: 'Alto',
-      showInCards: true,
-      showInMap: true
-    },
-    
-    // Ubicaciones especiales (solo en mapa)
-    {
-      id: 'estadio',
-      name: 'Estadio Monterrey',
-      position: [25.669079, -100.24437],
-      description: 'Estadio moderno sede de la Copa Mundial 2026 con alta afluencia y conectividad.',
-      category: 'Estadio',
-      type: 'estadio',
-      municipio: 'Guadalupe',
-      tags: ['deportivo', 'moderno', 'alta afluencia', 'sede mundial'],
-      traffic: 'Muy Alto',
-      showInCards: false,
-      showInMap: true
-    },
-    {
-      id: 'aeropuerto',
-      name: 'Aeropuerto Internacional de Monterrey',
-      position: [25.77462, -100.11158],
-      description: 'Aeropuerto internacional moderno con alta afluencia y excelente conectividad mundial.',
-      category: 'Aeropuerto',
-      type: 'aeropuerto',
-      municipio: 'Apodaca',
-      tags: ['internacional', 'moderno', 'alta afluencia', 'conectividad'],
-      traffic: 'Muy Alto',
-      showInCards: false,
-      showInMap: true
-    },
-    {
-      id: 'fanfestival',
-      name: 'Fan Festival (Parque Fundidora)',
-      position: [25.67715, -100.28232],
-      description: 'Evento oficial Copa Mundial al aire libre con alta afluencia, gastronomía y entretenimiento.',
-      category: 'Parque',
-      type: 'parque',
-      municipio: 'Monterrey',
-      tags: ['evento oficial', 'aire libre', 'alta afluencia', 'gastronomía', 'entretenimiento'],
-      traffic: 'Muy Alto',
-      showInCards: false,
-      showInMap: true
-    }
-  ];
-
-  // Función para obtener el icono correcto según el tipo
-  function getMarkerIcon(location) {
-    // Transformar tipo correctamente: centro-comercial -> CentroComercial
-    const fileName = location.type
-      .split('-')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join('') + '.png';
-    
-    const imagePath = getAssetPath('/assets/map-pins/' + fileName);
-    console.log('🔍 Construyendo ruta de imagen para', location.type, '→', fileName, ':', imagePath);
+    function createCustomIcon(ubicacion) {
+      const typeToFileName = {
+        'centro-comercial': 'CentroComercial.png',
+        'edificio': 'Edificio.png', 
+        'estadio': 'Estadio.png',
+        'aeropuerto': 'Aeropuerto.png',
+        'parque': 'Parque.png',
+        'hotel': 'Hotel.png'
+      };
+      
+      const fileName = typeToFileName[ubicacion.type] || 'CentroComercial.png';
+      const imagePath = `/public/map-pins/${fileName}`;
+      
+      console.log('🔍 Creando icono para:', ubicacion.name, '→', fileName);
     
     const iconHtml = `
-      <div class="circle-wrapper ${location.type}">
-        <img src="${imagePath}" alt="${location.category}" />
+        <div class="circle-wrapper ${ubicacion.type}">
+          <img src="${imagePath}" alt="${ubicacion.type}" />
       </div>
     `;
     
     return L.divIcon({
       html: iconHtml,
       className: 'custom-marker-icon',
-      iconSize: [48, 48],
-      iconAnchor: [24, 24],
-      popupAnchor: [0, -24]
-    });
-  }
+        iconSize: [50, 50],
+        iconAnchor: [25, 50],
+        popupAnchor: [0, -50]
+      });
+    }
 
-  // Función para obtener emoji según el tag
-  function getEmojiForTag(tag) {
-    const emojiMap = {
-      // Características generales
-      'premium': '💎',
-      'moderno': '🏗️',
-      'histórico': '🏛️',
-      'familiar': '👨‍👩‍👧‍👦',
-      'aire libre': '🌳',
-      'pet friendly': '🐕',
-      'uso mixto': '🏢',
-      'accesible': '♿',
+    // Agregar marcadores con coordenadas EXACTAS
+    ubicaciones.forEach(ubicacion => {
+      console.log('📌 Agregando:', ubicacion.name, 'en EXACTAMENTE', ubicacion.lat, ubicacion.lng);
       
-      // Servicios y comodidades
-      'gastronomía': '🍽️',
-      'entretenimiento': '🎯',
-      'tecnología': '💻',
-      'experiencias': '⭐',
-      'amenidades': '🏨',
-      'arquitectura moderna': '🏗️',
+      // CREAR COORDENADAS EXACTAS SIN TRANSFORMACIONES
+      const exactLat = parseFloat(ubicacion.lat.toFixed(6));
+      const exactLng = parseFloat(ubicacion.lng.toFixed(6));
+      const latlng = L.latLng(exactLat, exactLng);
       
-      // Ubicación
-      'céntrico': '📍',
-      'conectividad': '🔗',
-      'residencial': '🏠',
-      'oficinas': '🏢',
+      console.log('🎯 LatLng EXACTO:', latlng.toString());
       
-      // Nivel de actividad
-      'alta afluencia': '👥',
-      'artesanal': '🎨',
-      
-      // Deportivo/Eventos
-      'deportivo': '⚽',
-      'sede mundial': '🏆',
-      'evento oficial': '🎪',
-      
-      // Proximidad
-      'cerca del estadio': '🏟️'
-    };
-    
-    return emojiMap[tag.toLowerCase()] || '🏷️';
-  }
-
-  // Agregar marcadores al mapa
-  locations.forEach(location => {
-    if (location.showInMap) {
-      const marker = L.marker(location.position, {
-        icon: getMarkerIcon(location)
+      // Crear marcador
+      const marker = L.marker(latlng, {
+        icon: createCustomIcon(ubicacion),
+        riseOnHover: true,
+        title: ubicacion.name
       });
       
-      marker.addTo(mapInstance)
-        .bindPopup(`
+      // POPUP CON COORDENADAS PARA DEBUGGING
+      // Popup con información y tags específicos
+      const tags = getUbicacionTags(ubicacion);
+      const popupContent = `
           <div class="mundial-popup">
             <div class="mundial-popup-header">
-              <h3>${location.name}</h3>
-              <span class="mundial-popup-badge ${location.type}">${location.category}</span>
+            <h3>${ubicacion.name}</h3>
+            <span class="mundial-popup-badge ${ubicacion.type}">${ubicacion.type.replace('-', ' ')}</span>
             </div>
-            <p class="mundial-popup-description">${location.description}</p>
+          <p class="mundial-popup-description">📍 ${ubicacion.municipio}</p>
             <div class="mundial-popup-stats">
-              <span class="mundial-stat">📍 ${location.municipio}</span>
-              <span class="mundial-stat">🎯 Tráfico: ${location.traffic}</span>
-              ${location.tags.map(tag => `<span class="mundial-stat">${getEmojiForTag(tag)} ${tag}</span>`).join('')}
+            ${tags.map(tag => `<span class="mundial-popup-tag">${tag}</span>`).join('')}
             </div>
           </div>
-        `, {
+      `;
+      
+      marker.bindPopup(popupContent, {
           className: 'mundial-popup-container'
         });
       
-      // Solo agregar a markers global si es el mapa principal
-      if (mapInstance === map) {
-        markers[location.id] = marker;
-      }
-    }
-  });
+      marker.addTo(map);
+      markers[ubicacion.id] = marker;
+      
+      console.log('✅ Marcador agregado:', ubicacion.id, 'en posición final:', marker.getLatLng().toString());
+    });
 
-  // Agregar CSS según el documento estilos-pines-mapa.md
-  if (!document.querySelector('#mundial-marker-popup-styles')) {
-    const worldCupStyles = document.createElement('style');
-    worldCupStyles.id = 'mundial-marker-popup-styles';
-    worldCupStyles.textContent = `
-      :root {
-        --mundial-purple: #8b5cf6;
-      }
-      
-      /* Estructura de marcadores según estilos-pines-mapa.md */
-      .custom-marker-icon {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: transparent !important;
-        border: none !important;
-      }
-      
-      .circle-wrapper {
-        width: 48px;
-        height: 48px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        transition: all 0.3s ease;
-        z-index: 2;
-      }
-      
-      .circle-wrapper img {
-        width: 70%;
-        height: 70%;
-        object-fit: cover;
-        border-radius: 50%;
-        z-index: 3;
-      }
-      
-      /* Fondos por categoría según el documento */
-      .circle-wrapper.centro-comercial {
-        background: linear-gradient(135deg, #4a4a4a, #5a5a5a);
-        box-shadow: 0 4px 15px #4a4a4a66;
-      }
-      
-      .circle-wrapper.edificio {
-        background: linear-gradient(135deg, #3a4a5c, #4a5a6c);
-        box-shadow: 0 4px 15px #3a4a5c66;
-      }
-      
-      .circle-wrapper.estadio {
-        background: linear-gradient(135deg, #5c4a3a, #6c5a4a);
-        box-shadow: 0 4px 15px #5c4a3a66;
-      }
-      
-      .circle-wrapper.aeropuerto {
-        background: linear-gradient(135deg, #3a5c4a, #4a6c5a);
-        box-shadow: 0 4px 15px #3a5c4a66;
-      }
-      
-      .circle-wrapper.parque {
-        background: linear-gradient(135deg, #4a5c3a, #5a6c4a);
-        box-shadow: 0 4px 15px #4a5c3a66;
-      }
-      
-      .circle-wrapper.hotel {
-        background: linear-gradient(135deg, #5c3a4a, #6c4a5a);
-        box-shadow: 0 4px 15px #5c3a4a66;
-      }
-      
-      /* Animación de pulso según el documento */
-      @keyframes mundial-pulse-new {
-        0% { transform: scale(0.8); opacity: 1; }
-        100% { transform: scale(2); opacity: 0; }
-      }
-      
-      .circle-wrapper:before {
-        content: "";
-        position: absolute;
-        top: -5px; left: -5px; right: -5px; bottom: -5px;
-        border-radius: 50%;
-        animation: mundial-pulse-new 2s infinite;
-        z-index: 1;
-      }
-      
-      /* Colores de pulso por categoría */
-      .circle-wrapper.centro-comercial:before { background: #4a4a4a33; }
-      .circle-wrapper.edificio:before { background: #3a4a5c33; }
-      .circle-wrapper.estadio:before { background: #5c4a3a33; }
-      .circle-wrapper.aeropuerto:before { background: #3a5c4a33; }
-      .circle-wrapper.parque:before { background: #4a5c3a33; }
-      .circle-wrapper.hotel:before { background: #5c3a4a33; }
-      
-      /* Efecto hover según el documento */
-      .custom-marker-icon:hover .circle-wrapper {
-        transform: scale(1.15);
-        box-shadow: 0 6px 25px #0006;
-      }
-      
-      .custom-marker-icon:hover .circle-wrapper.centro-comercial {
-        box-shadow: 0 6px 25px #4a4a4a99;
-      }
-      
-      .custom-marker-icon:hover .circle-wrapper.edificio {
-        box-shadow: 0 6px 25px #3a4a5c99;
-      }
-      
-      .custom-marker-icon:hover .circle-wrapper.estadio {
-        box-shadow: 0 6px 25px #5c4a3a99;
-      }
-      
-      .custom-marker-icon:hover .circle-wrapper.aeropuerto {
-        box-shadow: 0 6px 25px #3a5c4a99;
-      }
-      
-      .custom-marker-icon:hover .circle-wrapper.parque {
-        box-shadow: 0 6px 25px #4a5c3a99;
-      }
-      
-      .custom-marker-icon:hover .circle-wrapper.hotel {
-        box-shadow: 0 6px 25px #5c3a4a99;
-      }
-      
-      /* Popups originales mejorados */
-      .mundial-popup-badge.centro-comercial {
-        background: linear-gradient(135deg, #4a4a4a, #5a5a5a) !important;
-      }
-      
-      .mundial-popup-badge.edificio {
-        background: linear-gradient(135deg, #3a4a5c, #4a5a6c) !important;
-      }
-      
-      .mundial-popup-badge.estadio {
-        background: linear-gradient(135deg, #5c4a3a, #6c5a4a) !important;
-        animation: special-glow 2s infinite alternate;
-      }
-      
-      .mundial-popup-badge.aeropuerto {
-        background: linear-gradient(135deg, #3a5c4a, #4a6c5a) !important;
-        animation: special-glow 2s infinite alternate;
-      }
-      
-      .mundial-popup-badge.parque {
-        background: linear-gradient(135deg, #4a5c3a, #5a6c4a) !important;
-        animation: special-glow 2s infinite alternate;
-      }
-      
-      .mundial-popup-badge.hotel {
-        background: linear-gradient(135deg, #5c3a4a, #6c4a5a) !important;
-      }
-      
-      @keyframes special-glow {
-        from {
-          box-shadow: 0 0 5px rgba(139, 92, 246, 0.3);
+    console.log('✅ TOTAL:', Object.keys(markers).length, 'marcadores agregados');
+    
+    // VERIFICACIÓN FINAL DE COORDENADAS
+    setTimeout(() => {
+      console.log('🔍 VERIFICACIÓN FINAL DE COORDENADAS:');
+      ubicaciones.forEach(ubicacion => {
+        const marker = markers[ubicacion.id];
+        if (marker) {
+          const markerPos = marker.getLatLng();
+          console.log(`📍 ${ubicacion.name}: Original[${ubicacion.lat}, ${ubicacion.lng}] → Leaflet[${markerPos.lat}, ${markerPos.lng}]`);
         }
-        to {
-          box-shadow: 0 0 15px rgba(139, 92, 246, 0.6);
-        }
-      }
-      
-      .mundial-popup-container .leaflet-popup-content-wrapper {
-        background: #fff;
-        border-radius: 15px;
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-        border: none;
-        padding: 0;
-      }
-      
-      .mundial-popup-container .leaflet-popup-content {
-        margin: 0;
-        padding: 0;
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      }
-      
-      .mundial-popup-container .leaflet-popup-tip {
-        background: #fff;
-        box-shadow: none;
-      }
-      
-      .mundial-popup {
-        padding: 1.5rem;
-        color: #333;
-      }
-      
-      .mundial-popup-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        margin-bottom: 1rem;
-      }
-      
-      .mundial-popup-header h3 {
-        color: var(--mundial-purple);
-        font-weight: 700;
-        font-size: 1.1rem;
-        margin: 0;
-        flex: 1;
-      }
-      
-      .mundial-popup-badge {
-        color: #fff;
-        padding: 0.25rem 0.75rem;
-        border-radius: 20px;
-        font-size: 0.75rem;
-        font-weight: 600;
-        margin-left: 1rem;
-        white-space: nowrap;
-      }
-      
-      .mundial-popup-description {
-        color: #555;
-        line-height: 1.5;
-        margin-bottom: 1rem;
-        font-size: 0.9rem;
-      }
-      
-      .mundial-popup-stats {
-        display: flex;
-        gap: 0.5rem;
-        flex-wrap: wrap;
-      }
-      
-      .mundial-stat {
-        background: #f8f9fa;
-        padding: 0.25rem 0.5rem;
-        border-radius: 15px;
-        font-size: 0.75rem;
-        color: #666;
-        font-weight: 500;
-      }
-    `;
-    document.head.appendChild(worldCupStyles);
+      });
+    }, 500);
   }
-}
 
-function setupLocationInteractivity() {
-  // Configurar interactividad para ubicaciones destacadas (usan data-location)
-  const locationCards = document.querySelectorAll('.ubicacion-item[data-location]');
-  locationCards.forEach(card => {
-    card.addEventListener('click', () => {
-      const locationId = card.dataset.location;
-      console.log(`🔗 Tarjeta clickeada: ${locationId}`);
-      if (markers[locationId]) {
-        animateToLocation(markers[locationId].getLatLng(), locationId);
+  // INTERACTIVIDAD SINCRONIZADA
+  function setupLocationInteractivitySincronizada() {
+    console.log('🔗 Configurando interactividad sincronizada...');
+    
+    // Configurar TODOS los elementos con data-location
+    const locationElements = document.querySelectorAll('[data-location]');
+    console.log('🎯 Elementos encontrados con data-location:', locationElements.length);
+    
+    locationElements.forEach(element => {
+      const locationId = element.dataset.location;
+      console.log('🔍 Configurando elemento:', locationId);
+      
+      element.addEventListener('click', () => {
+        console.log(`🎯 CLICK en: ${locationId}`);
+        
+        if (markers[locationId]) {
+          console.log('✅ Marcador encontrado, animando...');
+          const marker = markers[locationId];
+          const latlng = marker.getLatLng();
+          
+          // Animar hacia la ubicación
+          map.flyTo(latlng, 15, {
+            animate: true,
+            duration: 1.5,
+            easeLinearity: 0.25
+          });
+          
+          // Abrir popup
+          setTimeout(() => {
+            marker.openPopup();
+          }, 1500);
+          
       } else {
-        console.warn(`❌ No se encontró marcador para: ${locationId}`);
+          console.error(`❌ No se encontró marcador para: ${locationId}`);
         console.log('Marcadores disponibles:', Object.keys(markers));
       }
-    });
-  });
-
-  // Configurar para tarjetas especiales (también usan data-location)
-  const specialCards = document.querySelectorAll('.special-card[data-location]');
-  specialCards.forEach(card => {
-    card.addEventListener('click', () => {
-      const locationId = card.dataset.location;
-      console.log(`🎯 Tarjeta especial clickeada: ${locationId}`);
-      if (markers[locationId]) {
-        animateToLocation(markers[locationId].getLatLng(), locationId);
-      } else {
-        console.warn(`❌ No se encontró marcador para tarjeta especial: ${locationId}`);
-        console.log('Marcadores disponibles:', Object.keys(markers));
-      }
-    });
-  });
-  
-  // Agregar cursor pointer a las tarjetas
-  [...locationCards, ...specialCards].forEach(card => {
-    card.style.cursor = 'pointer';
-    card.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease';
-    
-    card.addEventListener('mouseenter', () => {
-      card.style.transform = 'translateY(-2px)';
-      card.style.boxShadow = '0 8px 25px rgba(0,0,0,0.1)';
-    });
-    
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = 'translateY(0)';
-      card.style.boxShadow = '';
+      });
+      
+      // Agregar hover effects
+      element.style.cursor = 'pointer';
+      element.style.transition = 'transform 0.2s ease';
+      
+      element.addEventListener('mouseenter', () => {
+        element.style.transform = 'translateY(-2px)';
+      });
+      
+      element.addEventListener('mouseleave', () => {
+        element.style.transform = 'translateY(0)';
     });
   });
 }
 
-function animateToLocation(latlng, locationId) {
-  console.log(`🎯 Animando hacia ubicación: ${locationId}`);
-  
-  // Usar flyTo con la configuración original más elegante
-  map.flyTo(latlng, 15, {
-    animate: true,
-    duration: 2,
-    easeLinearity: 0.25,
-    padding: [50, 50]
-  });
-  
-  // Abrir popup después de la animación
-  setTimeout(() => {
-    if (markers[locationId]) {
-      markers[locationId].openPopup();
-    }
-  }, 2000); // Sincronizar con la duración del flyTo
+  initMap();
 }
 
 function showMapPlaceholder() {
@@ -976,7 +460,7 @@ function showMapPlaceholder() {
     mapElement.innerHTML = `
       <div class="map-placeholder">
         <div class="placeholder-content">
-          <i class="fas fa-map-marked-alt"></i>
+          <i class="ri-map-pin-line"></i>
           <h3>Mapa Interactivo</h3>
           <p>Ubicaciones estratégicas en Monterrey</p>
           <small>Cargando mapa...</small>
@@ -1030,7 +514,7 @@ async function simulateFormSubmission() {
 
 function setButtonLoading(button, loading, originalText = '') {
   if (loading) {
-    button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Enviando...</span>';
+    button.innerHTML = '<i class="ri-loader-4-line"></i> <span>Enviando...</span>';
     button.disabled = true;
     button.style.opacity = '0.8';
   } else {
@@ -1265,6 +749,8 @@ window.closeMobileNav = function() {
 
 // Funciones para pantalla completa del mapa
 window.openFullscreenMap = function() {
+  console.log('🔍 Abriendo mapa en pantalla completa...');
+  
   // Remover overlay existente si lo hay
   const existingOverlay = document.getElementById('fullscreen-map-overlay');
   if (existingOverlay) {
@@ -1288,31 +774,33 @@ window.openFullscreenMap = function() {
   
   fullscreenOverlay.innerHTML = `
     <div class="fullscreen-map-container" style="
-      width: 90%;
-      height: 90%;
-      background: white;
+      width: 95%;
+      height: 95%;
+      background: #1f1f1f;
       border-radius: 15px;
       position: relative;
       overflow: hidden;
+      border: 2px solid #333;
     ">
       <button class="close-fullscreen" onclick="closeFullscreenMap()" style="
         position: absolute;
-        top: 20px;
-        right: 20px;
-        width: 40px;
-        height: 40px;
-        background: rgba(0, 0, 0, 0.7);
+        top: 15px;
+        right: 15px;
+        width: 45px;
+        height: 45px;
+        background: rgba(230, 0, 35, 0.9);
         color: white;
         border: none;
         border-radius: 50%;
-        font-size: 20px;
+        font-size: 24px;
         cursor: pointer;
         z-index: 10001;
         display: flex;
         align-items: center;
         justify-content: center;
         transition: all 0.3s ease;
-      " onmouseover="this.style.background='rgba(0, 0, 0, 0.9)'" onmouseout="this.style.background='rgba(0, 0, 0, 0.7)'">×</button>
+        font-weight: bold;
+      " onmouseover="this.style.background='rgba(230, 0, 35, 1)'; this.style.transform='scale(1.1)'" onmouseout="this.style.background='rgba(230, 0, 35, 0.9)'; this.style.transform='scale(1)'">×</button>
       <div id="fullscreen-map" style="width: 100%; height: 100%;"></div>
     </div>
   `;
@@ -1320,21 +808,46 @@ window.openFullscreenMap = function() {
   document.body.appendChild(fullscreenOverlay);
   document.body.style.overflow = 'hidden';
   
-  // Crear nuevo mapa en pantalla completa
-  const fullscreenMap = L.map('fullscreen-map', {
+  // Esperar a que el DOM se actualice antes de crear el mapa
+  setTimeout(() => {
+    try {
+      console.log('🗺️ Creando mapa fullscreen...');
+      
+      // Crear nuevo mapa en pantalla completa con configuración exacta
+      const fullscreenMapInstance = L.map('fullscreen-map', {
     center: [25.6866, -100.3161],
-    zoom: 12,
+        zoom: 11,
     zoomControl: true,
-    attributionControl: false
+        attributionControl: false,
+        preferCanvas: false,
+        crs: L.CRS.EPSG3857
   });
   
+      // Agregar tiles
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '',
-    maxZoom: 19
-  }).addTo(fullscreenMap);
-  
-  // Agregar ubicaciones al mapa de pantalla completa
-  addMundialLocationsToMap(fullscreenMap);
+        maxZoom: 19,
+        className: 'mundial-map-tiles'
+      }).addTo(fullscreenMapInstance);
+      
+      console.log('✅ Tiles agregados al mapa fullscreen');
+      
+      // Agregar ubicaciones después de un pequeño delay
+      setTimeout(() => {
+        addUbicacionesFullscreen(fullscreenMapInstance);
+        console.log('✅ Ubicaciones agregadas al mapa fullscreen');
+        
+        // Ajustar vista
+        setTimeout(() => {
+          fullscreenMapInstance.invalidateSize();
+          console.log('✅ Mapa fullscreen redimensionado');
+        }, 200);
+      }, 300);
+      
+    } catch (error) {
+      console.error('❌ Error creando mapa fullscreen:', error);
+    }
+  }, 100);
   
   // Cerrar con ESC
   const closeOnEsc = function(e) {
@@ -1361,6 +874,155 @@ window.closeFullscreenMap = function() {
   document.body.style.overflow = 'auto';
 };
 
+// Función específica para agregar ubicaciones al mapa fullscreen
+function addUbicacionesFullscreen(mapInstance) {
+  console.log('📍 Agregando ubicaciones al mapa fullscreen...');
+  
+  // Mismas ubicaciones con coordenadas exactas
+  const ubicaciones = [
+    // CENTROS COMERCIALES
+    { id: 'arboleda', name: 'Arboleda', lat: 25.649714, lng: -100.356173, type: 'centro-comercial', municipio: 'San Pedro Garza García' },
+    { id: 'puntovalle', name: 'Punto Valle, The Town Center', lat: 25.659046, lng: -100.354432, type: 'centro-comercial', municipio: 'San Pedro Garza García' },
+    { id: 'chroma', name: 'Chroma San Pedro', lat: 25.652741, lng: -100.352329, type: 'centro-comercial', municipio: 'San Pedro Garza García' },
+    { id: 'auriga', name: 'Auriga San Pedro', lat: 25.648843, lng: -100.339116, type: 'centro-comercial', municipio: 'San Pedro Garza García' },
+    { id: 'fiesta', name: 'Plaza Fiesta San Agustín', lat: 25.64893, lng: -100.336166, type: 'centro-comercial', municipio: 'San Pedro Garza García' },
+    { id: 'metropolitan', name: 'Metropolitan Center', lat: 25.650381, lng: -100.333596, type: 'centro-comercial', municipio: 'San Pedro Garza García' },
+    { id: 'fashion', name: 'Fashion Drive', lat: 25.651295, lng: -100.335131, type: 'centro-comercial', municipio: 'San Pedro Garza García' },
+    { id: 'galerias', name: 'Galerías Valle Oriente', lat: 25.638228, lng: -100.313963, type: 'centro-comercial', municipio: 'Monterrey' },
+    { id: 'citadel', name: 'Plaza Citadel', lat: 25.726138, lng: -100.215214, type: 'centro-comercial', municipio: 'San Nicolás de los Garza' },
+    { id: 'serena', name: 'Pueblo Serena', lat: 25.576056, lng: -100.24827, type: 'centro-comercial', municipio: 'Monterrey' },
+    { id: 'anahuac', name: 'Plaza Fiesta Anahuac', lat: 25.742955, lng: -100.313308, type: 'centro-comercial', municipio: 'San Nicolás de los Garza' },
+    { id: 'ocampo', name: 'Ocampo Corner', lat: 25.666858, lng: -100.320719, type: 'centro-comercial', municipio: 'Monterrey' },
+    { id: 'mexico', name: 'Plaza México', lat: 25.667518, lng: -100.313174, type: 'centro-comercial', municipio: 'Monterrey' },
+    { id: 'via02', name: 'Plaza Via 02', lat: 25.696587, lng: -100.380189, type: 'centro-comercial', municipio: 'Monterrey' },
+    { id: 'hierro', name: 'Plaza Vía Puerta de Hierro', lat: 25.744716, lng: -100.421793, type: 'centro-comercial', municipio: 'Monterrey' },
+    { id: 'lafe', name: 'Paseo La Fe', lat: 25.719691, lng: -100.218991, type: 'centro-comercial', municipio: 'San Nicolás de los Garza' },
+    { id: 'molinete', name: 'El Molinete', lat: 25.764616, lng: -100.194068, type: 'centro-comercial', municipio: 'Juárez' },
+    { id: 'sendero', name: 'Sendero Apodaca', lat: 25.773959, lng: -100.133334, type: 'centro-comercial', municipio: 'Apodaca' },
+    { id: 'portanova', name: 'Portanova', lat: 25.670277, lng: -100.163888, type: 'centro-comercial', municipio: 'Guadalupe' },
+    { id: 'citykayser', name: 'City Kayser', lat: 25.731372, lng: -100.253944, type: 'centro-comercial', municipio: 'Escobedo' },
+    
+    // EDIFICIOS MIXTOS
+    { id: 'centrito', name: 'Centrito Valle', lat: 25.654054, lng: -100.349945, type: 'edificio', municipio: 'San Pedro Garza García' },
+    { id: 'torre-kr', name: 'Torre KR', lat: 25.655554, lng: -100.340912, type: 'edificio', municipio: 'San Pedro Garza García' },
+    
+    // UBICACIONES ESPECIALES
+    { id: 'estadio', name: 'Estadio BBVA', lat: 25.669079, lng: -100.24437, type: 'estadio', municipio: 'Guadalupe' },
+    { id: 'aeropuerto', name: 'Aeropuerto Internacional de Monterrey', lat: 25.77462, lng: -100.11158, type: 'aeropuerto', municipio: 'Apodaca' },
+    { id: 'fanfest', name: 'Fan Festival', lat: 25.67715, lng: -100.28232, type: 'parque', municipio: 'Monterrey' },
+    { id: 'hotel', name: 'The Westin Monterrey Valle', lat: 25.659491, lng: -100.355848, type: 'hotel', municipio: 'San Pedro Garza García' }
+  ];
+
+  const fullscreenMarkers = {};
+  
+  ubicaciones.forEach(ubicacion => {
+    try {
+      // Crear icono personalizado
+      const iconClass = ubicacion.type === 'edificio' ? 'edificio' : ubicacion.type;
+      const iconFileName = getIconFileName(ubicacion.type);
+      
+      const customIcon = L.divIcon({
+        html: `<div class="circle-wrapper ${iconClass}">
+                 <img src="/public/map-pins/${iconFileName}" alt="${ubicacion.type}" onerror="this.style.display='none'">
+               </div>`,
+        className: 'custom-marker-icon',
+        iconSize: [50, 50],
+        iconAnchor: [25, 50],
+        popupAnchor: [0, -50]
+      });
+
+      // Crear marcador
+      const marker = L.marker([ubicacion.lat, ubicacion.lng], { 
+        icon: customIcon,
+        title: ubicacion.name
+      });
+
+      // Popup con información y tags específicos
+      const tags = getUbicacionTags(ubicacion);
+      const popupContent = `
+        <div class="mundial-popup">
+          <div class="mundial-popup-header">
+            <h3>${ubicacion.name}</h3>
+            <span class="mundial-popup-badge ${iconClass}">${ubicacion.type.replace('-', ' ')}</span>
+          </div>
+          <p class="mundial-popup-description">${ubicacion.municipio}</p>
+          <div class="mundial-popup-stats">
+            ${tags.map(tag => `<span class="mundial-popup-tag">${tag}</span>`).join('')}
+          </div>
+        </div>
+      `;
+
+      marker.bindPopup(popupContent, {
+        className: 'mundial-popup-container',
+        maxWidth: 300,
+        closeButton: true
+      });
+
+      marker.addTo(mapInstance);
+      fullscreenMarkers[ubicacion.id] = marker;
+
+    } catch (error) {
+      console.error(`❌ Error agregando ubicación ${ubicacion.name}:`, error);
+    }
+  });
+
+  console.log(`✅ ${Object.keys(fullscreenMarkers).length} ubicaciones agregadas al mapa fullscreen`);
+  
+  // Ajustar vista para mostrar todas las ubicaciones
+  if (Object.keys(fullscreenMarkers).length > 0) {
+    setTimeout(() => {
+      const group = new L.featureGroup(Object.values(fullscreenMarkers));
+      mapInstance.fitBounds(group.getBounds().pad(0.05));
+      console.log('🗺️ Vista del mapa fullscreen ajustada');
+    }, 500);
+  }
+}
+
+function getIconFileName(type) {
+  const iconMap = {
+    'centro-comercial': 'CentroComercial.png',
+    'edificio': 'Edificio.png',
+    'estadio': 'Estadio.png',
+    'aeropuerto': 'Aeropuerto.png',
+    'parque': 'Parque.png',
+    'hotel': 'Hotel.png'
+  };
+  return iconMap[type] || 'CentroComercial.png';
+}
+
+function getUbicacionTags(ubicacion) {
+  const tagMap = {
+    'arboleda': ['🌳 Premium', '🎯 Alto tráfico', '👨‍👩‍👧‍👦 Familiar'],
+    'puntovalle': ['🛍️ Shopping', '🎯 Alto tráfico', '🅿️ Amplio estacionamiento'],
+    'chroma': ['💎 Moderno', '🎯 Alto tráfico', '🍽️ Gastronomía'],
+    'auriga': ['⭐ Experiencias', '🎯 Alto tráfico', '🎭 Entretenimiento'],
+    'fiesta': ['🎪 Familiar', '🎯 Alto tráfico', '⚽ Cerca del estadio'],
+    'metropolitan': ['🏬 Premium', '🎯 Muy alto tráfico', '💼 Corporativo'],
+    'fashion': ['👗 Fashion', '🎯 Alto tráfico', '☕ Cafeterías'],
+    'galerias': ['🏪 Familiar', '🎯 Muy alto tráfico', '🎮 Entretenimiento'],
+    'citadel': ['🛍️ Accesible', '🎯 Alto tráfico', '🚗 Fácil acceso'],
+    'serena': ['🏘️ Residencial', '🎯 Medio tráfico', '🌿 Tranquilo'],
+    'anahuac': ['🎊 Entretenimiento', '🎯 Alto tráfico', '👨‍👩‍👧‍👦 Familiar'],
+    'ocampo': ['🏙️ Uso mixto', '🎯 Alto tráfico', '💻 Tecnología'],
+    'mexico': ['📍 Céntrico', '🎯 Alto tráfico', '🚇 Transporte público'],
+    'via02': ['🛣️ Vía principal', '🎯 Medio tráfico', '🚗 Paso vehicular'],
+    'hierro': ['🚪 Puerta de entrada', '🎯 Medio tráfico', '🏠 Residencial'],
+    'lafe': ['🙏 Pet Friendly', '🎯 Alto tráfico', '🌳 Aire libre'],
+    'molinete': ['🎡 Aire libre', '🎯 Medio tráfico', '👨‍👩‍👧‍👦 Familiar'],
+    'sendero': ['🛍️ Shopping center', '🎯 Alto tráfico', '🏪 Variedad de tiendas'],
+    'portanova': ['🏢 Mixto', '🎯 Medio tráfico', '🎯 Estratégico'],
+    'citykayser': ['🏙️ Urbano', '🎯 Medio tráfico', '🎯 Emergente'],
+    'centrito': ['🏢 Oficinas', '🎯 Medio tráfico', '💼 Corporativo'],
+    'torre-kr': ['🏗️ Torre', '🎯 Medio tráfico', '💼 Ejecutivo'],
+    'estadio': ['⚽ Estadio oficial', '🎯 Eventos masivos', '🏆 Mundial 2026'],
+    'aeropuerto': ['✈️ Internacional', '🎯 Viajeros globales', '🌍 Punto de entrada'],
+    'fanfest': ['🎉 Fan Festival', '🎯 Evento oficial', '🎭 Entretenimiento'],
+    'hotel': ['🏨 Hotel Anfitrión', '⭐ Premium', '🏆 Selecciones nacionales']
+  };
+  
+  return tagMap[ubicacion.id] || ['🎯 Ubicación estratégica', '📍 Gran visibilidad'];
+}
+
 // ================================
 // INICIALIZACIÓN DE LA APP
 // ================================
@@ -1368,6 +1030,8 @@ window.closeFullscreenMap = function() {
 // Inicializar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', function() {
   console.log('🌎 Iniciando Copa Mundial de Fútbol Monterrey 2026 Landing Page...');
+  console.log('🔧 Leaflet disponible:', typeof L !== 'undefined');
+  console.log('🗺️ Elemento del mapa encontrado:', !!document.getElementById('map'));
   initApp();
 });
 

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Copa Mundial de Fútbol 2026 | Sede Monterrey - V MEDIA GROUP</title>
     <meta name="description" content="Espacios publicitarios estratégicos para la Copa Mundial de Fútbol 2026 en la sede de Monterrey. Una oportunidad única para posicionar tu marca en el evento más importante del mundo.">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     
     <!-- Google Fonts: Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -93,7 +94,18 @@
         /* ==================== HEADER & NAV (CORREGIDO) ==================== */
         .header { width: 100%; background-color: transparent; position: fixed; top: 0; left: 0; z-index: var(--z-fixed); transition: background-color .4s, box-shadow .4s; }
         .nav { height: var(--header-height); display: flex; justify-content: space-between; align-items: center; }
-        .nav__logo { color: var(--white-color); font-weight: 700; }
+        .nav__logo { 
+            color: var(--white-color); 
+            font-weight: 700; 
+            display: flex; 
+            align-items: center; 
+            gap: 0.75rem;
+        }
+        .nav__logo-img {
+            height: 2.5rem;
+            width: auto;
+            object-fit: contain;
+        }
         .nav__toggle, .nav__close { font-size: 1.5rem; color: var(--white-color); cursor: pointer; }
         .nav__menu { display: flex; align-items: center; /* Para alinear verticalmente en desktop */ }
         .nav__list { display: flex; gap: 1.5rem; }
@@ -116,32 +128,162 @@
             .nav__list { gap: 2rem; } /* Espacio entre links en desktop */
         }
 
-        /* ==================== HERO ==================== */
-        .hero { 
-            position: relative; 
-            height: 90vh; /* ESPACIADO REDUCIDO */
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            text-align: center; 
-            background: url('https://images.unsplash.com/photo-1613862618956-6cde36938b81?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover; 
+        /* ==================== HERO MODERNO (DISEÑO STRIPE-LIKE) ==================== */
+        .hero {
+            position: relative;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--dark-color) 0%, var(--dark-color-light) 100%);
+            overflow: hidden;
         }
-        .hero__overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(0deg, rgba(17,17,17,1) 0%, rgba(17,17,17,0.4) 50%, rgba(17,17,17,1) 100%); }
-        .hero__container { position: relative; z-index: 2; }
-        .hero__title { font-size: var(--biggest-font-size); font-weight: 900; margin-bottom: 1rem; line-height: 1.2; text-shadow: 0 0 15px rgba(0,0,0,0.5); }
-        .hero__subtitle { font-size: var(--h2-font-size); font-weight: 400; margin-bottom: 1.5rem; }
-        .hero__text { max-width: 600px; margin: 0 auto 1.5rem auto; }
-        .hero__highlight-box { display: inline-block; background-color: var(--secondary-color); color: var(--white-color); padding: .5rem 1.5rem; border-radius: 50px; font-weight: 600; margin-bottom: 1rem; }
-        .hero__text-secondary { font-size: var(--small-font-size); margin-bottom: 2rem; }
-        .hero__buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+        .hero__overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                var(--primary-color) 0%, 
+                rgba(123, 0, 58, 0.4) 30%,
+                rgba(0, 135, 84, 0.3) 60%,
+                transparent 100%);
+            opacity: 0.8;
+            z-index: 1;
+        }
+        .hero__container {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 4rem;
+            padding: var(--header-height) 0 0 0;
+        }
+        .hero__content {
+            text-align: left;
+        }
+        .hero__title {
+            font-size: var(--biggest-font-size);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            background: linear-gradient(135deg, var(--white-color) 0%, var(--accent-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero__subtitle {
+            font-size: var(--h2-font-size);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+        }
+        .hero__text {
+            max-width: 500px;
+            margin-bottom: 2rem;
+            font-size: var(--normal-font-size);
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+        .hero__highlight-box {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--red-accent), var(--secondary-color));
+            color: var(--white-color);
+            padding: .75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            font-size: var(--small-font-size);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .hero__buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: nowrap;
+            margin-bottom: 3rem;
+        }
+        .hero__text-secondary {
+            font-size: var(--small-font-size);
+            color: var(--text-color);
+            margin-top: 1rem;
+            opacity: 0.8;
+            font-style: italic;
+        }
+        .hero__countdown-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
         
-        /* ==================== COUNTDOWN ==================== */
-        .countdown { background-color: rgba(0,0,0,0.4); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); padding: 1.5rem; border-radius: .5rem; display: inline-block; border: 1px solid rgba(255,255,255,0.1); }
-        .countdown__title { font-size: var(--normal-font-size); margin-bottom: 1rem; font-weight: 400; }
-        .countdown__timer { display: flex; gap: 1.5rem; justify-content: center; }
-        .countdown__item span { display: block; font-size: var(--h1-font-size); font-weight: 700; color: var(--white-color); }
-        .countdown__item p { font-size: var(--small-font-size); }
-        .countdown__date { margin-top: 1rem; font-weight: 600; color: var(--accent-color); }
+        /* ==================== COUNTDOWN MODERNO ==================== */
+        .countdown {
+            background: linear-gradient(135deg, 
+                rgba(0,0,0,0.6) 0%, 
+                rgba(17,17,17,0.4) 100%);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            max-width: 500px;
+            width: 100%;
+        }
+        .countdown__title {
+            font-size: var(--h3-font-size);
+            margin-bottom: 2rem;
+            font-weight: 600;
+            color: var(--white-color);
+            text-align: center;
+        }
+        .countdown__timer {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .countdown__item {
+            text-align: center;
+            background: rgba(255,255,255,0.05);
+            padding: 1.5rem 0.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+        .countdown__item:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+        .countdown__item span {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--accent-color);
+            font-variant-numeric: tabular-nums;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 10px rgba(251, 217, 4, 0.3);
+        }
+        .countdown__item p {
+            font-size: var(--small-font-size);
+            color: var(--text-color);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .countdown__date {
+            text-align: center;
+            font-weight: 600;
+            color: var(--accent-color);
+            font-size: var(--normal-font-size);
+            padding: 1rem;
+            background: rgba(251, 217, 4, 0.1);
+            border-radius: 10px;
+            border: 1px solid rgba(251, 217, 4, 0.2);
+        }
 
         /* ==================== QUIÉNES SOMOS (CORREGIDO) ==================== */
         .about__text {
@@ -152,13 +294,83 @@
         .about__text p { margin-bottom: 1rem; }
         .about__tagline { font-weight: 600; font-size: var(--h3-font-size); color: var(--white-color); }
         .about__sponsors h3 { text-align: center; margin-bottom: 2rem; font-weight: 400; }
-        .logos { overflow: hidden; padding: 2rem 0; white-space: nowrap; position: relative; }
-        .logos:before, .logos:after { position: absolute; top: 0; width: 100px; height: 100%; content: ''; z-index: 2; }
-        .logos:before { left: 0; background: linear-gradient(to left, rgba(17, 17, 17, 0), var(--body-color)); }
-        .logos:after { right: 0; background: linear-gradient(to right, rgba(17, 17, 17, 0), var(--body-color)); }
-        .logos__slide { display: inline-flex; align-items: center; animation: 40s slide infinite linear; }
-        .logos__slide img { height: 40px; margin: 0 40px; }
-        @keyframes slide { from { transform: translateX(0%); } to { transform: translateX(-100%); } }
+        .logos { 
+    overflow: hidden; 
+    padding: 2rem 0; 
+    white-space: nowrap; 
+    position: relative;
+    mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+    -webkit-mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+}
+.logos:before, .logos:after { position: absolute; top: 0; width: 100px; height: 100%; content: ''; z-index: 2; }
+.logos:before { left: 0; background: linear-gradient(to left, rgba(17, 17, 17, 0), var(--body-color)); }
+.logos:after { right: 0; background: linear-gradient(to right, rgba(17, 17, 17, 0), var(--body-color)); }
+.logos__container {
+display: flex;
+width: 200%;
+animation: logoScrollInfinite 60s linear infinite;
+}
+.logos__slide { 
+display: flex; 
+align-items: center; 
+gap: 5rem;
+flex-shrink: 0;
+width: 50%;
+padding-right: 5rem;
+}
+        .logo-mask {
+            width: 120px;
+            height: 45px;
+            background-color: #FFFFFF;
+            flex-shrink: 0;
+            position: relative;
+            
+            /* Propiedades de la máscara */
+            -webkit-mask-size: contain;
+            mask-size: contain;
+            -webkit-mask-position: center;
+            mask-position: center;
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+            
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .logo-mask:hover {
+            background-color: #CCCCCC;
+            transform: scale(1.05);
+        }
+
+        /* Tooltip para logos */
+        .logo-mask::before {
+            content: attr(title);
+            position: absolute;
+            bottom: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 0.5rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 1000;
+            pointer-events: none;
+        }
+
+        .logo-mask:hover::before {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Animación infinita perfecta sin cortes */
+        @keyframes logoScrollInfinite { 
+0% { transform: translateX(0); } 
+100% { transform: translateX(-50%); } 
+}
         .about__rayados { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-top: 2.5rem; text-align: center; }
         .about__rayados img { height: 60px; }
         
@@ -185,12 +397,108 @@
 
         /* ==================== UBICACIONES ==================== */
         .locations__container { grid-template-columns: 1fr; align-items: center; }
-        .locations__data { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap; }
-        .locations__stat { text-align: center; background: var(--container-color); padding: 1.5rem; border-radius: .5rem; min-width: 200px; border-left: 4px solid var(--red-accent); }
-        .locations__stat span { font-size: var(--biggest-font-size); font-weight: 900; color: var(--red-accent); display: block; line-height: 1; }
-        .locations__stat p { font-weight: 600; margin-top: .5rem; }
+        .locations__data { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem; 
+            margin-bottom: 2rem; 
+        }
+        .locations__stat { 
+            text-align: center; 
+            background: var(--container-color); 
+            padding: 2rem; 
+            border-radius: .75rem; 
+            border: 1px solid #333; 
+            transition: .3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 150px;
+        }
+        .locations__stat:hover { 
+            transform: translateY(-5px); 
+            border-color: var(--accent-color); 
+        }
+        .locations__stat span { 
+            font-size: var(--biggest-font-size); 
+            font-weight: 900; 
+            color: var(--red-accent); 
+            display: block; 
+            line-height: 1; 
+            margin-bottom: 1rem;
+        }
+        .locations__stat p { 
+            font-weight: 600; 
+            color: var(--white-color);
+            font-size: var(--h3-font-size);
+        }
         .locations__map img { border-radius: .5rem; }
         .locations__map-info { text-align: center; font-size: var(--small-font-size); margin-top: 1rem; font-style: italic; }
+
+        /* ==================== UBICACIONES ESPECIALES - LAYOUT HORIZONTAL ==================== */
+        .special-cards-grid-integrated {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .special-card {
+            background: var(--container-color);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .special-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .special-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .special-content h4 {
+            color: var(--white-color);
+            margin-bottom: 0.5rem;
+            font-size: var(--h3-font-size);
+        }
+
+        .special-description {
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            font-size: var(--small-font-size);
+        }
+
+        .special-stats {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .special-stats .stat {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            color: var(--accent-color);
+        }
+
+        /* Responsive para special-cards */
+        @media screen and (max-width: 768px) {
+            .special-cards-grid-integrated {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
 
         /* ==================== FORMATOS ==================== */
         #formatos::after { content: ''; position: absolute; bottom: 0; right: -20%; width: 50%; height: 100%; background: linear-gradient(225deg, var(--secondary-color), transparent); opacity: 0.1; transform: skewX(-20deg); z-index: 1; }
@@ -237,6 +545,149 @@
         .scroll-up:hover { transform: translateY(-.25rem); }
         .show-scroll { bottom: 3rem; }
 
+        /* ==================== ESTILOS DE PINES PERSONALIZADOS ==================== */
+        .custom-marker-icon {
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+        .circle-wrapper {
+            width: 50px !important;
+            height: 50px !important;
+            border-radius: 50% !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
+            position: relative !important;
+            background: linear-gradient(135deg, #e60023, #ff4567) !important;
+            border: 3px solid #ffffff !important;
+            overflow: hidden !important;
+        }
+
+        .circle-wrapper::after {
+            content: '' !important;
+            position: absolute !important;
+            bottom: -10px !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            width: 0 !important;
+            height: 0 !important;
+            border-left: 10px solid transparent !important;
+            border-right: 10px solid transparent !important;
+            border-top: 12px solid #ffffff !important;
+            z-index: 1 !important;
+        }
+
+        .circle-wrapper img {
+            width: 30px !important;
+            height: 30px !important;
+            object-fit: contain !important;
+            filter: brightness(0) invert(1) !important;
+            z-index: 2 !important;
+            position: relative !important;
+        }
+
+        /* Colores específicos por tipo con !important */
+        .circle-wrapper.centro-comercial { 
+            background: linear-gradient(135deg, #e60023, #ff4567) !important; 
+        }
+        .circle-wrapper.edificio-mixto { 
+            background: linear-gradient(135deg, #7b003a, #a0004a) !important; 
+        }
+        .circle-wrapper.estadio { 
+            background: linear-gradient(135deg, #008754, #00a864) !important; 
+        }
+        .circle-wrapper.aeropuerto { 
+            background: linear-gradient(135deg, #fbd904, #ffed34) !important; 
+        }
+        .circle-wrapper.fan-festival { 
+            background: linear-gradient(135deg, #ff6b35, #ff8555) !important; 
+        }
+
+        /* ==================== ESTILOS DE POPUPS PERSONALIZADOS ==================== */
+        .mundial-popup-container .leaflet-popup-content-wrapper {
+            background: var(--container-color) !important;
+            border-radius: 12px !important;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+
+        .mundial-popup-container .leaflet-popup-tip {
+            background: var(--container-color) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-top: none !important;
+            border-right: none !important;
+        }
+
+        .mundial-popup {
+            padding: 16px;
+            min-width: 250px;
+            color: var(--white-color);
+        }
+
+        .mundial-popup-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            gap: 10px;
+        }
+
+        .mundial-popup-header h3 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--white-color);
+            line-height: 1.2;
+        }
+
+        .mundial-popup-badge {
+            background: var(--red-accent);
+            color: var(--white-color);
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .mundial-popup-badge.centro-comercial { background: #e60023; }
+        .mundial-popup-badge.edificio-mixto { background: #7b003a; }
+        .mundial-popup-badge.estadio { background: #008754; }
+        .mundial-popup-badge.aeropuerto { background: #fbd904; color: var(--dark-color); }
+        .mundial-popup-badge.fan-festival { background: #ff6b35; }
+
+        .mundial-popup-description {
+            margin: 0 0 12px 0;
+            font-size: 14px;
+            color: var(--text-color);
+        }
+
+        .mundial-popup-stats {
+            margin: 0;
+        }
+
+        .mundial-stat {
+            font-size: 12px;
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+
+        .mundial-popup-tag {
+            display: inline-block;
+            background: rgba(251, 217, 4, 0.1);
+            color: var(--accent-color);
+            padding: 0.25rem 0.5rem;
+            border-radius: 15px;
+            font-size: 10px;
+            font-weight: 500;
+            margin: 0.125rem;
+            border: 1px solid rgba(251, 217, 4, 0.3);
+        }
+
         /* ==================== MEDIA QUERIES (RESPONSIVE) ==================== */
         @media screen and (min-width: 576px) {
             .contact__input-group {
@@ -265,6 +716,50 @@
         @media screen and (min-width: 1024px) {
             .footer__container { grid-template-columns: .5fr .3fr .3fr .3fr; }
         }
+
+        /* ==================== RESPONSIVE HERO ==================== */
+        @media screen and (max-width: 768px) {
+            .hero {
+                height: auto;
+                min-height: 100vh;
+                padding: var(--header-height) 0 2rem 0;
+            }
+            .hero__container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+                padding: 2rem 0;
+                height: auto;
+            }
+            .hero__content {
+                text-align: center;
+                order: 1;
+            }
+            .hero__countdown-section {
+                order: 2;
+            }
+            .hero__title {
+                font-size: 2.5rem;
+            }
+            .hero__buttons {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .countdown {
+                padding: 2rem 1.5rem;
+                max-width: 100%;
+            }
+            .countdown__timer {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.5rem;
+            }
+            .countdown__item {
+                padding: 1rem 0.5rem;
+            }
+            .countdown__item span {
+                font-size: 2rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -272,7 +767,10 @@
     <!-- ==================== HEADER & NAVBAR ==================== -->
     <header class="header" id="header">
         <nav class="nav container">
-            <a href="#" class="nav__logo">Copa Mundial 2026 | Sede Monterrey</a>
+            <a href="#" class="nav__logo">
+                <img src="/public/logos/VMedia/logo v media blanco.png" alt="V Media Group" class="nav__logo-img">
+                Copa Mundial 2026 | Sede Monterrey
+            </a>
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
                     <li class="nav__item"><a href="#quienes-somos" class="nav__link">Quiénes Somos</a></li>
@@ -289,29 +787,32 @@
     </header>
 
     <main class="main">
-        <!-- ==================== HERO ==================== -->
+        <!-- ==================== HERO MODERNO ==================== -->
         <section class="hero">
             <div class="hero__overlay"></div>
             <div class="hero__container container">
-                <h1 class="hero__title animate-on-scroll">TU MARCA EN EL CORAZÓN DEL MUNDIAL</h1>
-                <h2 class="hero__subtitle animate-on-scroll">El evento deportivo más grande del mundo.</h2>
-                <p class="hero__text animate-on-scroll">Conecta con millones de personas al anunciarte en nuestros espacios publicitarios durante el Mundial 2026.</p>
-                <div class="hero__highlight-box animate-on-scroll">¡Oportunidad única!</div>
-                <p class="hero__text-secondary animate-on-scroll">La mayoría de las marcas ya están planeando su estrategia de comunicación para el mundial 2026, ¡no te quedes atrás!</p>
-                <div class="hero__buttons animate-on-scroll">
-                    <a href="#contacto" class="button">Recibir más información</a>
-                    <!-- REEMPLAZA '#' con el enlace a tu archivo PDF de presentación -->
-                    <a href="#" class="button button--ghost" id="download-btn" download>Descarga nuestra presentación</a>
-                </div>
-                <div class="countdown animate-on-scroll" id="countdown">
-                    <h3 class="countdown__title">Días restantes para la patada inicial</h3>
-                    <div class="countdown__timer">
-                        <div class="countdown__item"><span id="days">00</span><p>Días</p></div>
-                        <div class="countdown__item"><span id="hours">00</span><p>Horas</p></div>
-                        <div class="countdown__item"><span id="minutes">00</span><p>Minutos</p></div>
-                        <div class="countdown__item"><span id="seconds">00</span><p>Segundos</p></div>
+                <div class="hero__content">
+                    <div class="hero__highlight-box animate-on-scroll">¡Oportunidad única!</div>
+                    <h1 class="hero__title animate-on-scroll">TU MARCA EN EL CORAZÓN DEL MUNDIAL</h1>
+                    <h2 class="hero__subtitle animate-on-scroll">El evento deportivo más grande del mundo.</h2>
+                    <p class="hero__text animate-on-scroll">Conecta con millones de personas al anunciarte en nuestros espacios publicitarios durante el Mundial 2026.</p>
+                    <div class="hero__buttons animate-on-scroll">
+                        <a href="#contacto" class="button">Recibir más información</a>
+                        <a href="#" class="button button--ghost" id="download-btn" download>Descarga nuestra presentación</a>
                     </div>
-                    <p class="countdown__date">Junio - Julio 2026</p>
+                </div>
+                <div class="hero__countdown-section">
+                    <div class="countdown animate-on-scroll" id="countdown">
+                        <h3 class="countdown__title">Días restantes para la patada inicial</h3>
+                        <div class="countdown__timer">
+                            <div class="countdown__item"><span id="days">000</span><p>Días</p></div>
+                            <div class="countdown__item"><span id="hours">00</span><p>Horas</p></div>
+                            <div class="countdown__item"><span id="minutes">00</span><p>Minutos</p></div>
+                            <div class="countdown__item"><span id="seconds">00</span><p>Segundos</p></div>
+                        </div>
+                        <p class="countdown__date">Junio - Julio 2026</p>
+                    </div>
+                    <p class="hero__text-secondary animate-on-scroll">La mayoría de las marcas ya están planeando su estrategia de comunicación para el mundial 2026, ¡no te quedes atrás!</p>
                 </div>
             </div>
         </section>
@@ -331,24 +832,47 @@
                     <div class="about__sponsors animate-on-scroll">
                         <h3>Algunas empresas que confían en nuestro trabajo</h3>
                         <div class="logos">
-                            <div class="logos__slide">
-                                <!-- Las imágenes se duplicarán con JS para un loop perfecto -->
-                                <img src="https://logowik.com/content/uploads/images/heineken-new-20222638.jpg" alt="Heineken">
-                                <img src="https://logowik.com/content/uploads/images/bmw-m-power5795.logowik.com.webp" alt="BMW">
-                                <img src="https://logowik.com/content/uploads/images/the-home-depot7165.logowik.com.webp" alt="The Home Depot">
-                                <img src="https://logowik.com/content/uploads/images/7-eleven-black4851.logowik.com.webp" alt="7 Eleven">
-                                <img src="https://logowik.com/content/uploads/images/apple-black7193.logowik.com.webp" alt="Apple">
-                                <img src="https://logowik.com/content/uploads/images/bbva-20191427.logowik.com.webp" alt="BBVA">
-                                <img src="https://logowik.com/content/uploads/images/carls-jr6322.logowik.com.webp" alt="Carl's Jr.">
-                                <img src="https://logowik.com/content/uploads/images/cemex9236.logowik.com.webp" alt="Cemex">
-                                <img src="https://logowik.com/content/uploads/images/635_cinepolis.jpg" alt="Cinépolis">
-                                <img src="https://logowik.com/content/uploads/images/nissan-2020-black9658.logowik.com.webp" alt="Nissan">
+                            <div class="logos__container">
+                                <div class="logos__slide">
+                                <!-- Logos completos de clientes con mask-image y tooltips -->
+                                <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/Heineken.png); mask-image: url(/public/logos/Heineken.png);" title="Heineken"></div>
+                                <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/7-Eleven.png); mask-image: url(/public/logos/7-Eleven.png);" title="7-Eleven"></div>
+                                <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/Apple.png); mask-image: url(/public/logos/Apple.png);" title="Apple"></div>
+                                <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/BBVA.png); mask-image: url(/public/logos/BBVA.png);" title="BBVA"></div>
+                                <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/Carls Jr.png); mask-image: url(/public/logos/Carls Jr.png);" title="Carl's Jr."></div>
+                                <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/Cemex.png); mask-image: url(/public/logos/Cemex.png);" title="Cemex"></div>
+                                <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/CinépoliS.png); mask-image: url(/public/logos/CinépoliS.png);" title="Cinépolis"></div>
+                                <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/KIA.png); mask-image: url(/public/logos/KIA.png);" title="KIA"></div>
+                                <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/LVMH.png); mask-image: url(/public/logos/LVMH.png);" title="LVMH"></div>
+                                <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/Mercado Libre.png); mask-image: url(/public/logos/Mercado Libre.png);" title="Mercado Libre"></div>
+                                <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/Mobil.png); mask-image: url(/public/logos/Mobil.png);" title="Mobil"></div>
+                                <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/Nissan.png); mask-image: url(/public/logos/Nissan.png);" title="Nissan"></div>
+                                <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/P&G.png); mask-image: url(/public/logos/P&G.png);" title="Procter & Gamble"></div>
+                                <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/Rayados.png); mask-image: url(/public/logos/Rayados.png);" title="CF Monterrey Rayados"></div>
+                                </div>
+                                <div class="logos__slide">
+                                <!-- Duplicado de los logos para animación infinita sin cortes -->
+                                <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/Heineken.png); mask-image: url(/public/logos/Heineken.png);" title="Heineken"></div>
+                                <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/7-Eleven.png); mask-image: url(/public/logos/7-Eleven.png);" title="7-Eleven"></div>
+                                <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/Apple.png); mask-image: url(/public/logos/Apple.png);" title="Apple"></div>
+                                <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/BBVA.png); mask-image: url(/public/logos/BBVA.png);" title="BBVA"></div>
+                                <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/Carls Jr.png); mask-image: url(/public/logos/Carls Jr.png);" title="Carl's Jr."></div>
+                                <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/Cemex.png); mask-image: url(/public/logos/Cemex.png);" title="Cemex"></div>
+                                <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/CinépoliS.png); mask-image: url(/public/logos/CinépoliS.png);" title="Cinépolis"></div>
+                                <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/KIA.png); mask-image: url(/public/logos/KIA.png);" title="KIA"></div>
+                                <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/LVMH.png); mask-image: url(/public/logos/LVMH.png);" title="LVMH"></div>
+                                <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/Mercado Libre.png); mask-image: url(/public/logos/Mercado Libre.png);" title="Mercado Libre"></div>
+                                <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/Mobil.png); mask-image: url(/public/logos/Mobil.png);" title="Mobil"></div>
+                                <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/Nissan.png); mask-image: url(/public/logos/Nissan.png);" title="Nissan"></div>
+                                <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/P&G.png); mask-image: url(/public/logos/P&G.png);" title="Procter & Gamble"></div>
+                                <div class="logo-mask" style="-webkit-mask-image: url(/public/logos/Rayados.png); mask-image: url(/public/logos/Rayados.png);" title="CF Monterrey Rayados"></div>
+                                </div>
                             </div>
                         </div>
                         <div class="about__rayados">
                             <p>Además somos orgullosos patrocinadores oficiales del Club de Fútbol Monterrey</p>
                             <!-- REEMPLAZA este 'src' con el escudo de Rayados -->
-                            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/89/Club_de_F%C3%BAtbol_Monterrey_logo.svg/1200px-Club_de_F%C3%BAtbol_Monterrey_logo.svg.png" alt="Escudo Club de Fútbol Monterrey Rayados">
+                            <img src="/public/logos/Rayados.png" alt="Escudo Club de Fútbol Monterrey Rayados">
                         </div>
                     </div>
                 </div>
@@ -438,7 +962,7 @@
                 </div>
                 <div class="formats__container grid">
                     <div class="format-card animate-on-scroll">
-                        <img src="https://images.unsplash.com/photo-1593344484962-796b16d86ea2?q=80&w=1974&auto=format&fit=crop" class="format-card__img" alt="Formatos Digitales">
+                        <img src="/public/formatos/Pantalla LED.png" class="format-card__img" alt="Formatos Digitales">
                         <div class="format-card__content">
                             <h3>Digitales</h3>
                             <ul>
@@ -452,7 +976,7 @@
                         </div>
                     </div>
                     <div class="format-card animate-on-scroll">
-                        <img src="https://images.unsplash.com/photo-1535016120720-40c646be5580?q=80&w=2070&auto=format&fit=crop" class="format-card__img" alt="Formatos Físicos">
+                        <img src="/public/formatos/Físicos.png" class="format-card__img" alt="Formatos Físicos">
                         <div class="format-card__content">
                             <h3>Físicos</h3>
                             <ul>
@@ -466,7 +990,7 @@
                         </div>
                     </div>
                     <div class="format-card animate-on-scroll">
-                        <img src="https://images.unsplash.com/photo-1540553016722-983e48a2cd10?q=80&w=2070&auto=format&fit=crop" class="format-card__img" alt="Activaciones de Marca">
+                        <img src="/public/formatos/Activaciones físicas.png" class="format-card__img" alt="Activaciones de Marca">
                         <div class="format-card__content">
                             <h3>Activaciones de marca</h3>
                             <ul>
@@ -559,10 +1083,10 @@
             <div class="footer__section">
                 <h3 class="footer__title">Síguenos</h3>
                 <div class="footer__socials">
-                    <a href="https://www.instagram.com/vmediag" target="_blank" class="footer__social-link"><i class="ri-instagram-line"></i></a>
-                    <a href="https://www.tiktok.com/@vmediag" target="_blank" class="footer__social-link"><i class="ri-tiktok-line"></i></a>
-                    <a href="https://www.facebook.com/vmediag" target="_blank" class="footer__social-link"><i class="ri-facebook-box-line"></i></a>
-                    <a href="https://mx.linkedin.com/company/vmediag" target="_blank" class="footer__social-link"><i class="ri-linkedin-box-line"></i></a>
+                    <a href="https://www.instagram.com/vmediag" target="_blank" rel="noopener noreferrer" class="footer__social-link"><i class="ri-instagram-line"></i></a>
+                    <a href="https://www.tiktok.com/@vmediag" target="_blank" rel="noopener noreferrer" class="footer__social-link"><i class="ri-tiktok-line"></i></a>
+                    <a href="https://www.facebook.com/vmediag" target="_blank" rel="noopener noreferrer" class="footer__social-link"><i class="ri-facebook-box-line"></i></a>
+                    <a href="https://mx.linkedin.com/company/vmediag" target="_blank" rel="noopener noreferrer" class="footer__social-link"><i class="ri-linkedin-box-line"></i></a>
                 </div>
             </div>
         </div>
@@ -598,27 +1122,90 @@
         }
         window.addEventListener('scroll', scrollHeader);
 
-        /* ==================== CUENTA REGRESIVA ==================== */
-        const countdown = () => {
-            const targetDate = new Date('June 11, 2026 00:00:00').getTime();
-            const now = new Date().getTime();
-            const gap = targetDate - now;
+        /* ==================== CUENTA REGRESIVA MEJORADA ==================== */
+        function initCountdown() {
+            console.log('🕐 Inicializando countdown mejorado...');
+            
+            // Fecha oficial del inicio del Mundial 2026: 11 de junio de 2026
+            const targetDate = new Date('2026-06-11T20:00:00Z').getTime();
+            
+            // Cache de valores previos para evitar actualizaciones innecesarias
+            let previousValues = { days: null, hours: null, minutes: null, seconds: null };
+            
+            const updateCountdown = () => {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
 
-            const format = (num) => (num < 10 ? '0' + num : num);
-            if (gap > 0) {
-                const textDay = Math.floor(gap / (1000 * 60 * 60 * 24));
-                const textHour = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const textMinute = Math.floor((gap % (1000 * 60 * 60)) / (1000 * 60));
-                const textSecond = Math.floor((gap % (1000 * 60)) / 1000);
+                if (distance > 0) {
+                    // Cálculo correcto sin decimales
+                    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-                document.getElementById('days').innerText = format(textDay);
-                document.getElementById('hours').innerText = format(textHour);
-                document.getElementById('minutes').innerText = format(textMinute);
-                document.getElementById('seconds').innerText = format(textSecond);
+                    // Solo actualizar si los valores han cambiado
+                    if (previousValues.days !== days) {
+                        updateCountdownElement('days', days);
+                        previousValues.days = days;
+                    }
+                    if (previousValues.hours !== hours) {
+                        updateCountdownElement('hours', hours);
+                        previousValues.hours = hours;
+                    }
+                    if (previousValues.minutes !== minutes) {
+                        updateCountdownElement('minutes', minutes);
+                        previousValues.minutes = minutes;
+                    }
+                    if (previousValues.seconds !== seconds) {
+                        updateCountdownElement('seconds', seconds);
+                        previousValues.seconds = seconds;
+                    }
+                } else {
+                    // El evento ya comenzó
+                    ['days', 'hours', 'minutes', 'seconds'].forEach(key => {
+                        if (previousValues[key] !== 0) {
+                            updateCountdownElement(key, 0);
+                            previousValues[key] = 0;
+                        }
+                    });
+                    
+                    // Cambiar el título del countdown
+                    const countdownTitle = document.querySelector('.countdown__title');
+                    if (countdownTitle && !countdownTitle.textContent.includes('COMENZÓ')) {
+                        countdownTitle.textContent = '¡EL MUNDIAL 2026 YA COMENZÓ!';
+                    }
+                }
+            };
+
+            // Actualizar inmediatamente y cada segundo
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        }
+
+        function updateCountdownElement(id, value) {
+            const element = document.getElementById(id);
+            if (element) {
+                const formattedValue = id === 'days' ? 
+                    value.toString().padStart(3, '0') : 
+                    value.toString().padStart(2, '0');
+                
+                // Solo actualizar si el valor realmente cambió
+                if (element.textContent !== formattedValue) {
+                    element.textContent = formattedValue;
+                    
+                    // Animación suave solo cuando cambia
+                    element.style.transform = 'scale(1.05)';
+                    element.style.transition = 'transform 0.2s ease';
+                    
+                    setTimeout(() => {
+                        element.style.transform = 'scale(1)';
+                    }, 200);
+                }
             }
-        };
-        setInterval(countdown, 1000);
-        countdown();
+        }
+
+        // Inicializar countdown
+        initCountdown();
 
         /* ==================== ANIMACIÓN AL SCROLL ==================== */
         const observer = new IntersectionObserver((entries) => {
@@ -637,6 +1224,12 @@
             this.scrollY >= 400 ? scrollUpBtn.classList.add('show-scroll') : scrollUpBtn.classList.remove('show-scroll');
         }
         window.addEventListener('scroll', scrollUp);
+        
+        // Event listener para el click del botón scroll-up
+        document.getElementById('scroll-up')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
 
         /* ==================== DESCARGAR PRESENTACIÓN ==================== */
         // Debes reemplazar 'path/to/your/presentation.pdf' con la ruta real de tu archivo
@@ -644,13 +1237,8 @@
         document.getElementById('download-btn').href = presentationPath;
         document.getElementById('download-footer-btn').href = presentationPath;
 
-        /* ==================== LOGO CAROUSEL FIX ==================== */
-        const logosSlide = document.querySelector(".logos__slide");
-        if (logosSlide) {
-            // Clonar los logos para un loop infinito y fluido
-            const copy = logosSlide.cloneNode(true);
-            document.querySelector(".logos").appendChild(copy);
-        }
+        /* ==================== LOGO CAROUSEL SIMPLIFICADO ==================== */
+        // El carrusel de logos ya tiene duplicación manual para animación infinita
 
     </script>
 </body>

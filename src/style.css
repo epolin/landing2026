@@ -1,1391 +1,555 @@
-/* ================================
-   COPA MUNDIAL DE FÚTBOL MONTERREY 2026 - OFFICIAL DESIGN
-   ================================ */
-
-/* Reset básico */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-  font-size: 16px;
-  overflow-x: hidden; /* Prevenir scroll horizontal */
-}
-
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: #ffffff;
-  color: #333333;
-  line-height: 1.6;
-  overflow-x: hidden; /* Prevenir scroll horizontal */
-  width: 100%;
-  max-width: 100vw;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1.5rem 1rem 1.5rem; /* Padding extra inferior */
-  width: 100%;
-  overflow-x: hidden; /* Prevenir desbordamiento */
-}
-
-/* ================================
-   CARRUSELES PARA MÓVIL
-   ================================ */
-
-.mobile-carousel {
-  display: none; /* Oculto por defecto */
-}
-
-.mobile-carousel-container {
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-  padding: 1rem 0;
-  margin: 0 -1.5rem; /* Compensar padding del container */
-}
-
-.mobile-carousel-track {
-  display: flex;
-  gap: 1rem;
-  padding: 0 1.5rem;
-  width: max-content;
-}
-
-.mobile-carousel-item {
-  flex: 0 0 280px; /* Ancho fijo para cada card */
-  scroll-snap-align: start;
-}
-
-/* Scroll suave en carruseles */
-.mobile-carousel-container::-webkit-scrollbar {
-  height: 4px;
-}
-
-.mobile-carousel-container::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 2px;
-}
-
-.mobile-carousel-container::-webkit-scrollbar-thumb {
-  background: var(--mundial-turquoise);
-  border-radius: 2px;
-}
-
-/* ================================
-   SECCIÓN QUIÉNES SOMOS
-   ================================ */
-
-.quienes-somos {
-  padding: 4rem 0;
-  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-  position: relative;
-  overflow: hidden;
-}
-
-.quienes-somos::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(circle at 20% 20%, rgba(74, 27, 127, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(0, 212, 170, 0.05) 0%, transparent 50%);
-  pointer-events: none;
-}
-
-.quienes-somos .container {
-  position: relative;
-  z-index: 1;
-}
-
-.clients-intro {
-  text-align: center;
-  margin: 3rem 0 2rem;
-}
-
-.clients-intro-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--gray-600);
-  margin-bottom: 1rem;
-}
-
-/* Banner rotativo de logos */
-.clients-slider {
-  margin: 2rem 0;
-  overflow: hidden;
-  mask: linear-gradient(
-    to right, 
-    transparent 0%, 
-    black 5%, 
-    black 95%, 
-    transparent 100%
-  );
-  -webkit-mask: linear-gradient(
-    to right, 
-    transparent 0%, 
-    black 5%, 
-    black 95%, 
-    transparent 100%
-  );
-}
-
-.clients-track {
-  display: flex;
-  gap: 3rem;
-  animation: scroll-logos 30s linear infinite;
-  width: max-content;
-}
-
-.client-logo-item {
-  flex: 0 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 80px;
-  width: 120px;
-}
-
-.client-logo {
-  max-height: 60px;
-  max-width: 100px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  filter: grayscale(100%) opacity(0.7);
-  transition: all 0.3s ease;
-}
-
-.client-logo:hover {
-  filter: grayscale(0%) opacity(1);
-  transform: scale(1.1);
-}
-
-@keyframes scroll-logos {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-/* Patrocinio Rayados */
-.sponsor-section {
-  margin-top: 3rem;
-  text-align: center;
-}
-
-.sponsor-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.sponsor-text {
-  font-size: 1.1rem;
-  color: var(--gray-600);
-  font-weight: 500;
-}
-
-.sponsor-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.rayados-logo {
-  height: 80px;
-  width: auto;
-  object-fit: contain;
-}
-
-/* Responsive para quiénes somos */
-@media (max-width: 768px) {
-  .quienes-somos {
-    padding: 3rem 0;
-  }
-  
-  .clients-track {
-    gap: 2rem;
-  }
-  
-  .client-logo-item {
-    height: 60px;
-    width: 100px;
-  }
-  
-  .client-logo {
-    max-height: 45px;
-    max-width: 80px;
-  }
-  
-  .sponsor-content {
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .sponsor-text {
-    font-size: 1rem;
-  }
-  
-  .rayados-logo {
-    height: 60px;
-  }
-}
-
-@media (max-width: 480px) {
-  .clients-intro-title {
-    font-size: 1.1rem;
-  }
-  
-  .sponsor-text {
-    font-size: 0.95rem;
-  }
-  
-  .client-logo-item {
-    height: 50px;
-    width: 80px;
-  }
-  
-  .client-logo {
-    max-height: 35px;
-    max-width: 65px;
-  }
-}
-
-/* Estilos para datos adicionales en sección oportunidad */
-.additional-info {
-  margin: 2rem 0;
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.additional-info-title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--gray-800);
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-.additional-info-items {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.additional-info-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-}
-
-.info-icon {
-  flex: 0 0 auto;
-  font-size: 1.2rem;
-  margin-top: 0.1rem;
-}
-
-.info-text {
-  flex: 1;
-  color: var(--gray-600);
-  line-height: 1.6;
-}
-
-@media (max-width: 768px) {
-  .additional-info {
-    margin: 1.5rem 0;
-    padding: 1rem;
-  }
-  
-  .additional-info-title {
-    font-size: 1rem;
-  }
-  
-  .info-text {
-    font-size: 0.95rem;
-  }
-}
-
-/* ================================
-   RESPONSIVE CARRUSELES
-   ================================ */
-
-@media (max-width: 768px) {
-  /* Ocultar grids normales en móvil */
-  .stats-grid.desktop-only,
-  .beneficios-grid.desktop-only,
-  .coverage-stats.desktop-only,
-  .formatos-grid.desktop-only,
-  .clientes-grid.desktop-only {
-    display: none !important;
-  }
-  
-  /* Mostrar carruseles en móvil */
-  .mobile-carousel {
-    display: block !important;
-  }
-  
-  /* Ajustar container para móvil */
-  .container {
-    padding: 0 1rem;
-    max-width: 100%;
-  }
-  
-  /* Prevenir overflow en secciones */
-  section {
-    overflow-x: hidden;
-    width: 100%;
-    max-width: 100vw;
-  }
-  
-  /* Cards en carrusel más compactas */
-  .mobile-carousel-item .stat-card,
-  .mobile-carousel-item .beneficio-card,
-  .mobile-carousel-item .coverage-item,
-  .mobile-carousel-item .formato-card,
-  .mobile-carousel-item .cliente-logo {
-    margin: 0;
-    width: 100%;
-    min-height: 200px;
-  }
-}
-
-@media (max-width: 480px) {
-  .mobile-carousel-item {
-    flex: 0 0 260px; /* Cards más pequeñas en pantallas muy pequeñas */
-  }
-  
-  .container {
-    padding: 0 0.75rem;
-  }
-  
-  .mobile-carousel-container {
-    margin: 0 -0.75rem;
-  }
-  
-  .mobile-carousel-track {
-    padding: 0 0.75rem;
-  }
-}
-
-/* ================================
-   VARIABLES DE COLORES OFICIALES COPA MUNDIAL 2026
-   ================================ */
-
+/* ==================== VARIABLES Y ESTILOS BASE ==================== */
 :root {
-  /* Colores oficiales Copa Mundial 2026 Monterrey */
-  --mundial-purple: #4A1B7F;
-  --mundial-purple-light: #5B2C8A;
-  --mundial-turquoise: #00D4AA;
-  --mundial-turquoise-light: #1DD1A1;
-  --mundial-blue: #0066CC;
-  --mundial-blue-light: #2E86AB;
-  --mundial-orange: #FF5722;
-  --mundial-orange-light: #F4511E;
-  
-  /* Neutrales */
-  --white: #ffffff;
-  --black: #000000;
-  --gray-100: #f8f9fa;
-  --gray-200: #e9ecef;
-  --gray-600: #6c757d;
-  --gray-800: #343a40;
-  
-  /* Gradientes oficiales estilo Copa Mundial 2026 */
-  --gradient-primary: linear-gradient(135deg, var(--mundial-purple) 0%, var(--mundial-blue) 50%, var(--mundial-turquoise) 100%);
-  --gradient-secondary: linear-gradient(45deg, var(--mundial-turquoise) 0%, var(--mundial-blue) 100%);
-  --gradient-accent: linear-gradient(135deg, var(--mundial-orange) 0%, var(--mundial-purple) 100%);
-  --gradient-hero: 
-    linear-gradient(135deg, var(--mundial-purple) 0%, var(--mundial-blue) 30%, var(--mundial-turquoise) 60%, var(--mundial-orange) 100%),
-    radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
-  
-  /* Gradientes geométricos adicionales */
-  --gradient-geometric-1: conic-gradient(from 45deg, var(--mundial-purple), var(--mundial-turquoise), var(--mundial-blue), var(--mundial-purple));
-  --gradient-geometric-2: linear-gradient(45deg, var(--mundial-orange) 0%, transparent 30%), linear-gradient(135deg, var(--mundial-turquoise) 0%, transparent 30%), linear-gradient(225deg, var(--mundial-purple) 0%, transparent 30%);
+    --header-height: 3.5rem;
+    
+    /* Nueva paleta de colores inspirada en la identidad del Mundial 2026 */
+    --primary-color: #ff6d16; /* Morado/Vino principal */
+    --secondary-color: #5f0564; /* Verde */
+    --accent-color: #ff6d16; /* Amarillo */
+    --red-accent: #ff6d16; /* Rojo para botones y alertas */
+
+    --dark-color: #111111;
+    --dark-color-light: #1f1f1f;
+    --white-color: #FFFFFF;
+    --text-color: #d1d1d1;
+    --body-color: #111111;
+    --container-color: #1f1f1f;
+    
+    /* Tipografía */
+    --body-font: 'Poppins', sans-serif;
+    --biggest-font-size: 2.5rem;
+    --h1-font-size: 2.25rem;
+    --h2-font-size: 1.75rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+
+    /* Z-index */
+    --z-tooltip: 10;
+    --z-fixed: 100;
 }
 
-/* ================================
-   NAVEGACIÓN CON HAMBURGER MENU
-   ================================ */
-
-.nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  background: transparent;
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 1rem 0;
-  transition: all 0.3s ease;
-  width: 100%;
-  max-width: 100vw;
+/* Reseteo y configuración base */
+* { box-sizing: border-box; padding: 0; margin: 0; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    background-color: var(--body-color);
+    color: var(--text-color);
+}
+h1, h2, h3, h4 { color: var(--white-color); font-weight: 700; }
+ul { list-style: none; }
+a { text-decoration: none; color: var(--accent-color); transition: .3s; }
+a:hover { filter: brightness(0.9); }
+img { max-width: 100%; height: auto; display: block; }
+.container { max-width: 1120px; margin-left: 1.5rem; margin-right: 1.5rem; position: relative; z-index: 2;}
+.grid { display: grid; gap: 1.5rem; }
+.section {
+    padding: 3rem 0 2rem;
+  position: relative;
   overflow: hidden;
 }
+.section__header { text-align: center; margin-bottom: 3rem; }
+.section__title { font-size: var(--h2-font-size); margin-bottom: .5rem; font-weight: 900; }
+.section__title__highlighted {
+    color: #ff6d16;
+    font-weight: inherit; /* o 900 si lo prefieres explícito */
+  }
+.section__subtitle { font-size: var(--normal-font-size); color: var(--text-color); max-width: 700px; margin: 0 auto; }
+.section--dark { background-color: var(--dark-color-light); }
 
-/* Cuando se hace scroll, mostrar fondo */
-.nav.scrolled {
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(30px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+.button {
+    display: inline-block;
+    background-color: var(--red-accent);
+    color: var(--white-color);
+    padding: 1rem 2rem;
+    border-radius: .5rem;
+  font-weight: 600;
+    transition: .3s;
+    border: 2px solid var(--red-accent);
 }
+.button:hover { background-color: #c0001d; transform: translateY(-3px); }
+.button--ghost { background-color: transparent; border-color: var(--white-color); }
+.button--ghost:hover { background-color: var(--white-color); color: var(--dark-color); }
 
-.nav-container {
+/* Animaciones de scroll */
+.animate-on-scroll { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+.animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+/* ==================== HEADER & NAV ==================== */
+.header { width: 100%; background-color: transparent; position: fixed; top: 0; left: 0; z-index: var(--z-fixed); transition: background-color .4s, box-shadow .4s; }
+.nav { height: var(--header-height); display: flex; justify-content: space-between; align-items: center; }
+.nav__logo { 
+    color: var(--white-color); 
+    font-weight: 700; 
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-  position: relative;
-  z-index: 2;
-  width: 100%;
+    gap: 0.75rem;
+}
+.nav__logo-img {
+    height: 2.5rem;
+  width: auto;
+  object-fit: contain;
+}
+.nav__toggle, .nav__close { font-size: 1.5rem; color: var(--white-color); cursor: pointer; }
+.nav__menu { display: flex; align-items: center; }
+.nav__list { display: flex; gap: 1.5rem; }
+.nav__link { color: var(--white-color); font-weight: 500; font-size: var(--small-font-size); transition: color .3s; }
+.nav__link:hover { color: var(--accent-color); }
+.nav__close { display: none; }
+
+@media screen and (max-width: 767px) {
+    .nav__menu { position: fixed; top: 0; right: -100%; width: 100%; height: 100%; background-color: hsla(0, 0%, 5%, .8); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); transition: right .4s; flex-direction: column; justify-content: center; }
+    .nav__list { flex-direction: column; text-align: center; gap: 2rem; }
+    .nav__link { font-size: var(--normal-font-size); }
+    .nav__close { display: block; position: absolute; top: 1rem; right: 1.5rem; }
+    .show-menu { right: 0; }
 }
 
-.nav-logo {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--white);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+.scroll-header { background-color: var(--body-color); box-shadow: 0 4px 8px hsla(0, 0%, 0%, .3); }
+
+@media screen and (min-width: 768px) {
+    .nav__toggle { display: none; }
+    .nav__list { gap: 2rem; }
 }
 
-.nav-links {
-  display: flex;
-  gap: 2rem;
-}
-
-.nav-link {
-  color: rgba(255, 255, 255, 0.9);
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  position: relative;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.nav-link:hover {
-  color: var(--white);
-  transform: translateY(-2px);
-}
-
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--white), rgba(255, 255, 255, 0.8));
-  transition: width 0.3s ease;
-  border-radius: 2px;
-  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
-}
-
-.nav-link:hover::after {
-  width: 100%;
-}
-
-/* Hamburger Menu */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  padding: 0.25rem;
-  z-index: 1001;
-}
-
-.hamburger span {
-  width: 25px;
-  height: 3px;
-  background: var(--white);
-  margin: 3px 0;
-  transition: 0.3s;
-  border-radius: 2px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-}
-
-.hamburger.active span:nth-child(1) {
-  transform: rotate(-45deg) translate(-5px, 6px);
-}
-
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger.active span:nth-child(3) {
-  transform: rotate(45deg) translate(-5px, -6px);
-}
-
-/* Mobile Navigation Menu */
-.mobile-nav {
-  position: fixed;
-  top: 0;
-  left: -100%;
-  width: 280px;
-  height: 100vh;
-  background: rgba(74, 27, 127, 0.98);
-  backdrop-filter: blur(20px);
-  z-index: 999;
-  transition: left 0.3s ease;
-  padding-top: 80px;
-  box-shadow: 5px 0 20px rgba(0, 0, 0, 0.3);
-}
-
-.mobile-nav.active {
-  left: 0;
-}
-
-.mobile-nav-links {
-  display: flex;
-  flex-direction: column;
-  padding: 2rem 1.5rem;
-  gap: 1rem;
-}
-
-.mobile-nav-link {
-  color: var(--white);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1.1rem;
-  padding: 1rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease;
-}
-
-.mobile-nav-link:hover {
-  color: var(--mundial-turquoise);
-  transform: translateX(10px);
-}
-
-/* Overlay for mobile menu */
-.mobile-nav-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 998;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-}
-
-.mobile-nav-overlay.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-/* ================================
-   HERO SECTION SIMPLIFICADO COMO IMAGEN 5
-   ================================ */
-
+/* ==================== HERO ==================== */
+/* ==================== HERO MODERNO (DISEÑO STRIPE-LIKE) ==================== */
 .hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: relative;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--dark-color) 0%, var(--dark-color-light) 100%);
   overflow: hidden;
-  background: 
-    url('../assets/bg/HeroBG.png') center center / cover no-repeat;
-  padding-top: 100px;
-  text-align: center;
 }
-
-.hero::before {
-  content: '';
+.hero__overlay {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, 
+        var(--primary-color) 0%, 
+        rgba(123, 0, 58, 0.4) 30%,
+        rgba(0, 103, 135, 0.3) 60%,
+        transparent 100%);
+    opacity: 0.8;
   z-index: 1;
 }
-
-.hero .container {
+.hero__container {
   position: relative;
   z-index: 2;
-  max-width: 900px;
-  padding: 0 1.5rem 2rem 1.5rem; /* Padding extra para sombras de botones */
-}
-
-.hero-content {
-  display: flex;
-  flex-direction: column;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   align-items: center;
-  gap: 2rem;
-  text-align: center;
+    gap: 4rem;
+    padding: var(--header-height) 0 0 0;
 }
-
-.hero-header {
-  text-align: center;
-  margin-bottom: 1rem;
+.hero__content {
+    text-align: left;
 }
-
-.hero-title {
-  font-size: 4rem;
+.hero__title {
+    font-size: var(--biggest-font-size);
   font-weight: 900;
-  line-height: 1.1;
   margin-bottom: 1.5rem;
-  color: var(--white);
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-  text-transform: uppercase;
-}
-
-.text-gradient {
-  font-weight: 900;
-  background: linear-gradient(90deg, #4B1FCB 0%, #8335e9 40%, #4B1FCB 100%);
-  background-clip: text;
+    line-height: 1.1;
+    background: linear-gradient(135deg, var(--white-color) 0%, var(--accent-color) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: transparent;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
   background-clip: text;
 }
-
-
-
-.hero-subtitle {
-  font-size: 1.4rem;
-  color: rgba(255, 255, 255, 0.95);
-  line-height: 1.6;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-  font-weight: 500;
-  max-width: 700px;
-  margin: 0 auto 2rem;
-}
-
-/* Simplificar el grid del hero */
-.hero-grid {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-  width: 100%;
-}
-
-.hero-section {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Quitar hero-visual completamente */
-.hero-visual {
-  display: none;
-}
-
-.opportunity-section {
-  order: 1;
-  margin-bottom: 1rem;
-  text-align: center;
-  width: 100%;
-}
-
-.opportunity-message {
-  text-align: center;
-  width: 100%;
-}
-
-.opportunity-badge {
-  background: linear-gradient(135deg, #FF5722 0%, #FF8A65 100%);
-  box-shadow: 0 4px 15px rgba(255, 87, 34, 0.4);
-  text-shadow: none;
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  border-radius: 30px;
-  font-size: 0.9rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+.hero__subtitle {
+    font-size: var(--h2-font-size);
+    font-weight: 400;
   margin-bottom: 1.5rem;
-  color: var(--white);
+    color: var(--text-color);
 }
-
-.opportunity-content {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.opportunity-content strong {
-  color: var(--white);
-  font-weight: 700;
-  font-size: 1.8rem;
-  line-height: 1.3;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-}
-
-.opportunity-content span {
-  color: rgba(255, 255, 255, 0.9);
-  font-weight: 500;
-  font-size: 1.2rem;
-  line-height: 1.4;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-  font-style: italic;
-}
-
-.opportunity-additional {
-  margin-top: 2rem;
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  backdrop-filter: blur(10px);
-}
-
-.opportunity-additional span {
-  display: block;
-  margin-bottom: 1rem;
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.9);
+.hero__text {
+    max-width: 500px;
+    margin-bottom: 2rem;
+    font-size: var(--normal-font-size);
   line-height: 1.6;
-  font-style: normal;
+    opacity: 0.9;
 }
-
-.opportunity-additional span:first-child {
+.hero__highlight-box {
+    display: inline-block;
+    background: linear-gradient(90deg, var(--red-accent), var(--secondary-color));
+    color: var(--white-color);
+    padding: .75rem 1.5rem;
+    border-radius: 50px;
   font-weight: 600;
-  font-size: 1.1rem;
-  color: var(--mundial-turquoise);
+    margin-bottom: 2rem;
+    font-size: var(--small-font-size);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
-
-/* Limpiar y consolidar estilos de buttons-section */
-.buttons-section {
-  order: 3;
-  margin: 1rem 0;
-  text-align: center;
-  width: 100%;
+.hero__buttons {
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.hero-buttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
   gap: 1.5rem;
-  margin: 0 0 2rem 0; /* Espacio extra para sombras de botones */
-  padding: 0 1rem; /* Padding lateral para sombras */
   flex-wrap: nowrap;
-  width: 100%;
-  max-width: 600px;
+    margin-bottom: 3rem;
+    white-space: nowrap;
 }
-
-.hero-buttons .btn-primary {
-  background: linear-gradient(90deg, #6A00F4, #4B1FCB);
-  border: none;
-  padding: 1rem 2rem;
-  border-radius: 40px;
-  font-weight: 700;
-  font-size: 1rem;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  text-transform: uppercase;
-  display: inline-flex;
+.hero__text-secondary {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    margin-top: 1rem;
+    opacity: 0.8;
+    font-style: italic;
+}
+.hero__countdown-section {
+    display: flex;
+    flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  text-decoration: none;
-  color: white;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
-  min-width: 240px;
   justify-content: center;
-  transition: all 0.3s ease;
-  flex: 0 0 auto;
+    text-align: center;
 }
 
-.hero-buttons .btn-secondary {
-  background: white;
-  color: #4B1FCB;
-  border: 2px solid #4B1FCB;
-  padding: 1rem 2rem;
-  border-radius: 40px;
-  font-weight: 700;
-  font-size: 1rem;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  text-transform: uppercase;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  text-decoration: none;
-  text-shadow: none;
-  min-width: 240px;
-  justify-content: center;
-  transition: all 0.3s ease;
-  flex: 0 0 auto;
-}
-
-.hero-buttons .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-}
-
-.hero-buttons .btn-secondary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-  background: #f8f9fa;
-}
-
-.countdown-container-new {
-  order: 2;
+/* ==================== COUNTDOWN MODERNO ==================== */
+.countdown {
+    background: linear-gradient(135deg, 
+        rgba(0,0,0,0.6) 0%, 
+        rgba(17,17,17,0.4) 100%);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 3rem 2rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    max-width: 500px;
   width: 100%;
-  max-width: 600px;
-  margin: 1.5rem auto;
 }
-
-.countdown-title {
-  font-size: 1.1rem;
-  color: var(--white);
-  margin-bottom: 1.5rem;
+.countdown__title {
+    font-size: var(--h3-font-size);
+    margin-bottom: 2rem;
+    font-weight: 600;
+    color: var(--white-color);
   text-align: center;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8);
 }
-
-.countdown-horizontal {
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(30px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.countdown__timer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
-  padding: 1.5rem;
-  border-radius: 20px;
+    margin-bottom: 2rem;
 }
-
-.countdown-item {
+.countdown__item {
   text-align: center;
+    background: rgba(255,255,255,0.05);
+    padding: 1.5rem 0.5rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255,255,255,0.1);
   transition: all 0.3s ease;
 }
-
-.countdown-item:hover {
-  transform: translateY(-3px);
+.countdown__item:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-2px);
 }
-
-.countdown-number {
+.countdown__item span {
   display: block;
   font-size: 2.5rem;
   font-weight: 900;
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+    color: var(--accent-color);
+    font-variant-numeric: tabular-nums;
   line-height: 1;
   margin-bottom: 0.5rem;
+    text-shadow: 0 2px 10px rgba(251, 217, 4, 0.3);
 }
-
-.countdown-label {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.95);
+.countdown__item p {
+    font-size: var(--small-font-size);
+    color: var(--text-color);
+    font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 1px;
+}
+.countdown__date {
+    text-align: center;
   font-weight: 600;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    color: rgb(222, 220, 220);
+    font-size: var(--normal-font-size);
+    padding: 1rem;
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
 }
 
-.countdown-separator {
-  font-size: 2rem;
-  font-weight: 900;
-  color: var(--white);
-  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6);
-  animation: countdown-blink 2s infinite;
+.countdown__date:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-2px);
 }
 
-@keyframes countdown-blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0.3; }
-}
-
-/* ================================
-   SECCIONES GENERALES - PADDING PARA SOMBRAS
-   ================================ */
-
-section {
-  padding: 5rem 0 6rem 0; /* Padding extra inferior para sombras */
-  position: relative;
-}
-
-.section-header {
+/* ==================== QUIÉNES SOMOS ==================== */
+.about__text {
   text-align: center;
-  margin-bottom: 4rem;
+    max-width: 800px;
+    margin: 0 auto 3rem auto;
+}
+.about__text p { margin-bottom: 1rem; }
+.about__tagline { font-weight: 600; font-size: var(--h3-font-size); color: #ff6d16;font-style: italic;}
+.about__sponsors h3 { text-align: center; margin-bottom: 2rem; font-weight: 400; }
+.logos { 
+    overflow: hidden; 
+    padding: 2rem 0; 
+    white-space: nowrap; 
+    position: relative;
+    mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+    -webkit-mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+}
+.logos:before, .logos:after { position: absolute; top: 0; width: 100px; height: 100%; content: ''; z-index: 2; }
+.logos:before { left: 0; background: linear-gradient(to left, rgba(17, 17, 17, 0), var(--body-color)); }
+.logos:after { right: 0; background: linear-gradient(to right, rgba(17, 17, 17, 0), var(--body-color)); }
+.logos__container {
+    display: flex;
+    width: 200%;
+    animation: logoScrollInfinite 60s linear infinite;
+}
+.logos__slide { 
+    display: flex; 
+    align-items: center; 
+    gap: 5rem;
+    flex-shrink: 0;
+    width: 50%;
+    padding-right: 5rem;
+}
+.logo-mask {
+    width: 120px;
+    height: 45px;
+    background-color: #FFFFFF;
+    flex-shrink: 0;
+    position: relative;
+    
+    /* Propiedades de la máscara */
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.section-title {
-  font-size: 2.75rem;
-  font-weight: 900;
-  margin-bottom: 1rem;
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+.logo-mask:hover {
+    background-color: #CCCCCC;
+    transform: scale(1.05);
 }
 
-.section-subtitle {
-  font-size: 1.25rem;
-  color: var(--gray-600);
-  line-height: 1.6;
-  max-width: 700px;
-  margin: 0 auto;
+/* Tooltip para logos */
+.logo-mask::before {
+    content: attr(title);
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1000;
+    pointer-events: none;
 }
 
-.section-subtitle-secondary {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--gray-800);
-  margin: 1rem 0 2rem;
-  text-align: center;
+.logo-mask:hover::before {
+    opacity: 1;
+    visibility: visible;
 }
 
-.beneficios-title {
-  font-size: 2.75rem;
-  font-weight: 900;
-  margin-bottom: 1rem;
-  color: white; /* Color de texto blanco */
-  text-transform: uppercase;
-  letter-spacing: 1px;
-
-  /* Se eliminó el gradiente y los estilos relacionados */
-  background: none;
-  -webkit-background-clip: initial;
-  -webkit-text-fill-color: initial;
-  background-clip: initial;
+/* Animación infinita perfecta sin cortes */
+@keyframes logoScrollInfinite { 
+    0% { transform: translateX(0); } 
+    100% { transform: translateX(-50%); } 
 }
+.about__rayados { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-top: 2.5rem; text-align: center; }
+.about__rayados img { height: 60px; }
 
-.beneficios-subtitle {
-  font-size: 1.25rem;
-  color: white; /* Color de texto blanco */
-  line-height: 1.6;
-  max-width: 700px;
-  margin: 0 auto; /* Corregido y centrado horizontalmente */
-}
+/* ==================== OPORTUNIDAD ==================== */
+#oportunidad::before { content: ''; position: absolute; top: 0; left: -20%; width: 50%; height: 100%; background: linear-gradient(45deg, var(--primary-color), transparent); opacity: 0.1; transform: skewX(-20deg); z-index: 1; }
+.opportunity__grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+.card { background-color: var(--container-color); padding: 2rem; border-radius: .75rem; text-align: center; border: 1px solid #333; transition: .3s; }
+.card:hover { transform: translateY(-5px); border-color: var(--accent-color); }
+.card i { font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem; display: block; }
+.opportunity__facts { margin-top: 3rem; text-align: center; grid-template-columns: 1fr; gap: 1rem; }
+.opportunity__facts p { font-style: italic; color: var(--text-color); max-width: 400px; margin: auto; }
+.progress-banner { background: linear-gradient(90deg, var(--secondary-color), var(--primary-color)); border-radius: .5rem; padding: 2.5rem 2rem; margin-top: 3rem; text-align: center; }
+.progress-banner h3 { color: var(--white-color); }
+.progress-bar { width: 100%; background-color: rgba(0,0,0,0.2); border-radius: 50px; margin: 1rem 0; }
+.progress-bar__fill { height: 30px; background-color: white; border-radius: 50px; display: flex; align-items: center; justify-content: center; color: var(--dark-color); font-weight: 700; }
+.progress-banner__promo { font-size: var(--small-font-size); color: var(--white-color); margin-top: 1rem; font-weight: 300; }
 
-/* ================================
-   CARDS CON ESTILO COPA MUNDIAL 2026
-   ================================ */
+/* ==================== BENEFICIOS ==================== */
+.benefits__grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+.benefit-card { text-align: center; padding: 1rem; }
+.benefit-card i { font-size: 3rem; color: var(--secondary-color); margin-bottom: 1rem; }
+.benefit-card h3 { margin-bottom: .5rem; }
+.section__closing-text { text-align: center; margin-top: 3rem; font-size: var(--h3-font-size); font-weight: 600; max-width: 700px; margin-left: auto; margin-right: auto; color: var(--white-color); }
 
-.glass-card,
-.stat-card,
-.beneficio-card,
-.formato-card,
-.ubicacion-item,
-.cliente-logo,
-.contact-form,
-.calendly-section,
-.contact-direct,
-.availability-section {
-  background: var(--white);
-  border-radius: 20px;
-  border: 1px solid var(--gray-200);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  padding: 2rem;
-}
-
-.glass-card:hover,
-.stat-card:hover,
-.beneficio-card:hover,
-.formato-card:hover,
-.ubicacion-item:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-}
-
-/* ================================
-   OPORTUNIDAD SECTION CON ELEMENTOS GEOMÉTRICOS
-   ================================ */
-
-.oportunidad {
-  background: var(--gray-100);
-  position: relative;
-  overflow: hidden;
-}
-
-.oportunidad::before {
-  content: '';
-  position: absolute;
-  top: -10%;
-  left: 70%;
-  width: 600px;
-  height: 500px;
-  background: linear-gradient(135deg, var(--mundial-turquoise) 0%, var(--mundial-purple) 100%);
-  clip-path: polygon(30% 0%, 100% 20%, 80% 80%, 20% 100%, 0% 50%);
-  opacity: 0.04;
-  z-index: 1;
-}
-
-.oportunidad::after {
-  content: '';
-  position: absolute;
-  bottom: -15%;
-  left: -10%;
-  width: 500px;
-  height: 400px;
-  background: conic-gradient(from 0deg, 
-    rgba(255, 87, 34, 0.03) 0deg, 
-    rgba(0, 212, 170, 0.05) 120deg, 
-    rgba(74, 27, 127, 0.04) 240deg, 
-    rgba(255, 87, 34, 0.03) 360deg);
-  clip-path: polygon(0% 20%, 60% 0%, 100% 40%, 80% 100%, 20% 80%);
-  opacity: 1;
-  z-index: 1;
-}
-
-.stats-grid {
+/* ==================== UBICACIONES ==================== */
+.locations__container { display: block; }
+.locations__data { 
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
-  margin-bottom: 3rem; /* Margen extra para sombras */
-  padding-bottom: 1rem; /* Padding extra para sombras */
+    margin-bottom: 2rem; 
 }
-
-.stat-card {
+.locations__stat { 
   text-align: center;
-  position: relative;
-  overflow: hidden;
+    background: var(--container-color); 
+    padding: 2rem; 
+    border-radius: .75rem; 
+    border: 1px solid #333; 
+    transition: .3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 150px;
 }
-
-.stat-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 5px;
-  background: var(--gradient-primary);
+.locations__stat:hover { 
+    transform: translateY(-5px); 
+    border-color: var(--accent-color); 
 }
-
-.stat-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-.stat-number {
-  font-size: 3rem;
+.locations__stat span { 
+    font-size: var(--biggest-font-size); 
   font-weight: 900;
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+    color: #ff6d16; 
   display: block;
-  margin-bottom: 0.5rem;
+    line-height: 1; 
+    margin-bottom: 1rem;
 }
-
-.stat-label {
-  color: var(--gray-600);
-  font-size: 1.125rem;
+.locations__stat p { 
   font-weight: 600;
+    color: var(--white-color);
+    font-size: var(--h3-font-size);
+}
+.locations__map img { border-radius: .5rem; }
+.locations__map-info { display: none; justify-content: center; font-size: var(--small-font-size); margin-top: 1rem; font-style: italic; }
+
+/* ==================== FORMATOS ==================== */
+#formatos::after { content: ''; position: absolute; bottom: 0; right: -20%; width: 50%; height: 100%; background: linear-gradient(225deg, var(--secondary-color), transparent); opacity: 0.1; transform: skewX(-20deg); z-index: 1; }
+.formats__container { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.format-card { background-color: var(--container-color); border-radius: .5rem; overflow: hidden; transition: .3s; display: flex; flex-direction: column; }
+.format-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+.format-card__img { width: 100%; height: 200px; object-fit: cover; }
+.format-card__content { padding: 1.5rem; flex-grow: 1; }
+.format-card__content h3 { margin-bottom: 1rem; color: var(--accent-color); }
+.format-card__content ul { display: flex; flex-direction: column; gap: .5rem; }
+.format-card__content li { display: flex; align-items: flex-start; gap: .5rem; }
+.format-card__content i { color: var(--red-accent); line-height: inherit; }
+
+/* ==================== CONTACTO ==================== */
+.contact__container { grid-template-columns: 1fr; gap: 3rem; }
+.contact__form-container h3, .contact__info-container h3 { margin-bottom: 1.5rem; }
+.contact__form { display: flex; flex-direction: column; gap: 1rem; }
+.contact__input-group { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+.contact__form input, .contact__form textarea { width: 100%; padding: 1rem; border-radius: .5rem; border: 1px solid #444; background-color: var(--dark-color); color: var(--white-color); font-family: var(--body-font); }
+.contact__form input:focus, .contact__form textarea:focus { border-color: var(--accent-color); outline: none; }
+.contact__form textarea { resize: vertical; min-height: 150px; }
+.contact__info-container > div { margin-bottom: 2.5rem; }
+.contact__info-list { display: flex; flex-direction: column; gap: 1rem; }
+.contact__info-list li { display: flex; align-items: center; gap: .75rem; }
+.contact__info-list i { font-size: 1.25rem; color: var(--red-accent); }
+
+/* ==================== FOOTER ==================== */
+.footer { background-color: var(--dark-color); padding-top: 4rem; }
+.footer__container { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; }
+.footer__title { font-size: var(--h3-font-size); margin-bottom: 1rem; color: var(--white-color); }
+.footer__description { font-size: var(--small-font-size); margin-bottom: 1.5rem; }
+.footer__list { display: flex; flex-direction: column; gap: .5rem; }
+.footer__link { color: var(--text-color); }
+.footer__socials { display: flex; gap: 1rem; }
+.footer__social-link { font-size: 1.5rem; color: var(--text-color); }
+.footer__bottom { margin-top: 4rem; padding-bottom: 2rem; text-align: center; border-top: 1px solid #333; padding-top: 2rem; }
+.footer__policies { margin-bottom: 1rem; display: flex; justify-content: center; gap: 1rem; font-size: var(--small-font-size); }
+.footer__policies a { color: var(--text-color); }
+.footer__copyright { font-size: var(--small-font-size); }
+
+/* ==================== SCROLL UP ==================== */
+.scroll-up { position: fixed; right: 1rem; bottom: -30%; background-color: var(--red-accent); padding: .5rem; border-radius: .25rem; z-index: var(--z-tooltip); display: inline-flex; transition: .4s; }
+.scroll-up i { font-size: 1.25rem; color: var(--white-color); }
+.scroll-up:hover { transform: translateY(-.25rem); }
+.show-scroll { bottom: 3rem; }
+
+/* ==================== MEDIA QUERIES (RESPONSIVE) ==================== */
+@media screen and (min-width: 576px) {
+    .contact__input-group {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
-.availability-section {
-  text-align: center;
-  background: #f8f9fa;
-  color: var(--gray-800);
-  border: 2px solid var(--gray-200);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-  position: relative;
-  overflow: hidden;
-  padding: 2rem 2rem 3rem 2rem; /* Padding extra en la parte inferior para las sombras */
+@media screen and (min-width: 768px) {
+    .container { margin-left: auto; margin-right: auto; }
+    .section {
+        padding: 5rem 0 2rem;
+    }
+    .nav { height: calc(var(--header-height) + 1.5rem); }
+    :root {
+        --biggest-font-size: 4rem;
+        --h1-font-size: 2.5rem;
+        --h2-font-size: 2rem;
+    }
+    .about__container { grid-template-columns: 1fr; }
+    .contact__container { grid-template-columns: 1.2fr 1fr; }
+    .opportunity__facts { grid-template-columns: 1fr 1fr; }
 }
 
-/* Figuras geométricas de fondo para la sección de disponibilidad */
-.availability-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(circle at 20% 80%, rgba(74, 27, 127, 0.04) 0%, transparent 25%),
-    radial-gradient(circle at 80% 20%, rgba(0, 212, 170, 0.05) 0%, transparent 30%),
-    linear-gradient(135deg, rgba(255, 87, 34, 0.02) 0%, transparent 50%);
-  z-index: 1;
-}
-
-.availability-section > * {
-  position: relative;
-  z-index: 2;
-}
-
-.availability-title {
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
-  color: var(--gray-800);
-  font-weight: 700;
-}
-
-.availability-bar {
-  background: rgba(0, 0, 0, 0.1);
-  height: 20px;
-  border-radius: 15px;
-  overflow: hidden;
-  margin-bottom: 2rem; /* Aumentar margen para las sombras */
-  position: relative;
-  border: 2px solid rgba(0, 0, 0, 0.1);
-  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.availability-progress {
-  background: linear-gradient(90deg, var(--mundial-orange), var(--mundial-turquoise));
-  height: 100%;
-  border-radius: 12px;
-  transition: all 0.3s ease;
-  position: relative;
-  box-shadow: 0 2px 8px rgba(255, 87, 34, 0.4);
-  margin-bottom: 0.5rem; /* Espacio para que la sombra no se corte */
-}
-
-.availability-progress::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.6) 50%, transparent 100%);
-  animation: shimmer 3s infinite;
-}
-
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-.availability-labels {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1.5rem;
-  font-weight: 700;
-  font-size: 1.1rem;
-}
-
-.availability-reserved {
-  color: var(--mundial-orange);
-}
-
-.availability-available {
-  display: none; /* Ocultar texto de espacios disponibles */
-}
-
-.availability-stats {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin-top: 1rem;
-}
-
-.availability-stat {
-  color: var(--gray-700);
-  font-size: 1rem;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.availability-stat:first-child {
-  display: none; /* Ocultar el texto específico "📊 Solo quedan 112 espacios disponibles" */
-}
-
-.availability-stat:nth-child(2) {
-  font-size: 1.2rem;
-  color: var(--mundial-orange);
-  font-weight: 700;
-}
-
-/* ================================
-   BENEFICIOS SECTION CON IMAGEN DE FONDO REAL
-   ================================ */
-
-.beneficios {
-  position: relative;
-  overflow: hidden;
-  background: 
-    url('../assets/bg/BeneficiosBG.png') center center / cover no-repeat;
-}
-
-/* Overlay sutil solo para reducir la intensidad de la imagen 12% */
-.beneficios::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(255, 255, 255, 0.12);
-  z-index: 1;
-}
-
-.beneficios .container {
-  position: relative;
-  z-index: 2;
-  padding: 0 1.5rem 2rem 1.5rem; /* Padding extra para sombras */
-}
-
-.beneficios-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+/* ==================== RESPONSIVE HERO ==================== */
+@media screen and (max-width: 768px) {
+    .hero {
+        height: auto;
+        min-height: 100vh;
+        padding: var(--header-height) 0 2rem 0;
+    }
+    .hero__container {
+        grid-template-columns: 1fr;
   gap: 2rem;
-  margin-bottom: 3rem; /* Margen extra para sombras */
-  padding-bottom: 1rem; /* Padding extra para sombras */
+        text-align: center;
+        padding: 2rem 0;
+        height: auto;
 }
-
-/* Mejorar contraste de las cards de beneficios CON LÍNEAS CORREGIDAS */
-.beneficio-card {
+    .hero__content {
   text-align: center;
-  position: relative;
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-  border-radius: 20px;
-  overflow: hidden;
+        order: 1;
+    }
+    .hero__countdown-section {
+        order: 2;
+    }
+    .hero__title {
+        font-size: 2.5rem;
+    }
+    .hero__buttons {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .countdown {
+        padding: 2rem 1.5rem;
+        max-width: 100%;
+    }
+    .countdown__timer {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+    .countdown__item {
+        padding: 1rem 0.5rem;
+    }
+    .countdown__item span {
+        font-size: 2rem;
+    }
 }
 
-.beneficio-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 5px;
-  background: var(--gradient-secondary);
-  border-radius: 20px 20px 0 0;
+@media screen and (min-width: 1024px) {
+    .footer__container { grid-template-columns: .5fr .3fr .3fr .3fr; }
 }
 
-.beneficio-card:hover {
-  background: rgba(255, 255, 255, 0.98);
-  transform: translateY(-12px);
-  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
-}
-
-.beneficio-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-.beneficio-title {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: var(--gray-800);
-  font-weight: 700;
-  text-shadow: none;
-}
-
-.beneficio-description {
-  color: var(--gray-700);
-  line-height: 1.6;
-  font-weight: 500;
-}
-
-/* Mejorar contraste del título de beneficios */
-.beneficios .section-title {
-  color: var(--gray-800);
-  text-shadow: 3px 3px 8px rgba(100, 100, 100, 0.6);
-  font-weight: 900;
-  background: none;
-  -webkit-text-fill-color: var(--gray-800);
-}
-
-.beneficios .section-subtitle {
-  color: var(--gray-800);
-  font-weight: 700;
-  text-shadow: 2px 2px 6px rgba(100, 100, 100, 0.5);
-}
-
-/* ================================
-   MAPA SECTION
-   ================================ */
+/* ==================== ESTILOS ESPECÍFICOS PARA MAPA FUNCIONAL ==================== */
+/* Adaptación de los colores del mapa a la nueva paleta Mundial 2026 */
 
 .mapa-section {
-  background: var(--gray-100);
-}
-
-/* ================================
-   ESTADÍSTICAS DE COBERTURA
-   ================================ */
-
-.coverage-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  margin-bottom: 3rem; /* Margen extra para sombras */
-  padding-bottom: 1rem; /* Padding extra para sombras */
-}
-
-.coverage-item {
-  text-align: center;
-  background: var(--white);
-  padding: 2rem;
-  border-radius: 20px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.coverage-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 5px;
-  background: var(--gradient-secondary);
-}
-
-.coverage-item:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-}
-
-.coverage-number {
-  display: block;
-  font-size: 3.5rem;
-  font-weight: 900;
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1;
-  margin-bottom: 0.5rem;
-}
-
-.coverage-label {
-  font-size: 1.1rem;
-  color: var(--gray-600);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+    background: var(--dark-color-light);
 }
 
 .mapa-container {
@@ -1393,17 +557,20 @@ section {
   grid-template-columns: 2fr 1fr;
   grid-template-rows: 1fr auto;
   gap: 2rem;
-  background: var(--white);
+    background: var(--container-color);
   border-radius: 20px;
-  padding: 3rem 3rem 4rem 3rem; /* Padding extra para sombras */
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    padding: 3rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
   min-height: 750px;
   position: relative;
   overflow: hidden;
-  margin-bottom: 2rem; /* Margen extra para sombras */
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* Fondo geométrico inspirado en montañas de Monterrey */
 .mapa-container::before {
   content: '';
   position: absolute;
@@ -1411,9 +578,9 @@ section {
   right: -10%;
   width: 400px;
   height: 300px;
-  background: linear-gradient(135deg, #00D4AA 0%, #4A1B7F 100%);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
   clip-path: polygon(0% 100%, 100% 60%, 100% 100%);
-  opacity: 0.05;
+    opacity: 0.1;
   z-index: 1;
 }
 
@@ -1424,9 +591,9 @@ section {
   left: -5%;
   width: 350px;
   height: 250px;
-  background: linear-gradient(45deg, #FF5722 0%, #00D4AA 100%);
+    background: linear-gradient(45deg, var(--red-accent) 0%, var(--accent-color) 100%);
   clip-path: polygon(0% 0%, 60% 0%, 100% 100%, 0% 100%);
-  opacity: 0.03;
+    opacity: 0.1;
   z-index: 1;
 }
 
@@ -1437,13 +604,18 @@ section {
   width: 100%;
   border-radius: 15px;
   overflow: hidden;
-  border: 2px solid var(--gray-200);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgb(158, 157, 157);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   position: relative;
   z-index: 2;
 }
 
-/* Controles del mapa */
+#map {
+    height: 100%;
+    width: 100%;
+    border-radius: 13px;
+}
+
 .map-controls {
   position: absolute;
   top: 10px;
@@ -1453,12 +625,12 @@ section {
 
 .fullscreen-btn {
   background: rgba(255, 255, 255, 0.9);
-  border: 2px solid var(--mundial-purple);
+    border: 2px solid var(--primary-color);
   border-radius: 8px;
   padding: 0.5rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  color: var(--mundial-purple);
+    color: var(--primary-color);
   font-size: 1rem;
   width: 40px;
   height: 40px;
@@ -1466,16 +638,16 @@ section {
   align-items: center;
   justify-content: center;
   backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .fullscreen-btn:hover {
-  background: var(--mundial-purple);
-  color: white;
+    background: var(--primary-color);
+    color: var(--white-color);
   transform: scale(1.05);
 }
 
-/* Estilo para mapa en pantalla completa */
 .fullscreen-map {
   position: fixed !important;
   top: 10% !important;
@@ -1484,7 +656,7 @@ section {
   height: 80% !important;
   z-index: 9999 !important;
   border-radius: 20px !important;
-  border: 3px solid var(--mundial-purple) !important;
+    border: 3px solid var(--primary-color) !important;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5) !important;
 }
 
@@ -1493,18 +665,17 @@ section {
   border-radius: 17px !important;
 }
 
-/* Botón X para cerrar pantalla completa */
 .fullscreen-close-btn {
   position: absolute;
   top: 15px;
   right: 15px;
   background: rgba(255, 255, 255, 0.95);
-  border: 2px solid var(--mundial-purple);
+    border: 2px solid var(--primary-color);
   border-radius: 50%;
   padding: 0.5rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  color: var(--mundial-purple);
+    color: var(--primary-color);
   font-size: 1.2rem;
   width: 45px;
   height: 45px;
@@ -1512,17 +683,17 @@ section {
   align-items: center;
   justify-content: center;
   backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   z-index: 10001;
 }
 
 .fullscreen-close-btn:hover {
-  background: var(--mundial-purple);
-  color: white;
+    background: var(--primary-color);
+    color: var(--white-color);
   transform: scale(1.1);
 }
 
-/* Overlay para pantalla completa */
 .fullscreen-overlay {
   position: fixed;
   top: 0;
@@ -1541,24 +712,6 @@ section {
   visibility: visible;
 }
 
-/* Responsive para mapa en pantalla completa */
-@media (max-width: 768px) {
-  .fullscreen-map {
-    top: 5% !important;
-    left: 5% !important;
-    width: 90% !important;
-    height: 90% !important;
-  }
-  
-  .fullscreen-close-btn {
-    top: 10px;
-    right: 10px;
-    width: 40px;
-    height: 40px;
-    font-size: 1rem;
-  }
-}
-
 .ubicaciones-list {
   grid-column: 2;
   grid-row: 1;
@@ -1567,836 +720,85 @@ section {
   gap: 1rem;
   height: 600px;
   overflow-y: auto;
-  padding-right: 0.5rem;
   position: relative;
   z-index: 2;
 }
 
-/* Tarjetas especiales integradas debajo del mapa */
-.special-cards-grid-integrated {
-  grid-column: 1 / -1;
-  grid-row: 2;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-top: 1rem;
-  padding-top: 2rem;
-  border-top: 2px solid var(--gray-100);
-  position: relative;
-  z-index: 2;
-}
-
-.special-cards-grid-integrated::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 4px;
-  background: linear-gradient(90deg, var(--mundial-purple), var(--mundial-turquoise));
-  border-radius: 2px;
-}
-
-.special-card {
-  background: var(--white);
-  border-radius: 15px;
-  border: 2px solid var(--gray-200);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  padding: 1.25rem 1.5rem;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  min-height: 80px;
-}
-
-.special-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--gradient-accent);
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
-}
-
-.special-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-  border-color: var(--mundial-turquoise);
-}
-
-.special-card:hover::before {
-  transform: scaleX(1);
-}
-
-.special-card.active {
-  background: linear-gradient(135deg, rgba(74, 27, 127, 0.05), rgba(0, 212, 170, 0.05));
-  border-color: var(--mundial-turquoise);
-  transform: translateY(-5px);
-  box-shadow: 0 12px 35px rgba(0, 212, 170, 0.2);
-}
-
-.special-card.active::before {
-  transform: scaleX(1);
-}
-
-.special-icon {
-  font-size: 2rem;
-  flex-shrink: 0;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, rgba(74, 27, 127, 0.1), rgba(0, 212, 170, 0.1));
-  border-radius: 12px;
-}
-
-.special-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.special-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.special-name {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--gray-800);
-  margin: 0;
-}
-
-.special-description {
-  color: var(--gray-600);
-  line-height: 1.4;
-  font-size: 0.85rem;
-  margin: 0;
-}
-
-.special-stats {
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  margin-top: 0.25rem;
-}
-
-.special-stats .stat {
-  font-size: 0.75rem;
-  color: var(--gray-600);
-  font-weight: 600;
-  background: var(--gray-100);
-  padding: 0.25rem 0.5rem;
-  border-radius: 8px;
-}
-
-/* ================================
-   FORMATOS SECTION
-   ================================ */
-
-.formatos-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-  padding-bottom: 2rem; /* Padding extra para sombras de cards */
-  margin-bottom: 2rem;
-}
-
-.formato-card {
-  overflow: hidden;
-  position: relative;
-}
-
-.formato-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 5px;
-  background: var(--gradient-accent);
-}
-
-.formato-image {
-  margin-bottom: 1.5rem;
-  border-radius: 15px;
-  overflow: hidden;
-}
-
-.formato-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 0.75rem;
-  color: var(--gray-800);
-}
-
-.formato-description {
-  color: var(--gray-600);
-  margin-bottom: 1rem;
-  line-height: 1.5;
-}
-
-.formato-features {
-  list-style: none;
-}
-
-.formato-features li {
-  color: var(--gray-600);
-  margin-bottom: 0.5rem;
-  position: relative;
-  padding-left: 1.5rem;
-}
-
-.formato-features li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: var(--mundial-turquoise);
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-
-/* ================================
-   CLIENTES SECTION CON IMAGEN DE FONDO REAL
-   ================================ */
-
-.clientes {
-  background: #ffffff;
-  color: var(--gray-800);
-  padding: 5rem 0;
-}
-
-/* Overlay sutil solo para reducir la intensidad de la imagen 12% */
-.clientes::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(255, 255, 255, 0.12);
-  z-index: 1;
-}
-
-.clientes .container {
-  position: relative;
-  z-index: 2;
-}
-
-/* Mejorar contraste de las cards de clientes */
-.cliente-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
-}
-
-.cliente-logo:hover {
-  background: rgba(255, 255, 255, 0.98);
-  transform: scale(1.08);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-}
-
-.cliente-logo div {
-  font-weight: 700;
-  color: var(--gray-800) !important;
-  font-size: 1.1rem;
-  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
-}
-
-/* Mejorar contraste del título de clientes */
-.clientes .section-title {
-  color: var(--gray-800);
-  text-shadow: none;
-  font-weight: 900;
-  background: none;
-  -webkit-text-fill-color: var(--gray-800);
-}
-
-.clientes .section-subtitle {
-  color: var(--gray-700);
-  font-weight: 700;
-  text-shadow: none;
-}
-
-.clientes-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.special-card {
-  background: var(--white);
-  border-radius: 15px;
-  border: 2px solid var(--gray-200);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  padding: 1.25rem 1.5rem;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  min-height: 80px;
-}
-
-.special-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--gradient-accent);
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
-}
-
-.special-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-  border-color: var(--mundial-turquoise);
-}
-
-.special-card:hover::before {
-  transform: scaleX(1);
-}
-
-.special-card.active {
-  background: linear-gradient(135deg, rgba(74, 27, 127, 0.05), rgba(0, 212, 170, 0.05));
-  border-color: var(--mundial-turquoise);
-  transform: translateY(-5px);
-  box-shadow: 0 12px 35px rgba(0, 212, 170, 0.2);
-}
-
-.special-card.active::before {
-  transform: scaleX(1);
-}
-
-.special-icon {
-  font-size: 2rem;
-  flex-shrink: 0;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, rgba(74, 27, 127, 0.1), rgba(0, 212, 170, 0.1));
-  border-radius: 12px;
-}
-
-.special-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.special-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.special-name {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--gray-800);
-  margin: 0;
-}
-
-.special-description {
-  color: var(--gray-600);
-  line-height: 1.4;
-  font-size: 0.85rem;
-  margin: 0;
-}
-
-.special-stats {
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  margin-top: 0.25rem;
-}
-
-.special-stats .stat {
-  font-size: 0.75rem;
-  color: var(--gray-600);
-  font-weight: 600;
-  background: var(--gray-100);
-  padding: 0.25rem 0.5rem;
-  border-radius: 8px;
-}
-
-/* Responsive para tarjetas especiales integradas */
-@media (max-width: 768px) {
-  .mapa-container {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
-    min-height: auto;
-  }
-  
-  .interactive-map {
-    grid-column: 1;
-    grid-row: 1;
-    height: 400px;
-  }
-  
-  .ubicaciones-list {
-    grid-column: 1;
-    grid-row: 2;
-    height: 300px;
-  }
-  
-  .special-cards-grid-integrated {
-    grid-column: 1;
-    grid-row: 3;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    margin-top: 1.5rem;
-  }
-  
-  .special-card {
-    padding: 1rem 1.25rem;
-    min-height: 70px;
-  }
-  
-  .special-icon {
-    font-size: 1.75rem;
-    width: 45px;
-    height: 45px;
-  }
-  
-  .special-name {
-    font-size: 1rem;
-  }
-  
-  .special-description {
-    font-size: 0.8rem;
-  }
-  
-  .special-stats {
-    gap: 0.5rem;
-  }
-  
-  .special-stats .stat {
-    font-size: 0.7rem;
-    padding: 0.2rem 0.4rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .special-card {
-    padding: 0.875rem 1rem;
-    min-height: 65px;
-    gap: 0.75rem;
-  }
-  
-  .special-icon {
-    font-size: 1.5rem;
-    width: 40px;
-    height: 40px;
-  }
-  
-  .special-name {
-    font-size: 0.95rem;
-  }
-  
-  .special-description {
-    font-size: 0.75rem;
-    display: none; /* Ocultar descripción en pantallas muy pequeñas */
-  }
-  
-  .special-stats {
-    gap: 0.35rem;
-    margin-top: 0.1rem;
-  }
-  
-  .special-stats .stat {
-    font-size: 0.65rem;
-    padding: 0.15rem 0.35rem;
-  }
-}
-
-#map {
-  height: 100%;
-  width: 100%;
-  min-height: 600px;
-  background: var(--gray-100);
-  border-radius: 15px;
-}
-
-/* Scroll personalizado Copa Mundial */
 .ubicaciones-list::-webkit-scrollbar {
-  width: 8px;
+    width: 6px;
 }
 
 .ubicaciones-list::-webkit-scrollbar-track {
-  background: var(--gray-200);
-  border-radius: 10px;
+    background: var(--dark-color);
+    border-radius: 3px;
 }
 
 .ubicaciones-list::-webkit-scrollbar-thumb {
-  background: var(--gradient-primary);
-  border-radius: 10px;
-  transition: all 0.3s ease;
+    background: var(--primary-color);
+    border-radius: 3px;
 }
 
 .ubicaciones-list::-webkit-scrollbar-thumb:hover {
-  background: var(--gradient-secondary);
+    background: var(--red-accent);
 }
 
-/* ================================
-   INTRO UBICACIONES
-   ================================ */
-
 .ubicaciones-intro {
-  margin-bottom: 1.5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 2px solid var(--gray-200);
+    position: sticky;
+  top: 0;
+    background: var(--container-color);
+    z-index: 10;
+    padding: 1rem 0;
+  margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .ubicaciones-intro h3 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--gray-800);
+    color: var(--white-color);
+    font-size: var(--h3-font-size);
   margin-bottom: 0.5rem;
+  font-weight: 700;
 }
 
 .ubicaciones-intro p {
-  color: var(--gray-600);
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-
-/* ================================
-   LEAFLET MAP CUSTOM STYLES - Copa Mundial 2026 CON IMÁGENES DIRECTAS
-   ================================ */
-
-/* Marcador personalizado con imagen directa */
-.custom-marker-icon {
-  background: transparent !important;
-  border: none !important;
-}
-
-.circle-wrapper {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  border: 3px solid white;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
-}
-
-.circle-wrapper img {
-  width: 36px;
-  height: 36px;
-  object-fit: contain;
-  z-index: 2;
-  position: relative;
-}
-
-/* Colores de fondo por tipo - más definidos para mejor contraste */
-.circle-wrapper.centro-comercial {
-  background: linear-gradient(135deg, #4A4A4A 0%, #5A5A5A 100%);
-  box-shadow: 0 4px 15px rgba(74, 74, 74, 0.4);
-}
-
-.circle-wrapper.edificio {
-  background: linear-gradient(135deg, #3A4A5C 0%, #4A5A6C 100%);
-  box-shadow: 0 4px 15px rgba(58, 74, 92, 0.4);
-}
-
-.circle-wrapper.estadio {
-  background: linear-gradient(135deg, #5C4A3A 0%, #6C5A4A 100%);
-  box-shadow: 0 4px 15px rgba(92, 74, 58, 0.5);
-}
-
-.circle-wrapper.aeropuerto {
-  background: linear-gradient(135deg, #3A5C4A 0%, #4A6C5A 100%);
-  box-shadow: 0 4px 15px rgba(58, 92, 74, 0.4);
-}
-
-.circle-wrapper.parque {
-  background: linear-gradient(135deg, #4A5C3A 0%, #5A6C4A 100%);
-  box-shadow: 0 4px 15px rgba(74, 92, 58, 0.4);
-}
-
-.circle-wrapper.hotel {
-  background: linear-gradient(135deg, #5C3A4A 0%, #6C4A5A 100%);
-  box-shadow: 0 4px 15px rgba(92, 58, 74, 0.4);
-}
-
-/* Efecto hover mejorado */
-.custom-marker-icon:hover .circle-wrapper {
-  transform: scale(1.15);
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
-}
-
-.custom-marker-icon:hover .circle-wrapper.centro-comercial {
-  box-shadow: 0 6px 25px rgba(74, 74, 74, 0.5);
-}
-
-.custom-marker-icon:hover .circle-wrapper.edificio {
-  box-shadow: 0 6px 25px rgba(58, 74, 92, 0.5);
-}
-
-.custom-marker-icon:hover .circle-wrapper.estadio {
-  box-shadow: 0 6px 25px rgba(92, 74, 58, 0.6);
-}
-
-.custom-marker-icon:hover .circle-wrapper.aeropuerto {
-  box-shadow: 0 6px 25px rgba(58, 92, 74, 0.6);
-}
-
-.custom-marker-icon:hover .circle-wrapper.parque {
-  box-shadow: 0 6px 25px rgba(74, 92, 58, 0.5);
-}
-
-.custom-marker-icon:hover .circle-wrapper.hotel {
-  box-shadow: 0 6px 25px rgba(92, 58, 74, 0.5);
-}
-
-/* Pulso animado alrededor del marcador */
-.circle-wrapper::before {
-  content: '';
-  position: absolute;
-  top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
-  border-radius: 50%;
-  animation: mundial-pulse-new 2s infinite;
-  z-index: 1;
-}
-
-.circle-wrapper.centro-comercial::before {
-  background: rgba(74, 74, 74, 0.2);
-}
-
-.circle-wrapper.edificio::before {
-  background: rgba(58, 74, 92, 0.2);
-}
-
-.circle-wrapper.estadio::before {
-  background: rgba(92, 74, 58, 0.2);
-}
-
-.circle-wrapper.aeropuerto::before {
-  background: rgba(58, 92, 74, 0.2);
-}
-
-.circle-wrapper.parque::before {
-  background: rgba(74, 92, 58, 0.2);
-}
-
-.circle-wrapper.hotel::before {
-  background: rgba(92, 58, 74, 0.2);
-}
-
-@keyframes mundial-pulse-new {
-  0% {
-    transform: scale(0.8);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(2);
-    opacity: 0;
-  }
-}
-
-/* Badges especiales en popups por tipo */
-.mundial-popup-badge.centro-comercial {
-  background: linear-gradient(135deg, #4A4A4A, #5A5A5A) !important;
-}
-
-.mundial-popup-badge.edificio {
-  background: linear-gradient(135deg, #3A4A5C, #4A5A6C) !important;
-}
-
-.mundial-popup-badge.estadio {
-  background: linear-gradient(135deg, #5C4A3A, #6C5A4A) !important;
-  animation: special-glow 2s infinite alternate;
-}
-
-.mundial-popup-badge.aeropuerto {
-  background: linear-gradient(135deg, #3A5C4A, #4A6C5A) !important;
-  animation: special-glow 2s infinite alternate;
-}
-
-.mundial-popup-badge.parque {
-  background: linear-gradient(135deg, #4A5C3A, #5A6C4A) !important;
-  animation: special-glow 2s infinite alternate;
-}
-
-.mundial-popup-badge.hotel {
-  background: linear-gradient(135deg, #5C3A4A, #6C4A5A) !important;
-}
-
-/* Popups Copa Mundial personalizados */
-.mundial-popup-container .leaflet-popup-content-wrapper {
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-  border: none;
-  padding: 0;
-}
-
-.mundial-popup-container .leaflet-popup-content {
-  margin: 0;
-  padding: 0;
-  font-family: 'Inter', sans-serif;
-}
-
-.mundial-popup-container .leaflet-popup-tip {
-  background: white;
-  box-shadow: none;
-}
-
-.mundial-popup {
-  padding: 1.5rem;
-  color: #333;
-}
-
-.mundial-popup-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 1rem;
-}
-
-.mundial-popup-header h3 {
-  color: var(--mundial-purple);
-  font-weight: 700;
-  font-size: 1.1rem;
-  margin: 0;
-  flex: 1;
-}
-
-.mundial-popup-badge {
-  color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  margin-left: 1rem;
-  white-space: nowrap;
-}
-
-.mundial-popup-description {
-  color: #555;
-  line-height: 1.5;
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
-}
-
-.mundial-popup-stats {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.mundial-stat {
-  background: #f8f9fa;
-  padding: 0.25rem 0.5rem;
-  border-radius: 15px;
-  font-size: 0.75rem;
-  color: #666;
-  font-weight: 500;
-}
-
-/* Controles del mapa Leaflet */
-.leaflet-control-zoom a {
-  background: white;
-  color: var(--mundial-purple);
-  border: 2px solid var(--mundial-purple);
-  border-radius: 8px;
-  font-weight: 700;
-  transition: all 0.3s ease;
-}
-
-.leaflet-control-zoom a:hover {
-  background: var(--mundial-purple);
-  color: white;
-}
-
-/* Attribution personalizada */
-.leaflet-control-attribution {
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(10px);
-  border-radius: 10px;
-  border: 1px solid rgba(74, 27, 127, 0.1);
-  padding: 0.5rem;
-  font-size: 0.75rem;
-}
-
-.leaflet-control-attribution a {
-  color: var(--mundial-purple);
-  font-weight: 600;
-}
-
-/* Tiles con filtro sutil Copa Mundial */
-.mundial-map-tiles {
-  filter: hue-rotate(5deg) saturate(1.1) brightness(0.98);
+    color: var(--text-color);
+    font-size: var(--small-font-size);
+    line-height: 1.5;
 }
 
 .ubicacion-item {
+    background: var(--dark-color);
+    padding: 1.25rem;
+    border-radius: 12px;
   cursor: pointer;
-  padding: 1.5rem;
-  border-left: 4px solid var(--mundial-turquoise);
-  transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    margin-right: 0.5rem;
 }
 
 .ubicacion-item:hover {
-  border-left-color: var(--mundial-purple);
-  background: var(--gray-100);
+    background: var(--container-color);
+    border-color: var(--accent-color);
+    transform: translateX(5px);
 }
 
 .ubicacion-item.active {
-  background: linear-gradient(135deg, rgba(74, 27, 127, 0.1), rgba(0, 212, 170, 0.1));
-  border-left-color: var(--mundial-turquoise);
-  transform: translateX(5px);
-  box-shadow: 0 5px 20px rgba(0, 212, 170, 0.3);
+    background: var(--primary-color);
+    border-color: var(--accent-color);
+    box-shadow: 0 5px 20px rgba(123, 0, 58, 0.3);
 }
 
 .ubicacion-name {
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  color: var(--gray-800);
+    color: var(--white-color);
+    font-weight: 600;
+    font-size: var(--small-font-size);
+    margin-bottom: 0.5rem;
 }
 
 .ubicacion-description {
-  color: var(--gray-600);
-  margin-bottom: 0.75rem;
-  line-height: 1.5;
+    color: var(--text-color);
+    font-size: 0.8rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
 }
 
 .ubicacion-stats {
@@ -2405,1629 +807,416 @@ section {
 }
 
 .stat {
-  font-size: 0.875rem;
-  color: var(--gray-600);
+    text-align: center;
+    color: var(--accent-color);
+  font-size: 0.75rem;
   font-weight: 600;
 }
 
-/* ================================
-   BENEFICIOS SECTION CON FIGURAS GEOMÉTRICAS
-   ================================ */
-
-.beneficios {
-  position: relative;
-  overflow: hidden;
+/* Estilos para los marcadores del mapa - adaptados a colores Mundial 2026 */
+.custom-marker-icon {
+    position: relative !important;
+    background: none !important;
+  border: none !important;
+    box-shadow: none !important;
 }
 
-/* Figuras geométricas de lado a lado estilo Mundial 2026 */
-.beneficios::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 50%;
-  background: linear-gradient(45deg, 
-    var(--mundial-orange) 0%, 
-    transparent 25%, 
-    transparent 50%, 
-    var(--mundial-blue) 75%, 
-    transparent 100%);
-  clip-path: polygon(
-    0% 0%, 
-    100% 0%, 
-    100% 80%, 
-    90% 85%, 
-    75% 75%, 
-    60% 90%, 
-    45% 80%, 
-    30% 95%, 
-    15% 85%, 
-    0% 90%
-  );
-  opacity: 0.06;
-  z-index: 1;
+.circle-wrapper {
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+    animation: mundial-pulse-new 2s infinite !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
+    border: 3px solid #ffffff !important;
+    overflow: hidden !important;
 }
 
-.beneficios::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 40%;
-  background: linear-gradient(135deg, 
-    transparent 0%, 
-    var(--mundial-turquoise) 30%, 
-    transparent 60%, 
-    var(--mundial-purple) 90%, 
-    transparent 100%);
-  clip-path: polygon(
-    0% 100%, 
-    20% 60%, 
-    35% 75%, 
-    50% 55%, 
-    65% 70%, 
-    80% 50%, 
-    95% 65%, 
-    100% 45%, 
-    100% 100%
-  );
-  opacity: 0.05;
-  z-index: 1;
+.circle-wrapper img {
+    width: 40px !important;
+    height: 40px !important;
+    object-fit: contain !important;
+    z-index: 2 !important;
+    position: relative !important;
 }
 
-.beneficios .container {
-  position: relative;
-  z-index: 2;
+.circle-wrapper.centro-comercial {
+    background: linear-gradient(135deg, #873100, #ff6d16) !important;
 }
 
-/* ================================
-   ESTILOS PARA INTEGRACIÓN DE RESERVAS
-   ================================ */
-
-.calendly-widget {
-  margin-bottom: 2rem;
+.circle-wrapper.edificio {
+    background: linear-gradient(135deg, #ff6d16, #873100) !important;
 }
 
-.calendly-placeholder {
-  transition: all 0.3s ease;
+.circle-wrapper.estadio {
+    background: linear-gradient(135deg, #002d87, #002d87) !important;
 }
 
-.calendly-placeholder:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 60px rgba(74, 27, 127, 0.2);
+.circle-wrapper.aeropuerto {
+    background: linear-gradient(135deg, #f80202, #680018) !important;
 }
 
-.gmail-booking-section {
-  text-align: center;
-  padding: 2rem;
-  background: var(--gray-100);
-  border-radius: 15px;
-  border: 2px solid var(--gray-200);
+.circle-wrapper.parque {
+    background: linear-gradient(135deg, #018715, #004e0c) !important;
 }
 
-.gmail-booking-section h4 {
-  color: var(--gray-800);
+.circle-wrapper.hotel {
+    background: linear-gradient(135deg, #7b003a, #a0004a) !important;
+}
+
+.circle-wrapper::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: -10px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 0 !important;
+    height: 0 !important;
+    border-left: 10px solid transparent !important;
+    border-right: 10px solid transparent !important;
+    border-top: 12px solid #ffffff !important;
+    z-index: 1 !important;
+}
+
+@keyframes mundial-pulse-new {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.9; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Estilos para popups del mapa */
+.mundial-popup-container .leaflet-popup-content-wrapper {
+    background: var(--container-color);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--primary-color);
+}
+
+.mundial-popup-container .leaflet-popup-content {
+  margin: 0;
+    color: var(--white-color);
+}
+
+.mundial-popup-container .leaflet-popup-tip {
+    background: var(--container-color);
+    border: 1px solid var(--primary-color);
+}
+
+.mundial-popup {
+    padding: 1rem;
+}
+
+.mundial-popup-header {
+  display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.mundial-popup-header h3 {
+    color: var(--white-color);
+    font-size: 1rem;
   font-weight: 700;
-  margin-bottom: 1.5rem;
+  margin: 0;
 }
 
-.direct-contact-options {
+.mundial-popup-badge {
+  padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.7rem;
+  font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.mundial-popup-badge.centro-comercial {
+    background: var(--secondary-color);
+    color: var(--white-color);
+}
+
+.mundial-popup-badge.edificio {
+    background: var(--primary-color);
+    color: var(--white-color);
+}
+
+.mundial-popup-badge.estadio {
+    background: var(--red-accent);
+    color: var(--white-color);
+}
+
+.mundial-popup-badge.aeropuerto {
+    background: var(--accent-color);
+    color: var(--dark-color);
+}
+
+.mundial-popup-badge.parque {
+    background: var(--secondary-color);
+    color: var(--white-color);
+}
+
+.mundial-popup-badge.hotel {
+    background: var(--primary-color);
+    color: var(--white-color);
+}
+
+.mundial-popup-description {
+    color: var(--text-color);
+    font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+    line-height: 1.4;
+}
+
+.mundial-popup-stats {
   display: flex;
   gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
 }
 
-.direct-contact-options .btn-secondary {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 1rem 1.5rem;
-  min-width: 180px;
-  justify-content: center;
+.mundial-stat {
+    text-align: center;
+    color: var(--accent-color);
+    font-size: 0.75rem;
+  font-weight: 600;
 }
 
-.direct-contact-options .btn-secondary i {
-  font-size: 1.1rem;
-}
-
-/* Responsive para sección de contacto */
-@media (max-width: 768px) {
-  .direct-contact-options {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .direct-contact-options .btn-secondary {
-    width: 100%;
-    max-width: 280px;
-    margin-bottom: 1rem;
-  }
-  
-  .gmail-booking-section {
-    padding: 1.5rem;
-  }
-}
-
-/* ================================
-   FLOATING CARDS CON MEJOR VISIBILIDAD
-   ================================ */
-
-.floating-elements {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
-  z-index: 3;
-}
-
-.floating-card {
-  position: absolute;
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(25px);
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
-  border: 2px solid rgba(255, 255, 255, 0.6);
-  padding: 1.25rem;
+.mundial-popup-tag {
+    display: inline-block;
+    background: rgba(251, 217, 4, 0.1);
+    color: var(--accent-color);
+    padding: 0.25rem 0.5rem;
   border-radius: 15px;
-  text-align: center;
-  animation: float 4s ease-in-out infinite;
-  min-width: 100px;
-  pointer-events: auto;
+    font-size: 10px;
+    font-weight: 500;
+    margin: 0.125rem;
+    border: 1px solid rgba(251, 217, 4, 0.3);
 }
 
-/* POSICIONES CORREGIDAS PARA QUE NO SE CORTEN */
-.card-1 {
-  top: 15%;
-  right: 5%;
-  animation-delay: 0s;
+/* Controles del mapa Leaflet - adaptados a colores Mundial 2026 */
+.leaflet-control-zoom a {
+    background-color: var(--container-color) !important;
+    color: var(--white-color) !important;
+    border: 1px solid var(--primary-color) !important;
+    transition: all 0.3s ease !important;
 }
 
-.card-2 {
-  top: 60%;
-  left: 2%;
-  animation-delay: 1.5s;
+.leaflet-control-zoom a:hover {
+    background-color: var(--primary-color) !important;
+    color: var(--white-color) !important;
 }
 
-.card-3 {
-  bottom: 20%;
-  right: 15%;
-  animation-delay: 3s;
+.leaflet-control-attribution {
+    background-color: var(--container-color) !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--primary-color) !important;
 }
 
-.card-number {
-  display: block;
-  font-size: 1.75rem;
-  font-weight: 900;
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 0.5rem;
+.leaflet-control-attribution a {
+    color: var(--accent-color) !important;
 }
 
-.card-label {
-  font-size: 0.875rem;
-  color: var(--gray-700);
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-}
-
-/* ================================
-   RESPONSIVE DESIGN COMPLETO
-   ================================ */
-
-@media (max-width: 1024px) {
-  .hero-grid {
+/* Responsive para mapa */
+@media (max-width: 768px) {
+    .mapa-container {
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto auto;
-    gap: 2.5rem;
-  }
-  
-  .full-width {
-    grid-column: 1;
-  }
-  
-  .hero-section {
+        grid-template-rows: auto auto auto;
+        padding: 2rem;
     min-height: auto;
-    padding-top: 0;
   }
   
-  .opportunity-section {
+    .interactive-map {
     grid-column: 1;
     grid-row: 1;
-    padding-right: 0;
-    text-align: center;
-  }
-  
-  .image-section {
-    grid-column: 1;
-    grid-row: 2;
-  }
-  
-  .buttons-section {
-    grid-column: 1;
-    grid-row: 3;
-    text-align: center;
-  }
-  
-  .countdown-container-new {
-    grid-column: 1;
-    grid-row: 4;
-  }
-  
-  .hero-buttons {
-    align-items: center;
-  }
-  
-  .countdown-horizontal {
-    gap: 0.75rem;
-    padding: 1.5rem;
-  }
-  
-  .countdown-number {
-    font-size: 2rem;
-  }
-  
-  .mapa-container {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  
-  .interactive-map {
-    height: 500px;
+        height: 400px;
   }
   
   #map {
-    min-height: 500px;
+        height: 100%;
   }
   
   .ubicaciones-list {
-    height: 400px;
+    grid-column: 1;
+    grid-row: 2;
+        height: auto;
+        max-height: 300px;
+        position: relative;
+        z-index: 2;
   }
   
-  .contacto-content {
-    grid-template-columns: 1fr;
-  }
-  
-  .hero-title {
-    font-size: 3rem;
-  }
-  
-  .section-title {
-    font-size: 2.25rem;
-  }
-  
-  /* Formatos grid responsive */
-  .formatos-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    .special-cards-grid-integrated {
+    grid-column: 1;
+    grid-row: 3;
+        margin-top: 2rem;
+        position: relative;
+        z-index: 1;
+        clear: both;
+    }
+
+    .fullscreen-map {
+        top: 5% !important;
+        left: 5% !important;
+        width: 90% !important;
+        height: 90% !important;
+    }
+
+    .fullscreen-close-btn {
+        top: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+    font-size: 1rem;
+    }
+
+    .map-controls {
+        top: 5px;
+        right: 5px;
+    }
+
+    .fullscreen-btn {
+        width: 35px;
+        height: 35px;
+    font-size: 0.9rem;
   }
 }
 
-@media (max-width: 768px) {
-  /* Navegación móvil */
-  .nav-links {
-    display: none;
-  }
-  
-  .hamburger {
-    display: flex;
-  }
-  
-  .nav-logo {
-    font-size: 1.2rem;
-  }
-  
-  .nav-cta {
-    display: none;
-  }
-  
-  /* Hero mejorado para mobile */
-  .hero {
-    padding: 90px 0 3rem;
-    min-height: auto;
-  }
-  
-  .hero-header {
-    margin-bottom: 1.5rem;
-  }
-  
-  .hero-title {
-    font-size: 2rem;
-    line-height: 1.2;
-    margin-bottom: 1rem;
-    margin-top: 1rem;
-  }
-  
-  .hero-subtitle {
-    font-size: 1rem;
-    line-height: 1.5;
-  }
-  
-  .hero-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    gap: 2rem;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  /* Orden correcto en móvil */
-  .opportunity-section {
-    order: 1;
-    text-align: center;
-  }
-  
-  .image-section {
-    order: 2;
-  }
-  
-  .full-width {
-    grid-column: 1;
-  }
-  
-  .opportunity-content strong {
-    font-size: 1rem;
-    line-height: 1.3;
-  }
-  
-  .opportunity-content span {
-    font-size: 0.9rem;
-  }
-  
-  .opportunity-badge {
-    font-size: 0.75rem;
-    padding: 0.5rem 1rem;
-    margin-bottom: 1rem;
-  }
-  
-  /* Hero image más pequeña en móvil */
-  .hero-image > div {
-    height: 350px !important;
-    border-radius: 20px;
-    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
-  }
-  
-  .hero-image > div > div {
-    font-size: 2.5rem !important;
-  }
-  
-  .floating-card {
-    padding: 0.75rem;
-    min-width: 70px;
-  }
-  
-  .card-number {
-    font-size: 1.2rem;
-  }
-  
-  .card-label {
-    font-size: 0.7rem;
-  }
-  
-  /* BOTONES EN MÓVIL ÚNICAMENTE */
-  .hero-buttons {
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 1rem !important;
-  }
-  
-  .hero-buttons .btn-primary,
-  .hero-buttons .btn-secondary {
-    width: 100% !important;
-    max-width: 280px !important;
-    padding: 1rem 1.5rem !important;
-    font-size: 1rem !important;
-    min-width: auto !important;
-  }
-  
-  /* Resto de estilos móvil */
-  .countdown-container-new {
-    max-width: 100%;
-  }
-  
-  .countdown-title {
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-  }
-  
-  .countdown-horizontal {
-    flex-wrap: nowrap;
-    gap: 0.5rem;
-    padding: 1rem;
-    overflow-x: auto;
-  }
-  
-  .countdown-item {
-    flex-shrink: 0;
-    min-width: 60px;
-  }
-  
-  .countdown-number {
-    font-size: 1.4rem;
-    margin-bottom: 0.25rem;
-  }
-  
-  .countdown-label {
-    font-size: 0.7rem;
-  }
-  
-  .countdown-separator {
-    font-size: 1.5rem;
-    flex-shrink: 0;
-  }
-  
-  .coverage-stats,
-  .stats-grid,
-  .formatos-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .beneficios-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .cta-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .cta-title {
-    font-size: 2rem;
-  }
-  
-  /* Mapa responsive */
+@media (max-width: 480px) {
+    .mapa-container {
+        padding: 1.5rem;
+    }
+
   .interactive-map {
-    height: 400px;
+        height: 350px;
   }
   
   #map {
-    min-height: 400px;
+        height: 100%;
   }
   
   .ubicaciones-list {
-    height: 300px;
-  }
-  
-  /* Cobertura stats en móvil */
-  .coverage-stats {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  
-  .coverage-item {
-    padding: 1.5rem;
-  }
-  
-  .coverage-number {
-    font-size: 2.5rem;
-  }
-  
-  /* Cards de ubicaciones más compactas */
+        max-height: 250px;
+    }
+
   .ubicacion-item {
     padding: 1rem;
   }
   
   .ubicacion-name {
-    font-size: 1rem;
+        font-size: 0.9rem;
   }
   
   .ubicacion-description {
-    font-size: 0.85rem;
-    line-height: 1.4;
-  }
-  
-  .ubicacion-stats {
-    flex-direction: column;
-    gap: 0.5rem;
+        font-size: 0.75rem;
   }
   
   .stat {
-    font-size: 0.8rem;
-  }
-  
-  /* Ubicaciones especiales compactas */
-  .special-card {
-    padding: 0.75rem 1rem;
-    min-height: 60px;
-    gap: 0.5rem;
-  }
-  
-  .special-icon {
-    font-size: 1.25rem;
-    width: 35px;
-    height: 35px;
-  }
-  
-  .special-name {
-    font-size: 0.9rem;
-  }
-  
-  .special-description {
-    display: none;
-  }
-  
-  .special-stats {
-    display: none;
-  }
-  
-  /* Tarjetas especiales horizontales entre mapa y ubicaciones */
-  .special-cards-grid-integrated {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.75rem;
-    margin-top: 1rem;
-    padding-top: 1rem;
-  }
-  
-  /* Contacto en una columna */
-  .contacto-content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  
-  /* Carruseles móvil con altura consistente */
-  .mobile-carousel-item {
-    flex: 0 0 260px; /* Ancho consistente */
-  }
-  
-  .mobile-carousel-item .stat-card,
-  .mobile-carousel-item .beneficio-card,
-  .mobile-carousel-item .coverage-item,
-  .mobile-carousel-item .formato-card {
-    min-height: 180px; /* Altura estándar para móvil */
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 0 1rem;
-  }
-  
-  .hero {
-    padding: 100px 0 2rem; /* Aún más espacio en pantallas pequeñas */
-  }
-  
-  .hero-title {
-    font-size: 1.75rem;
-    margin-top: 1.5rem;
-  }
-  
-  .hero-subtitle {
-    font-size: 0.9rem;
-  }
-  
-  .hero-grid {
-    gap: 1.5rem;
-  }
-  
-  .opportunity-content strong {
-    font-size: 0.9rem;
-  }
-  
-  .opportunity-content span {
-    font-size: 0.8rem;
-  }
-  
-  .opportunity-badge {
     font-size: 0.7rem;
-    padding: 0.4rem 0.8rem;
-  }
-  
-  /* Hero image más compacta */
-  .hero-image > div {
-    height: 200px !important;
-    font-size: 1.2rem !important;
-  }
-  
-  .hero-image > div > div:first-child {
-    font-size: 2rem !important;
-    margin-bottom: 0.5rem !important;
-  }
-  
-  /* Esconder floating cards en pantallas muy pequeñas */
-  .floating-card {
-    display: none;
-  }
-  
-  .hero-buttons .btn-primary,
-  .hero-buttons .btn-secondary {
-    padding: 0.875rem 1.25rem;
-    font-size: 0.9rem;
-  }
-  
-  /* Contador compacto */
-  .countdown-horizontal {
-    padding: 0.75rem;
-    gap: 0.25rem;
-  }
-  
-  .countdown-item {
-    min-width: 50px;
-  }
-  
-  .countdown-number {
-    font-size: 1.2rem;
-  }
-  
-  .countdown-label {
-    font-size: 0.65rem;
-  }
-  
-  .countdown-separator {
-    font-size: 1.2rem;
-  }
-  
-  .section-title {
-    font-size: 1.75rem;
-  }
-  
-  .beneficios-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .clientes-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  /* Mapa en pantallas muy pequeñas */
-  .interactive-map {
-    height: 350px;
-  }
-  
-  #map {
-    min-height: 350px;
-  }
-  
-  .mapa-container {
-    padding: 1.5rem;
-    grid-template-rows: auto auto auto;
-  }
-  
+    }
+}
+
+/* ==================== UBICACIONES ESPECIALES - LAYOUT HORIZONTAL ==================== */
   .special-cards-grid-integrated {
-    grid-template-columns: 1fr;
+  display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
+    margin-bottom: 0rem;
+    width: 100%;
+    grid-column: 1 / -1;
+    grid-row: 2;
   }
   
-  /* Tarjetas especiales aún más compactas */
   .special-card {
-    padding: 0.5rem 0.75rem;
-    min-height: 50px;
-  }
-  
-  .special-icon {
-    width: 30px;
-    height: 30px;
-    font-size: 1rem;
-  }
-  
-  .special-name {
-    font-size: 0.8rem;
-  }
-  
-  /* Mejorar coverage stats */
-  .coverage-item {
-    padding: 1.25rem;
-  }
-  
-  .coverage-number {
-    font-size: 2rem;
-  }
-  
-  .coverage-label {
-    font-size: 1rem;
-  }
-  
-  /* Carruseles muy compactos */
-  .mobile-carousel-item {
-    flex: 0 0 240px;
-  }
-  
-  .mobile-carousel-item .stat-card,
-  .mobile-carousel-item .beneficio-card,
-  .mobile-carousel-item .coverage-item {
-    min-height: 160px;
-    padding: 1.25rem;
-  }
-}
-
-/* ================================
-   CTA FINAL SECTION CON FONDO RESERVA
-   ================================ */
-
-.cta-final {
-  background: 
-    url('../assets/bg/ReservaBG.png') center center / cover no-repeat;
-  color: var(--gray-800);
-  position: relative;
-  overflow: hidden;
-}
-
-/* Overlay sutil solo para reducir la intensidad de la imagen 12% */
-.cta-final::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(255, 255, 255, 0.12);
-  z-index: 1;
-}
-
-.cta-content {
-  text-align: center;
-  position: relative;
-  z-index: 2;
-}
-
-.cta-title {
-  font-size: 3rem;
-  font-weight: 900;
-  margin-bottom: 1rem;
-  color: white; /* Cambiado de var(--gray-800) a white */
-  text-transform: uppercase;
-  text-shadow: 3px 3px 8px rgba(100, 100, 100, 0.6);
-}
-
-.cta-subtitle {
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
-  color: white; /* Cambiado de var(--gray-800) a white */
-  line-height: 1.5;
-  font-weight: 700;
-  text-shadow: 2px 2px 6px rgba(100, 100, 100, 0.5);
-}
-
-/* ================================
-   CONTACTO SECTION
-   ================================ */
-
-.contacto {
-  background: var(--gray-100);
-}
-
-.contacto-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-}
-
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
-.form-label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: var(--gray-800);
-}
-
-.form-input,
-.form-textarea {
-  width: 100%;
-  padding: 1rem;
-  border: 2px solid var(--gray-200);
-  border-radius: 10px;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  background: var(--white);
-  color: var(--gray-800);
-}
-
-.form-input::placeholder,
-.form-textarea::placeholder {
-  color: var(--gray-600);
-}
-
-.form-input:focus,
-.form-textarea:focus {
-  outline: none;
-  border-color: var(--mundial-purple);
-  box-shadow: 0 0 0 3px rgba(74, 27, 127, 0.1);
-}
-
-.form-textarea {
-  resize: vertical;
-  min-height: 120px;
-}
-
-.form-submit {
-  width: 100%;
-  justify-content: center;
-  background: linear-gradient(135deg, var(--mundial-orange) 0%, #FF7043 100%);
-  border: 2px solid transparent;
-}
-
-.form-submit:hover {
-  background: linear-gradient(135deg, #FF7043 0%, var(--mundial-orange) 100%);
-}
-
-.calendly-title,
-.contact-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: var(--gray-800);
-}
-
-.calendly-subtitle {
-  color: var(--gray-600);
-  margin-bottom: 1rem;
-}
-
-.contact-items {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.contact-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  color: var(--gray-600);
-}
-
-.contact-icon {
-  color: var(--mundial-purple);
-  flex-shrink: 0;
-}
-
-/* ================================
-   FOOTER
-   ================================ */
-
-.footer {
-  background: var(--gray-800);
-  color: var(--white);
-  padding: 4rem 0 2rem;
-}
-
-.footer-content {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-bottom: 2rem;
-}
-
-.footer-logo {
-  font-size: 1.5rem;
-  font-weight: 800;
-  background: var(--gradient-secondary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 1rem;
-}
-
-.footer-description {
-  color: rgba(255, 255, 255, 0.7);
-  line-height: 1.6;
-}
-
-.footer-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: var(--white);
-}
-
-.footer-links {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.footer-link {
-  color: rgba(255, 255, 255, 0.7);
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.footer-link:hover {
-  color: var(--mundial-turquoise);
-}
-
-.social-links {
-  display: flex;
-  gap: 1rem;
-}
-
-.social-link {
-  color: rgba(255, 255, 255, 0.7);
-  transition: all 0.3s ease;
-  padding: 0.5rem;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.social-link:hover {
-  color: var(--mundial-turquoise);
-  background: rgba(0, 212, 170, 0.1);
-}
-
-.footer-bottom {
-  text-align: center;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.footer-copyright {
-  color: rgba(255, 255, 255, 0.6);
-}
-
-/* ================================
-   BADGE DE OPORTUNIDAD Y ELEMENTOS FALTANTES
-   ================================ */
-
-  .opportunity-badge {
-  background: linear-gradient(90deg, #6A00F4, #4B1FCB); /* igual que .btn-primary */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);             /* igual que .btn-primary */
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);           /* igual que .btn-primary */
-  display: inline-block;
-  padding: 0.6rem 1.2rem;
-  border-radius: 40px;                                   /* igual que .btn-primary */
-  font-size: 0.875rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 1.5rem;
-  color: white;
-}
-
-@keyframes opportunity-glow {
-  0%, 100% { 
-    box-shadow: 0 6px 20px rgba(255, 87, 34, 0.6);
-    transform: scale(1);
-  }
-  50% { 
-    box-shadow: 0 10px 30px rgba(255, 87, 34, 0.8);
-    transform: scale(1.02);
-  }
-}
-
-/* ================================
-   HERO SECTION STYLES
-   ================================ */
-
-.hero-section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 200px;
-}
-
-.full-width {
-  grid-column: 1 / -1;
-  min-height: auto;
-}
-
-/* ================================
-   MEJORAR ESTILOS EXISTENTES
-   ================================ */
-
-.hero-visual {
-  position: relative;
-  width: 100%;
-}
-
-.hero-image {
-  position: relative;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-}
-
-/* Mejorar hero image */
-.hero-image > div {
-  height: 350px !important;
-  border-radius: 20px;
-  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
-}
-
-/* Countdown horizontal responsive */
-.countdown-horizontal {
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(30px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  padding: 1.5rem;
-  border-radius: 20px;
-}
-
-/* ================================
-   RESERVA SECTION CON IMAGEN DE FONDO
-   ================================ */
-
-.reserva-calendly {
-  position: relative;
-  overflow: hidden;
-  background: 
-    url('../assets/bg/ReservaBG.png') center center / cover no-repeat;
-}
-
-/* Overlay sutil solo para reducir la intensidad de la imagen 12% */
-.reserva-calendly::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(255, 255, 255, 0.12);
-  z-index: 1;
-}
-
-.reserva-calendly .container {
-  position: relative;
-  z-index: 2;
-}  
-
-/* ================================
-   BOTONES ESTILO COPA MUNDIAL 2026 - CORREGIDOS
-   ================================ */
-
-.btn-primary, .btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 1rem 2rem;
-  border-radius: 50px;
-  font-weight: 700;
-  text-decoration: none;
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  position: relative;
-  overflow: visible; /* Permitir que las sombras se vean */
-  margin: 0.5rem; /* Espacio para sombras */
-}
-
-.btn-primary {
-  background: linear-gradient(135deg, var(--mundial-orange) 0%, #FF7043 100%);
-  color: var(--white);
-  box-shadow: 0 8px 30px rgba(255, 87, 34, 0.3);
-  border: 2px solid transparent;
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(255, 87, 34, 0.4);
-  background: linear-gradient(135deg, #FF7043 0%, var(--mundial-orange) 100%);
-}
-
-.btn-secondary {
-  background: rgba(255, 255, 255, 0.9);
-  color: var(--mundial-orange);
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-}
-
-.btn-secondary:hover {
-  background: rgba(255, 255, 255, 1);
-  color: var(--mundial-orange);
-  transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(255, 255, 255, 0.3);
-  border-color: rgba(255, 255, 255, 0.8);
-}
-
-.btn-large {
-  padding: 1.25rem 2.5rem;
-  font-size: 1.1rem;
-  min-width: 200px;
-}
-
-/* ================================
-   PARTNERS SECTION COMO IMAGEN 2
-   ================================ */
-
-.clientes {
-  background: #1a1a2e;
-  color: var(--white);
-  padding: 5rem 0;
-  position: relative;
-  overflow: hidden;
-}
-
-.clientes::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(74, 27, 127, 0.1) 0%, rgba(0, 212, 170, 0.1) 100%);
-  z-index: 1;
-}
-
-.clientes .container {
-  position: relative;
-  z-index: 2;
-}
-
-.clientes .section-title {
-  color: var(--white);
-  text-shadow: none;
-  font-weight: 900;
-  background: none;
-  -webkit-text-fill-color: var(--white);
-}
-
-.clientes .section-subtitle {
-  color: rgba(255, 255, 255, 0.8);
-  font-weight: 600;
-  text-shadow: none;
-}
-
-.partners-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-  margin-bottom: 3rem;
-  padding-bottom: 2rem; /* Padding extra para sombras */
-}
-
-.partner-card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  padding: 2rem 1.5rem;
-  text-align: center;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.partner-card:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: var(--mundial-turquoise);
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 212, 170, 0.2);
-}
-
-.partner-logo {
-  width: 80px;
-  height: 60px;
-  background: linear-gradient(135deg, var(--mundial-orange) 0%, #FF7043 100%);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1rem;
-  font-weight: 700;
-  color: var(--white);
-  font-size: 0.8rem;
-}
-
-.partner-name {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--white);
-  margin-bottom: 0.5rem;
-}
-
-.partner-status {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.7);
-  font-weight: 500;
-}
-
-.partners-cta {
-  text-align: center;
-  background: rgba(255, 255, 255, 0.05);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  padding: 3rem 2rem;
-  margin-top: 3rem;
-}
-
-.partners-cta h3 {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--white);
-  margin-bottom: 1rem;
-}
-
-.partners-cta p {
-  font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 2rem;
-}
-
-/* Responsive para partners */
-@media (max-width: 1024px) {
-  .partners-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .partners-grid {
-    display: none;
-  }
-  
-  .mobile-carousel-item .partner-card {
-    min-height: 200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .partners-cta {
-    padding: 2rem 1.5rem;
-  }
-  
-  .partners-cta h3 {
-    font-size: 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .partners-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .mobile-carousel-item {
-    flex: 0 0 240px;
-  }
-  
-  .mobile-carousel-item .partner-card {
-    min-height: 180px;
-    padding: 1.5rem 1rem;
-  }
-}
-
-/* ================================
-   CONTACTO SECTION REORGANIZADA COMO IMAGEN 4
-   ================================ */
-
-.contacto-content-new {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  margin-top: 2rem;
-  padding-bottom: 2rem; /* Padding extra para sombras */
-}
-
-/* Formulario */
-.contact-form-section {
-  background: var(--white);
-  border-radius: 20px;
-  padding: 2.5rem;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-}
-
-.contact-form-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--gray-800);
-  margin-bottom: 2rem;
-}
-
-.contact-form-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-}
-
-.form-group.full-width {
-  grid-column: 1 / -1;
-}
-
-/* Información y Calendario */
-.contact-info-section {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.contact-info-card,
-.calendar-card {
-  background: var(--white);
-  border-radius: 20px;
-  padding: 2rem;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-}
-
-.contact-info-card h3,
-.calendar-card h3 {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--gray-800);
-  margin-bottom: 1.5rem;
-}
-
-/* Calendario Widget */
-.calendar-widget {
-  background: linear-gradient(135deg, #4A1B7F 0%, #00D4AA 100%);
-  border-radius: 15px;
-  padding: 2rem;
-  text-align: center;
-  color: var(--white);
-}
-
-.calendar-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  color: #FFD700;
-}
-
-.calendar-info h4 {
-  font-size: 1.2rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  color: var(--white);
-}
-
-.calendar-info p {
-  font-size: 0.9rem;
-  opacity: 0.9;
-  margin-bottom: 1.5rem;
-  line-height: 1.4;
-}
-
-.calendar-btn {
-  background: rgba(255, 255, 255, 0.9);
-  color: var(--mundial-purple);
-  border: none;
-  padding: 0.875rem 1.5rem;
-  border-radius: 30px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.calendar-btn:hover {
-  background: var(--white);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
-}
-
-/* Responsive para contacto */
-@media (max-width: 768px) {
-  .contacto-content-new {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  
-  .form-row {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  
-  .contact-form-section,
-  .contact-info-card,
-  .calendar-card {
+    background: var(--container-color);
+    border-radius: 0.75rem;
     padding: 1.5rem;
-  }
-  
-  .contact-form-title {
-    font-size: 1.3rem;
-  }
-  
-  .calendar-widget {
-    padding: 1.5rem;
-  }
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+    cursor: pointer;
+  display: flex;
+    align-items: flex-start;
+  gap: 1rem;
 }
 
-@media (max-width: 480px) {
-  .contact-form-section,
-  .contact-info-card,
-  .calendar-card {
-    padding: 1.25rem;
-  }
+.special-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
-
-/* Responsive para hero mobile */
-@media (max-width: 768px) {
-  .hero {
-    padding: 120px 0 3rem;
-    min-height: auto;
-  }
-  
-  .hero-title {
+.special-icon {
     font-size: 2.5rem;
-    margin-bottom: 1rem;
+  flex-shrink: 0;
+    margin-top: 0.25rem;
+    height: 50px;
+    width: 50px;
+}
+
+.special-content {
+    flex: 1;
+}
+
+.special-content h4 {
+    color: var(--white-color);
+  margin-bottom: 0.5rem;
+    font-size: var(--h3-font-size);
+}
+
+.special-description {
+    color: var(--text-color);
+  margin-bottom: 1rem;
+    font-size: var(--small-font-size);
+    display: none;
   }
   
-  .hero-subtitle {
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .countdown-title {
-    font-size: 0.9rem;
-  }
-  
-  .countdown-horizontal {
-    gap: 0.5rem;
-    padding: 1rem;
-  }
-  
-  .countdown-number {
-    font-size: 1.6rem;
-  }
-  
-  .countdown-label {
+.special-stats {
+    display: none;
+  gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.special-stats .stat {
+  background: rgba(255, 255, 255, 0.1);
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
     font-size: 0.75rem;
+    color: var(--accent-color);
+}
+
+/* Responsive para special-cards */
+@media screen and (max-width: 768px) {
+    .special-cards-grid-integrated {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    grid-column: 1;
+    grid-row: 3;
   }
   
-  .hero-buttons {
-    flex-direction: column;
-    gap: 1rem;
-    width: 100%;
+  .special-card {
+    padding: 1rem;
+    gap: 0.75rem;
   }
   
-  .hero-buttons .btn-primary,
-  .hero-buttons .btn-secondary {
-    width: 100%;
-    max-width: 300px;
+  .special-icon {
+    height: 40px;
+    width: 40px;
   }
   
-  .hero-benefits {
-    flex-direction: column;
-    gap: 1rem;
-    margin-top: 2rem;
-    align-items: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero {
-    padding: 110px 0 2rem;
+  .special-icon img {
+    width: 40px !important;
+    height: 40px !important;
   }
   
-  .hero-title {
-    font-size: 2rem;
-  }
-  
-  .hero-subtitle {
-    font-size: 1rem;
-  }
-  
-  .countdown-horizontal {
-    gap: 0.25rem;
-    padding: 0.75rem;
-  }
-  
-  .countdown-number {
-    font-size: 1.4rem;
-  }
-  
-  .countdown-label {
-    font-size: 0.7rem;
+  .special-content h4 {
+  font-size: 0.9rem;
   }
 }
 
-/* Controles del mapa Leaflet - CORREGIDOS */
-.leaflet-control-zoom a {
-  background: white;
-  color: var(--mundial-purple);
-  border: 2px solid var(--mundial-purple);
-  border-radius: 5px;
-  font-weight: 700;
-  transition: all 0.3s ease;
-}
-
-.leaflet-control-zoom-in {
-  background: white !important;
-  color: var(--mundial-purple) !important;
-}
-
-.leaflet-control-zoom-in:hover {
-  background: var(--mundial-purple) !important;
-  color: white !important;
-}
-
-.leaflet-control-zoom-out {
-  background: white !important;
-  color: var(--mundial-purple) !important;
-}
-
-.leaflet-control-zoom-out:hover {
-  background: var(--mundial-purple) !important;
-  color: white !important;
-}
-
-/* Ocultar attribution completamente */
-.leaflet-control-attribution {
-  display: none !important;
-}
-
-@media (max-width: 768px) {
-  .hero-buttons {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+@media screen and (max-width: 480px) {
+    .special-cards-grid-integrated {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    grid-column: 1;
+    grid-row: 3;
   }
-  
-  .hero-buttons .btn-primary,
-  .hero-buttons .btn-secondary {
-    width: 100%;
-    max-width: 280px;
-    padding: 1rem 1.5rem;
-    font-size: 0.95rem;
-    min-height: 55px;
-    min-width: auto;
-  }
-  
-  .map-controls {
-    top: 15px;
-    right: 15px;
-  }
-  
-  .fullscreen-btn {
-    width: 35px;
-    height: 35px;
-    font-size: 0.9rem;
-  }
-}
-
-/* Elementos con sombras - margin extra para evitar cortes */
-.btn-primary, 
-.btn-secondary {
-  margin: 0.5rem 0.5rem 1rem 0.5rem; /* Margin extra inferior para sombras */
-}
-
-/* Cards individuales con margin extra */
-.stat-card,
-.beneficio-card,
-.formato-card,
-.partner-card,
-.coverage-item {
-  margin-bottom: 1.5rem; /* Margin extra para sombras */
-}
-
-/* Special cards con margin extra */
-.special-card {
-  margin-bottom: 1rem; /* Margin extra para sombras */
-}
-
-/* Contact cards con margin extra */
-.contact-form-section,
-.contact-info-card,
-.calendar-card {
-  margin-bottom: 1.5rem; /* Margin extra para sombras */
 }
