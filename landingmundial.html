@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copa Mundial de Fútbol 2026 | Sede Monterrey - V MEDIA GROUP</title>
+    <meta name="description" content="Espacios publicitarios estratégicos para la Copa Mundial de Fútbol 2026 en la sede de Monterrey. Una oportunidad única para posicionar tu marca en el evento más importante del mundo.">
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons: Remix Icon -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+
+    <style>
+        /* ==================== VARIABLES Y ESTILOS BASE ==================== */
+        :root {
+            --header-height: 3.5rem;
+            
+            /* Nueva paleta de colores inspirada en la identidad del Mundial 2026 */
+            --primary-color: #7b003a; /* Morado/Vino principal */
+            --secondary-color: #008754; /* Verde */
+            --accent-color: #fbd904; /* Amarillo */
+            --red-accent: #e60023; /* Rojo para botones y alertas */
+
+            --dark-color: #111111;
+            --dark-color-light: #1f1f1f;
+            --white-color: #FFFFFF;
+            --text-color: #d1d1d1;
+            --body-color: #111111;
+            --container-color: #1f1f1f;
+            
+            /* Tipografía */
+            --body-font: 'Poppins', sans-serif;
+            --biggest-font-size: 2.5rem;
+            --h1-font-size: 2.25rem;
+            --h2-font-size: 1.75rem;
+            --h3-font-size: 1.25rem;
+            --normal-font-size: 1rem;
+            --small-font-size: .875rem;
+
+            /* Z-index */
+            --z-tooltip: 10;
+            --z-fixed: 100;
+        }
+
+        /* Reseteo y configuración base */
+        * { box-sizing: border-box; padding: 0; margin: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--body-font);
+            font-size: var(--normal-font-size);
+            background-color: var(--body-color);
+            color: var(--text-color);
+        }
+        h1, h2, h3, h4 { color: var(--white-color); font-weight: 700; }
+        ul { list-style: none; }
+        a { text-decoration: none; color: var(--accent-color); transition: .3s; }
+        a:hover { filter: brightness(0.9); }
+        img { max-width: 100%; height: auto; display: block; }
+        .container { max-width: 1120px; margin-left: 1.5rem; margin-right: 1.5rem; position: relative; z-index: 2;}
+        .grid { display: grid; gap: 1.5rem; }
+        .section {
+            padding: 3rem 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .section__header { text-align: center; margin-bottom: 3rem; }
+        .section__title { font-size: var(--h2-font-size); margin-bottom: .5rem; font-weight: 900; }
+        .section__subtitle { font-size: var(--normal-font-size); color: var(--text-color); max-width: 700px; margin: 0 auto; }
+        .section--dark { background-color: var(--dark-color-light); }
+
+        .button {
+            display: inline-block;
+            background-color: var(--red-accent);
+            color: var(--white-color);
+            padding: 1rem 2rem;
+            border-radius: .5rem;
+            font-weight: 600;
+            transition: .3s;
+            border: 2px solid var(--red-accent);
+        }
+        .button:hover { background-color: #c0001d; transform: translateY(-3px); }
+        .button--ghost { background-color: transparent; border-color: var(--white-color); }
+        .button--ghost:hover { background-color: var(--white-color); color: var(--dark-color); }
+
+        /* Animaciones de scroll */
+        .animate-on-scroll { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+        /* ==================== HEADER & NAV (CORREGIDO) ==================== */
+        .header { width: 100%; background-color: transparent; position: fixed; top: 0; left: 0; z-index: var(--z-fixed); transition: background-color .4s, box-shadow .4s; }
+        .nav { height: var(--header-height); display: flex; justify-content: space-between; align-items: center; }
+        .nav__logo { color: var(--white-color); font-weight: 700; }
+        .nav__toggle, .nav__close { font-size: 1.5rem; color: var(--white-color); cursor: pointer; }
+        .nav__menu { display: flex; align-items: center; /* Para alinear verticalmente en desktop */ }
+        .nav__list { display: flex; gap: 1.5rem; }
+        .nav__link { color: var(--white-color); font-weight: 500; /* Ligeramente menos grueso */ font-size: var(--small-font-size); /* Tamaño reducido */ transition: color .3s; }
+        .nav__link:hover { color: var(--accent-color); }
+        .nav__close { display: none; }
+
+        @media screen and (max-width: 767px) {
+            .nav__menu { position: fixed; top: 0; right: -100%; width: 100%; height: 100%; background-color: hsla(0, 0%, 5%, .8); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); transition: right .4s; flex-direction: column; justify-content: center; }
+            .nav__list { flex-direction: column; text-align: center; gap: 2rem; }
+            .nav__link { font-size: var(--normal-font-size); }
+            .nav__close { display: block; position: absolute; top: 1rem; right: 1.5rem; }
+            .show-menu { right: 0; }
+        }
+        
+        .scroll-header { background-color: var(--body-color); box-shadow: 0 4px 8px hsla(0, 0%, 0%, .3); }
+        
+        @media screen and (min-width: 768px) {
+            .nav__toggle { display: none; }
+            .nav__list { gap: 2rem; } /* Espacio entre links en desktop */
+        }
+
+        /* ==================== HERO ==================== */
+        .hero { 
+            position: relative; 
+            height: 90vh; /* ESPACIADO REDUCIDO */
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            background: url('https://images.unsplash.com/photo-1613862618956-6cde36938b81?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover; 
+        }
+        .hero__overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(0deg, rgba(17,17,17,1) 0%, rgba(17,17,17,0.4) 50%, rgba(17,17,17,1) 100%); }
+        .hero__container { position: relative; z-index: 2; }
+        .hero__title { font-size: var(--biggest-font-size); font-weight: 900; margin-bottom: 1rem; line-height: 1.2; text-shadow: 0 0 15px rgba(0,0,0,0.5); }
+        .hero__subtitle { font-size: var(--h2-font-size); font-weight: 400; margin-bottom: 1.5rem; }
+        .hero__text { max-width: 600px; margin: 0 auto 1.5rem auto; }
+        .hero__highlight-box { display: inline-block; background-color: var(--secondary-color); color: var(--white-color); padding: .5rem 1.5rem; border-radius: 50px; font-weight: 600; margin-bottom: 1rem; }
+        .hero__text-secondary { font-size: var(--small-font-size); margin-bottom: 2rem; }
+        .hero__buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+        
+        /* ==================== COUNTDOWN ==================== */
+        .countdown { background-color: rgba(0,0,0,0.4); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); padding: 1.5rem; border-radius: .5rem; display: inline-block; border: 1px solid rgba(255,255,255,0.1); }
+        .countdown__title { font-size: var(--normal-font-size); margin-bottom: 1rem; font-weight: 400; }
+        .countdown__timer { display: flex; gap: 1.5rem; justify-content: center; }
+        .countdown__item span { display: block; font-size: var(--h1-font-size); font-weight: 700; color: var(--white-color); }
+        .countdown__item p { font-size: var(--small-font-size); }
+        .countdown__date { margin-top: 1rem; font-weight: 600; color: var(--accent-color); }
+
+        /* ==================== QUIÉNES SOMOS (CORREGIDO) ==================== */
+        .about__text {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem auto; /* Centra el bloque y añade margen inferior */
+        }
+        .about__text p { margin-bottom: 1rem; }
+        .about__tagline { font-weight: 600; font-size: var(--h3-font-size); color: var(--white-color); }
+        .about__sponsors h3 { text-align: center; margin-bottom: 2rem; font-weight: 400; }
+        .logos { overflow: hidden; padding: 2rem 0; white-space: nowrap; position: relative; }
+        .logos:before, .logos:after { position: absolute; top: 0; width: 100px; height: 100%; content: ''; z-index: 2; }
+        .logos:before { left: 0; background: linear-gradient(to left, rgba(17, 17, 17, 0), var(--body-color)); }
+        .logos:after { right: 0; background: linear-gradient(to right, rgba(17, 17, 17, 0), var(--body-color)); }
+        .logos__slide { display: inline-flex; align-items: center; animation: 40s slide infinite linear; }
+        .logos__slide img { height: 40px; margin: 0 40px; }
+        @keyframes slide { from { transform: translateX(0%); } to { transform: translateX(-100%); } }
+        .about__rayados { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-top: 2.5rem; text-align: center; }
+        .about__rayados img { height: 60px; }
+        
+        /* ==================== OPORTUNIDAD ==================== */
+        #oportunidad::before { content: ''; position: absolute; top: 0; left: -20%; width: 50%; height: 100%; background: linear-gradient(45deg, var(--primary-color), transparent); opacity: 0.1; transform: skewX(-20deg); z-index: 1; }
+        .opportunity__grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+        .card { background-color: var(--container-color); padding: 2rem; border-radius: .75rem; text-align: center; border: 1px solid #333; transition: .3s; }
+        .card:hover { transform: translateY(-5px); border-color: var(--accent-color); }
+        .card i { font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem; display: block; }
+        .opportunity__facts { margin-top: 3rem; text-align: center; grid-template-columns: 1fr; gap: 1rem; }
+        .opportunity__facts p { font-style: italic; color: var(--text-color); max-width: 400px; margin: auto; }
+        .progress-banner { background: linear-gradient(90deg, var(--secondary-color), var(--primary-color)); border-radius: .5rem; padding: 2.5rem 2rem; margin-top: 3rem; text-align: center; }
+        .progress-banner h3 { color: var(--white-color); }
+        .progress-bar { width: 100%; background-color: rgba(0,0,0,0.2); border-radius: 50px; margin: 1rem 0; }
+        .progress-bar__fill { height: 30px; background-color: var(--accent-color); border-radius: 50px; display: flex; align-items: center; justify-content: center; color: var(--dark-color); font-weight: 700; }
+        .progress-banner__promo { font-size: var(--small-font-size); color: var(--white-color); margin-top: 1rem; font-weight: 300; }
+
+        /* ==================== BENEFICIOS ==================== */
+        .benefits__grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+        .benefit-card { text-align: center; padding: 1rem; }
+        .benefit-card i { font-size: 3rem; color: var(--secondary-color); margin-bottom: 1rem; }
+        .benefit-card h3 { margin-bottom: .5rem; }
+        .section__closing-text { text-align: center; margin-top: 3rem; font-size: var(--h3-font-size); font-weight: 600; max-width: 700px; margin-left: auto; margin-right: auto; color: var(--white-color); }
+
+        /* ==================== UBICACIONES ==================== */
+        .locations__container { grid-template-columns: 1fr; align-items: center; }
+        .locations__data { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap; }
+        .locations__stat { text-align: center; background: var(--container-color); padding: 1.5rem; border-radius: .5rem; min-width: 200px; border-left: 4px solid var(--red-accent); }
+        .locations__stat span { font-size: var(--biggest-font-size); font-weight: 900; color: var(--red-accent); display: block; line-height: 1; }
+        .locations__stat p { font-weight: 600; margin-top: .5rem; }
+        .locations__map img { border-radius: .5rem; }
+        .locations__map-info { text-align: center; font-size: var(--small-font-size); margin-top: 1rem; font-style: italic; }
+
+        /* ==================== FORMATOS ==================== */
+        #formatos::after { content: ''; position: absolute; bottom: 0; right: -20%; width: 50%; height: 100%; background: linear-gradient(225deg, var(--secondary-color), transparent); opacity: 0.1; transform: skewX(-20deg); z-index: 1; }
+        .formats__container { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+        .format-card { background-color: var(--container-color); border-radius: .5rem; overflow: hidden; transition: .3s; display: flex; flex-direction: column; }
+        .format-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        .format-card__img { width: 100%; height: 200px; object-fit: cover; }
+        .format-card__content { padding: 1.5rem; flex-grow: 1; }
+        .format-card__content h3 { margin-bottom: 1rem; color: var(--accent-color); }
+        .format-card__content ul { display: flex; flex-direction: column; gap: .5rem; }
+        .format-card__content li { display: flex; align-items: flex-start; gap: .5rem; }
+        .format-card__content i { color: var(--red-accent); line-height: inherit; }
+
+        /* ==================== CONTACTO ==================== */
+        .contact__container { grid-template-columns: 1fr; gap: 3rem; }
+        .contact__form-container h3, .contact__info-container h3 { margin-bottom: 1.5rem; }
+        .contact__form { display: flex; flex-direction: column; gap: 1rem; }
+        .contact__input-group { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+        .contact__form input, .contact__form textarea { width: 100%; padding: 1rem; border-radius: .5rem; border: 1px solid #444; background-color: var(--dark-color); color: var(--white-color); font-family: var(--body-font); }
+        .contact__form input:focus, .contact__form textarea:focus { border-color: var(--accent-color); outline: none; }
+        .contact__form textarea { resize: vertical; min-height: 150px; }
+        .contact__info-container > div { margin-bottom: 2.5rem; }
+        .contact__info-list { display: flex; flex-direction: column; gap: 1rem; }
+        .contact__info-list li { display: flex; align-items: center; gap: .75rem; }
+        .contact__info-list i { font-size: 1.25rem; color: var(--red-accent); }
+
+        /* ==================== FOOTER ==================== */
+        .footer { background-color: var(--dark-color); padding-top: 4rem; }
+        .footer__container { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; }
+        .footer__title { font-size: var(--h3-font-size); margin-bottom: 1rem; color: var(--white-color); }
+        .footer__description { font-size: var(--small-font-size); margin-bottom: 1.5rem; }
+        .footer__list { display: flex; flex-direction: column; gap: .5rem; }
+        .footer__link { color: var(--text-color); }
+        .footer__socials { display: flex; gap: 1rem; }
+        .footer__social-link { font-size: 1.5rem; color: var(--text-color); }
+        .footer__bottom { margin-top: 4rem; padding-bottom: 2rem; text-align: center; border-top: 1px solid #333; padding-top: 2rem; }
+        .footer__policies { margin-bottom: 1rem; display: flex; justify-content: center; gap: 1rem; font-size: var(--small-font-size); }
+        .footer__policies a { color: var(--text-color); }
+        .footer__copyright { font-size: var(--small-font-size); }
+
+        /* ==================== SCROLL UP ==================== */
+        .scroll-up { position: fixed; right: 1rem; bottom: -30%; background-color: var(--red-accent); padding: .5rem; border-radius: .25rem; z-index: var(--z-tooltip); display: inline-flex; transition: .4s; }
+        .scroll-up i { font-size: 1.25rem; color: var(--white-color); }
+        .scroll-up:hover { transform: translateY(-.25rem); }
+        .show-scroll { bottom: 3rem; }
+
+        /* ==================== MEDIA QUERIES (RESPONSIVE) ==================== */
+        @media screen and (min-width: 576px) {
+            .contact__input-group {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media screen and (min-width: 768px) {
+            .container { margin-left: auto; margin-right: auto; }
+            .section {
+                /* ESPACIADO REDUCIDO PARA DESKTOP */
+                padding: 5rem 0 2rem;
+            }
+            .nav { height: calc(var(--header-height) + 1.5rem); }
+            :root {
+                --biggest-font-size: 4rem;
+                --h1-font-size: 2.5rem;
+                --h2-font-size: 2rem;
+            }
+            .about__container { grid-template-columns: 1fr; } /* Reverted for centered text */
+            .contact__container { grid-template-columns: 1.2fr 1fr; }
+            .locations__container { grid-template-columns: .6fr 1fr; }
+            .opportunity__facts { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media screen and (min-width: 1024px) {
+            .footer__container { grid-template-columns: .5fr .3fr .3fr .3fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== HEADER & NAVBAR ==================== -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#" class="nav__logo">Copa Mundial 2026 | Sede Monterrey</a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#quienes-somos" class="nav__link">Quiénes Somos</a></li>
+                    <li class="nav__item"><a href="#oportunidad" class="nav__link">Oportunidad</a></li>
+                    <li class="nav__item"><a href="#beneficios" class="nav__link">Beneficios</a></li>
+                    <li class="nav__item"><a href="#ubicaciones" class="nav__link">Ubicaciones</a></li>
+                    <li class="nav__item"><a href="#formatos" class="nav__link">Formatos</a></li>
+                    <li class="nav__item"><a href="#contacto" class="nav__link">Contacto</a></li>
+                </ul>
+                <div class="nav__close" id="nav-close"><i class="ri-close-line"></i></div>
+            </div>
+            <div class="nav__toggle" id="nav-toggle"><i class="ri-menu-line"></i></div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <!-- ==================== HERO ==================== -->
+        <section class="hero">
+            <div class="hero__overlay"></div>
+            <div class="hero__container container">
+                <h1 class="hero__title animate-on-scroll">TU MARCA EN EL CORAZÓN DEL MUNDIAL</h1>
+                <h2 class="hero__subtitle animate-on-scroll">El evento deportivo más grande del mundo.</h2>
+                <p class="hero__text animate-on-scroll">Conecta con millones de personas al anunciarte en nuestros espacios publicitarios durante el Mundial 2026.</p>
+                <div class="hero__highlight-box animate-on-scroll">¡Oportunidad única!</div>
+                <p class="hero__text-secondary animate-on-scroll">La mayoría de las marcas ya están planeando su estrategia de comunicación para el mundial 2026, ¡no te quedes atrás!</p>
+                <div class="hero__buttons animate-on-scroll">
+                    <a href="#contacto" class="button">Recibir más información</a>
+                    <!-- REEMPLAZA '#' con el enlace a tu archivo PDF de presentación -->
+                    <a href="#" class="button button--ghost" id="download-btn" download>Descarga nuestra presentación</a>
+                </div>
+                <div class="countdown animate-on-scroll" id="countdown">
+                    <h3 class="countdown__title">Días restantes para la patada inicial</h3>
+                    <div class="countdown__timer">
+                        <div class="countdown__item"><span id="days">00</span><p>Días</p></div>
+                        <div class="countdown__item"><span id="hours">00</span><p>Horas</p></div>
+                        <div class="countdown__item"><span id="minutes">00</span><p>Minutos</p></div>
+                        <div class="countdown__item"><span id="seconds">00</span><p>Segundos</p></div>
+                    </div>
+                    <p class="countdown__date">Junio - Julio 2026</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== QUIÉNES SOMOS ==================== -->
+        <section class="section" id="quienes-somos">
+            <div class="container">
+                <div class="section__header animate-on-scroll">
+                    <h2 class="section__title">Somos V MEDIA GROUP</h2>
+                </div>
+                <div class="about__container">
+                    <!-- ORDEN CORREGIDO Y TEXTO CENTRADO -->
+                    <div class="about__text animate-on-scroll">
+                        <p><strong>Empresa especialista</strong> en medios publicitarios con más de 17 años de experiencia conectando marcas con audiencias y con gran portafolio de espacios publicitarios privilegiados, en una de las solo 3 sedes mundialistas de México.</p>
+                        <p class="about__tagline">Somos el socio estratégico para el éxito de tu marca en el Mundial 2026.</p>
+                    </div>
+                    <div class="about__sponsors animate-on-scroll">
+                        <h3>Algunas empresas que confían en nuestro trabajo</h3>
+                        <div class="logos">
+                            <div class="logos__slide">
+                                <!-- Las imágenes se duplicarán con JS para un loop perfecto -->
+                                <img src="https://logowik.com/content/uploads/images/heineken-new-20222638.jpg" alt="Heineken">
+                                <img src="https://logowik.com/content/uploads/images/bmw-m-power5795.logowik.com.webp" alt="BMW">
+                                <img src="https://logowik.com/content/uploads/images/the-home-depot7165.logowik.com.webp" alt="The Home Depot">
+                                <img src="https://logowik.com/content/uploads/images/7-eleven-black4851.logowik.com.webp" alt="7 Eleven">
+                                <img src="https://logowik.com/content/uploads/images/apple-black7193.logowik.com.webp" alt="Apple">
+                                <img src="https://logowik.com/content/uploads/images/bbva-20191427.logowik.com.webp" alt="BBVA">
+                                <img src="https://logowik.com/content/uploads/images/carls-jr6322.logowik.com.webp" alt="Carl's Jr.">
+                                <img src="https://logowik.com/content/uploads/images/cemex9236.logowik.com.webp" alt="Cemex">
+                                <img src="https://logowik.com/content/uploads/images/635_cinepolis.jpg" alt="Cinépolis">
+                                <img src="https://logowik.com/content/uploads/images/nissan-2020-black9658.logowik.com.webp" alt="Nissan">
+                            </div>
+                        </div>
+                        <div class="about__rayados">
+                            <p>Además somos orgullosos patrocinadores oficiales del Club de Fútbol Monterrey</p>
+                            <!-- REEMPLAZA este 'src' con el escudo de Rayados -->
+                            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/89/Club_de_F%C3%BAtbol_Monterrey_logo.svg/1200px-Club_de_F%C3%BAtbol_Monterrey_logo.svg.png" alt="Escudo Club de Fútbol Monterrey Rayados">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== OPORTUNIDAD ==================== -->
+        <section class="section section--dark" id="oportunidad">
+            <div class="container">
+                <div class="section__header animate-on-scroll">
+                    <h2 class="section__title">Una Oportunidad Irrepetible</h2>
+                    <p class="section__subtitle">Es más que una oportunidad publicitaria, es una plataforma de impacto global.</p>
+                </div>
+                <div class="opportunity__grid grid">
+                    <div class="card animate-on-scroll"><i class="ri-global-line"></i><h3>El mundial más grande en la historia</h3></div>
+                    <div class="card animate-on-scroll"><i class="ri-group-line"></i><h3>2M+ de visitantes esperados</h3></div>
+                    <div class="card animate-on-scroll"><i class="ri-calendar-event-line"></i><h3>5+ semanas continuas de evento</h3></div>
+                    <div class="card animate-on-scroll"><i class="ri-trophy-line"></i><h3>Los mejores espacios en 1 de las 3 sedes de México</h3></div>
+                </div>
+                <div class="opportunity__facts grid">
+                    <p class="animate-on-scroll">40 años de espera. México se convertirá en el país anfitrión con más mundiales en toda la historia.</p>
+                    <p class="animate-on-scroll">Después de 12 años, el mundial regresa al continente americano.</p>
+                </div>
+                <div class="progress-banner animate-on-scroll">
+                    <h3>¡Espacios Limitados - Reserva Antes de que se Agoten!</h3>
+                    <div class="progress-bar"><div class="progress-bar__fill" style="width: 61%;">61% Reservado</div></div>
+                    <p class="progress-banner__promo">Las reservas anticipadas reciben beneficios hasta el 31 de Diciembre de 2025.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== BENEFICIOS ==================== -->
+        <section class="section" id="beneficios">
+            <div class="container">
+                <div class="section__header animate-on-scroll">
+                    <h2 class="section__title">Beneficios para tu Marca</h2>
+                </div>
+                <div class="benefits__grid grid">
+                    <div class="benefit-card animate-on-scroll">
+                        <i class="ri-eye-line"></i><h3>Visibilidad Masiva</h3>
+                        <p>Alcanza a millones de espectadores locales e internacionales en un ambiente de máxima receptividad.</p>
+                    </div>
+                    <div class="benefit-card animate-on-scroll">
+                        <i class="ri-line-chart-line"></i><h3>Pico más Alto de Exposición</h3>
+                        <p>Aprovecha el momento de mayor audiencia y atención mediática en la historia de la región.</p>
+                    </div>
+                    <div class="benefit-card animate-on-scroll">
+                        <i class="ri-pin-distance-line"></i><h3>Presencia en Ubicaciones Destacadas</h3>
+                        <p>Tu marca estará en los puntos clave de flujo de aficionados en la sede.</p>
+                    </div>
+                    <div class="benefit-card animate-on-scroll">
+                        <i class="ri-hearts-line"></i><h3>Conexión Única con Fans</h3>
+                        <p>Asocia tu marca con la pasión, la emoción y los valores positivos del evento deportivo más querido del mundo.</p>
+                    </div>
+                </div>
+                <p class="section__closing-text animate-on-scroll">No dejes pasar la oportunidad de posicionar tu marca en el evento más importante de la región en su historia.</p>
+            </div>
+        </section>
+
+        <!-- ==================== UBICACIONES ==================== -->
+        <section class="section section--dark" id="ubicaciones">
+            <div class="container">
+                 <div class="section__header animate-on-scroll">
+                    <h2 class="section__title">Ubicaciones Estratégicas</h2>
+                    <p class="section__subtitle">Nuestros espacios publicitarios están ubicados estratégicamente a lo largo de toda la sede mundialista de Monterrey.</p>
+                </div>
+                <div class="locations__container grid">
+                    <div class="locations__data animate-on-scroll">
+                        <div class="locations__stat"><span>22</span><p>Ubicaciones Estratégicas</p></div>
+                        <div class="locations__stat"><span>400+</span><p>Espacios Disponibles</p></div>
+                    </div>
+                    <div class="locations__map animate-on-scroll">
+                         <!-- REEMPLAZA este 'src' con tu imagen del mapa -->
+                        <img src="https://placehold.co/800x500/333333/FFFFFF?text=MAPA+(POR+CARGAR)" alt="Mapa de ubicaciones en Monterrey">
+                        <div class="locations__map-info"><i class="ri-information-line"></i> Incluye Aeropuerto, Estadio, Fan Fest y Hotel Sede (The Westin).</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== FORMATOS ==================== -->
+        <section class="section" id="formatos">
+             <div class="container">
+                 <div class="section__header animate-on-scroll">
+                    <h2 class="section__title">Nuestros Formatos Publicitarios</h2>
+                    <p class="section__subtitle">Diversos formatos para diferentes presupuestos y objetivos de marketing, todos en ubicaciones privilegiadas.</p>
+                </div>
+                <div class="formats__container grid">
+                    <div class="format-card animate-on-scroll">
+                        <img src="https://images.unsplash.com/photo-1593344484962-796b16d86ea2?q=80&w=1974&auto=format&fit=crop" class="format-card__img" alt="Formatos Digitales">
+                        <div class="format-card__content">
+                            <h3>Digitales</h3>
+                            <ul>
+                                <li><i class="ri-arrow-right-s-fill"></i> Pantallas digitales</li>
+                                <li><i class="ri-arrow-right-s-fill"></i> Directorios digitales</li>
+                                <li><i class="ri-arrow-right-s-fill"></i> Mupis digitales</li>
+                                <li><i class="ri-arrow-right-s-fill"></i> Totems digitales</li>
+                                <li><i class="ri-arrow-right-s-fill"></i> Holograma 3D</li>
+                                <li>Y más…</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="format-card animate-on-scroll">
+                        <img src="https://images.unsplash.com/photo-1535016120720-40c646be5580?q=80&w=2070&auto=format&fit=crop" class="format-card__img" alt="Formatos Físicos">
+                        <div class="format-card__content">
+                            <h3>Físicos</h3>
+                            <ul>
+                                <li><i class="ri-arrow-right-s-fill"></i> Muros</li>
+                                <li><i class="ri-arrow-right-s-fill"></i> Cajas de Luz</li>
+                                <li><i class="ri-arrow-right-s-fill"></i> Floor Graphic</li>
+                                <li><i class="ri-arrow-right-s-fill"></i> Pendones</li>
+                                <li><i class="ri-arrow-right-s-fill"></i> Mupis</li>
+                                <li>Y más…</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="format-card animate-on-scroll">
+                        <img src="https://images.unsplash.com/photo-1540553016722-983e48a2cd10?q=80&w=2070&auto=format&fit=crop" class="format-card__img" alt="Activaciones de Marca">
+                        <div class="format-card__content">
+                            <h3>Activaciones de marca</h3>
+                            <ul>
+                                <li><i class="ri-arrow-right-s-fill"></i> Experiencias personalizadas</li>
+                                <li><i class="ri-arrow-right-s-fill"></i> Photo Opportunity</li>
+                                <li><i class="ri-arrow-right-s-fill"></i> Stands promocionales</li>
+                                <li><i class="ri-arrow-right-s-fill"></i> Meet & Greet</li>
+                                <li><i class="ri-arrow-right-s-fill"></i> Transmisiones en vivo de evento</li>
+                                <li>Y más…</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+             </div>
+        </section>
+
+        <!-- ==================== CONTACTO ==================== -->
+        <section class="section section--dark" id="contacto">
+            <div class="container">
+                <div class="section__header animate-on-scroll">
+                    <h2 class="section__title">¿Tu marca está lista para destacar en el Mundial 2026?</h2>
+                    <p class="section__subtitle">Contáctanos hoy mismo y asegura los mejores espacios publicitarios para la Copa Mundial de Fútbol 2026.</p>
+                </div>
+                <div class="contact__container grid">
+                    <div class="contact__form-container animate-on-scroll">
+                        <h3 id="enviar-mensaje">Envíanos un mensaje</h3>
+                        <!-- Para hacer funcional el form, usa un servicio como Formspree.io -->
+                        <form action="#" class="contact__form">
+                            <div class="contact__input-group">
+                                <input type="text" name="nombre" placeholder="Nombre" required>
+                                <input type="text" name="apellido" placeholder="Apellido" required>
+                            </div>
+                            <input type="text" name="empresa" placeholder="Empresa" required>
+                            <input type="email" name="email" placeholder="Correo Electrónico" required>
+                            <input type="tel" name="telefono" placeholder="Teléfono">
+                            <textarea name="mensaje" placeholder="Cuéntanos sobre tus objetivos para el mundial 2026 o consulta con nosotros cualquier duda." required></textarea>
+                            <button type="submit" class="button">Enviar Mensaje</button>
+                        </form>
+                    </div>
+                    <div class="contact__info-container animate-on-scroll">
+                        <div id="info-directa">
+                            <h3>Información de contacto</h3>
+                            <ul class="contact__info-list">
+                                <li><i class="ri-mail-line"></i> hola@vmediag.com</li>
+                                <li><i class="ri-phone-line"></i> +52 81 2110 1769</li>
+                                <li><i class="ri-map-pin-line"></i> San Pedro Garza García, Nuevo León, México</li>
+                            </ul>
+                        </div>
+                        <div id="agendar-reunion">
+                            <h3>Agenda una reunión con nuestro equipo</h3>
+                            <!-- INSTRUCCIÓN: Pega aquí el código de inserción de Calendly. -->
+                            <div style="background-color:#2a2a2a; border-radius: .5rem; padding: 2rem; text-align: center;">
+                                <p style="margin-bottom: 1rem;">La integración de Calendly aparecerá aquí.</p>
+                                <a href="#" class="button button--ghost">Ver Disponibilidad</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="footer__container container grid">
+            <div class="footer__section">
+                <h3 class="footer__title">Copa Mundial 2026 | Sede Monterrey</h3>
+                <p class="footer__description">Espacios publicitarios estratégicos en sede mundialista. Una oportunidad única para posicionar tu marca en el evento más importante del mundo.</p>
+            </div>
+            <div class="footer__section">
+                <h3 class="footer__title">Información</h3>
+                <ul class="footer__list">
+                    <li><a href="#quienes-somos" class="footer__link">Quiénes Somos</a></li>
+                    <li><a href="#oportunidad" class="footer__link">Oportunidad Única</a></li>
+                    <li><a href="#beneficios" class="footer__link">Beneficios</a></li>
+                    <li><a href="#ubicaciones" class="footer__link">Ubicaciones</a></li>
+                    <li><a href="#formatos" class="footer__link">Formatos</a></li>
+                    <li><a href="#contacto" class="footer__link">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer__section">
+                <h3 class="footer__title">¡Actúa ahora!</h3>
+                <ul class="footer__list">
+                    <li><a href="#agendar-reunion" class="footer__link">Agendar una reunión</a></li>
+                    <li><a href="#enviar-mensaje" class="footer__link">Enviar un mensaje</a></li>
+                    <li><a href="#info-directa" class="footer__link">Contacto</a></li>
+                    <li><a href="#" id="download-footer-btn" class="footer__link" download>Descarga nuestra presentación</a></li>
+                </ul>
+            </div>
+            <div class="footer__section">
+                <h3 class="footer__title">Síguenos</h3>
+                <div class="footer__socials">
+                    <a href="https://www.instagram.com/vmediag" target="_blank" class="footer__social-link"><i class="ri-instagram-line"></i></a>
+                    <a href="https://www.tiktok.com/@vmediag" target="_blank" class="footer__social-link"><i class="ri-tiktok-line"></i></a>
+                    <a href="https://www.facebook.com/vmediag" target="_blank" class="footer__social-link"><i class="ri-facebook-box-line"></i></a>
+                    <a href="https://mx.linkedin.com/company/vmediag" target="_blank" class="footer__social-link"><i class="ri-linkedin-box-line"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer__bottom container">
+            <div class="footer__policies">
+                <a href="#" target="_blank">Aviso de Privacidad</a><span>|</span><a href="#" target="_blank">Términos y Condiciones</a>
+            </div>
+            <p class="footer__copyright">&copy; 2025 V MEDIA GROUP. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Botón para volver arriba -->
+    <a href="#" class="scroll-up" id="scroll-up"><i class="ri-arrow-up-line"></i></a>
+
+    <script>
+        /* ==================== MENÚ MÓVIL ==================== */
+        const navMenu = document.getElementById('nav-menu'),
+              navToggle = document.getElementById('nav-toggle'),
+              navClose = document.getElementById('nav-close');
+        if(navToggle) navToggle.addEventListener('click', () => navMenu.classList.add('show-menu'));
+        if(navClose) navClose.addEventListener('click', () => navMenu.classList.remove('show-menu'));
+        const navLinks = document.querySelectorAll('.nav__link');
+        navLinks.forEach(n => n.addEventListener('click', () => {
+            if (navMenu.classList.contains('show-menu')) {
+                navMenu.classList.remove('show-menu');
+            }
+        }));
+
+        /* ==================== HEADER CON SOMBRA AL SCROLL ==================== */
+        function scrollHeader(){
+            const header = document.getElementById('header');
+            this.scrollY >= 50 ? header.classList.add('scroll-header') : header.classList.remove('scroll-header');
+        }
+        window.addEventListener('scroll', scrollHeader);
+
+        /* ==================== CUENTA REGRESIVA ==================== */
+        const countdown = () => {
+            const targetDate = new Date('June 11, 2026 00:00:00').getTime();
+            const now = new Date().getTime();
+            const gap = targetDate - now;
+
+            const format = (num) => (num < 10 ? '0' + num : num);
+            if (gap > 0) {
+                const textDay = Math.floor(gap / (1000 * 60 * 60 * 24));
+                const textHour = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const textMinute = Math.floor((gap % (1000 * 60 * 60)) / (1000 * 60));
+                const textSecond = Math.floor((gap % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = format(textDay);
+                document.getElementById('hours').innerText = format(textHour);
+                document.getElementById('minutes').innerText = format(textMinute);
+                document.getElementById('seconds').innerText = format(textSecond);
+            }
+        };
+        setInterval(countdown, 1000);
+        countdown();
+
+        /* ==================== ANIMACIÓN AL SCROLL ==================== */
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.animate-on-scroll').forEach((el) => observer.observe(el));
+
+        /* ==================== BOTÓN VOLVER ARRIBA ==================== */
+        function scrollUp(){
+            const scrollUpBtn = document.getElementById('scroll-up');
+            this.scrollY >= 400 ? scrollUpBtn.classList.add('show-scroll') : scrollUpBtn.classList.remove('show-scroll');
+        }
+        window.addEventListener('scroll', scrollUp);
+
+        /* ==================== DESCARGAR PRESENTACIÓN ==================== */
+        // Debes reemplazar 'path/to/your/presentation.pdf' con la ruta real de tu archivo
+        const presentationPath = 'path/to/your/presentation.pdf';
+        document.getElementById('download-btn').href = presentationPath;
+        document.getElementById('download-footer-btn').href = presentationPath;
+
+        /* ==================== LOGO CAROUSEL FIX ==================== */
+        const logosSlide = document.querySelector(".logos__slide");
+        if (logosSlide) {
+            // Clonar los logos para un loop infinito y fluido
+            const copy = logosSlide.cloneNode(true);
+            document.querySelector(".logos").appendChild(copy);
+        }
+
+    </script>
+</body>
+</html>

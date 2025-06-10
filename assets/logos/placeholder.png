@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100" height="60" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100" height="60" rx="8" fill="#f8f9fa" stroke="#e9ecef" stroke-width="1"/>
+  <rect x="20" y="20" width="60" height="20" rx="4" fill="#6c757d" opacity="0.3"/>
+  <text x="50" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6c757d">LOGO</text>
+</svg> 
